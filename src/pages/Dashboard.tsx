@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +7,7 @@ import { languages } from '../data/languages';
 import LanguageCard from '../components/LanguageCard';
 import UserProgress from '../components/UserProgress';
 import Header from '../components/Header';
-import { ArrowRight, Flame, Trophy } from 'lucide-react';
+import { ArrowRight, Flame, Trophy, Play, CheckSquare, BookOpen } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 const Dashboard = () => {
@@ -42,6 +43,75 @@ const Dashboard = () => {
             {/* Left column - User progress */}
             <div className="md:w-1/3">
               <UserProgress />
+              
+              {userLanguages.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mt-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden"
+                >
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center">
+                      <BookOpen className="mr-2 h-5 w-5 text-brand-blue" />
+                      Continue Learning
+                    </h2>
+                    
+                    <div className="mt-4 space-y-3">
+                      {userLanguages.slice(0, 1).map(language => {
+                        const userLang = user.languages.find(l => l.id === language.id);
+                        return (
+                          <div key={language.id}>
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center">
+                                <span className="text-xl mr-2">{language.flag}</span>
+                                <span className="font-medium">{language.name}</span>
+                              </div>
+                              <span className="text-sm bg-blue-100 dark:bg-blue-900/20 px-2 py-0.5 rounded-full text-blue-800 dark:text-blue-300">
+                                Level {userLang?.level || 1}
+                              </span>
+                            </div>
+                            
+                            <div className="grid grid-cols-2 gap-2">
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="w-full flex items-center justify-center"
+                                onClick={() => navigate(`/videos/${language.id}`)}
+                              >
+                                <Play className="h-4 w-4 mr-1" />
+                                Video Lessons
+                              </Button>
+                              
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="w-full flex items-center justify-center"
+                                onClick={() => navigate(`/course/${language.id}`)}
+                              >
+                                <CheckSquare className="h-4 w-4 mr-1" />
+                                Practice Tests
+                              </Button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    
+                    {userLanguages.length > 1 && (
+                      <Button
+                        variant="link"
+                        size="sm"
+                        className="mt-4 w-full"
+                        onClick={() => navigate('/courses')}
+                      >
+                        View all your languages
+                        <ArrowRight className="ml-1 h-3 w-3" />
+                      </Button>
+                    )}
+                  </div>
+                </motion.div>
+              )}
               
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

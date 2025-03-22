@@ -7,6 +7,7 @@ interface Progress {
   completedLessons: string[];
   completedSkills: string[];
   unlockedSkills: string[];
+  watchedVideos: string[];
   currentLanguage: string;
   currentSkill: string | null;
   currentLesson: string | null;
@@ -20,8 +21,10 @@ interface ProgressContextType {
   setCurrentSkill: (skillId: string | null) => void;
   setCurrentLesson: (lessonId: string | null) => void;
   completeLesson: (lessonId: string, xp: number) => void;
+  markVideoAsWatched: (videoId: string) => void;
   isSkillUnlocked: (skillId: string) => boolean;
   isLessonCompleted: (lessonId: string) => boolean;
+  isVideoWatched: (videoId: string) => boolean;
 }
 
 const ProgressContext = createContext<ProgressContextType | undefined>(undefined);
@@ -30,6 +33,7 @@ const initialProgress: Progress = {
   completedLessons: [],
   completedSkills: [],
   unlockedSkills: ['spanish-basics'],  // Start with Spanish basics unlocked
+  watchedVideos: [],
   currentLanguage: 'spanish',
   currentSkill: null,
   currentLesson: null,
@@ -161,6 +165,23 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     });
   };
   
+  const markVideoAsWatched = (videoId: string) => {
+    setProgress(prev => {
+      // Only add if not already watched
+      if (prev.watchedVideos.includes(videoId)) {
+        return prev;
+      }
+      
+      const today = new Date();
+      
+      return {
+        ...prev,
+        watchedVideos: [...prev.watchedVideos, videoId],
+        lastActivity: today.toISOString()
+      };
+    });
+  };
+  
   const isSkillUnlocked = (skillId: string): boolean => {
     return progress.unlockedSkills.includes(skillId) || progress.completedSkills.includes(skillId);
   };
@@ -169,14 +190,20 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     return progress.completedLessons.includes(lessonId);
   };
   
+  const isVideoWatched = (videoId: string): boolean => {
+    return progress.watchedVideos.includes(videoId);
+  };
+  
   const value = {
     progress,
     setCurrentLanguage,
     setCurrentSkill,
     setCurrentLesson,
     completeLesson,
+    markVideoAsWatched,
     isSkillUnlocked,
-    isLessonCompleted
+    isLessonCompleted,
+    isVideoWatched
   };
   
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;
