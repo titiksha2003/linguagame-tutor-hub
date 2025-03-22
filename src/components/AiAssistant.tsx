@@ -205,36 +205,46 @@ const AiAssistant = () => {
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
       const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognitionAPI) {
-        recognitionRef.current = new SpeechRecognitionAPI();
-        recognitionRef.current.continuous = false;
-        recognitionRef.current.interimResults = false;
-        
-        recognitionRef.current.onresult = (event: SpeechRecognitionEvent) => {
-          const transcript = event.results[0][0].transcript;
-          setInputText(transcript);
-          setIsRecording(false);
-          
-          // Automatically submit after voice input
-          setTimeout(() => {
-            handleSubmitWithText(transcript);
-          }, 500);
-        };
-        
-        recognitionRef.current.onerror = (event: Event) => {
-          console.error('Speech recognition error', event);
-          setIsRecording(false);
-          toast.error("Voice recognition error. Please try again or type your message.");
-        };
-        
-        recognitionRef.current.onend = () => {
-          setIsRecording(false);
-        };
+        try {
+          recognitionRef.current = new SpeechRecognitionAPI();
+          if (recognitionRef.current) {
+            recognitionRef.current.continuous = false;
+            recognitionRef.current.interimResults = false;
+            
+            recognitionRef.current.onresult = (event: SpeechRecognitionEvent) => {
+              const transcript = event.results[0][0].transcript;
+              setInputText(transcript);
+              setIsRecording(false);
+              
+              // Automatically submit after voice input
+              setTimeout(() => {
+                handleSubmitWithText(transcript);
+              }, 500);
+            };
+            
+            recognitionRef.current.onerror = (event: Event) => {
+              console.error('Speech recognition error', event);
+              setIsRecording(false);
+              toast.error("Voice recognition error. Please try again or type your message.");
+            };
+            
+            recognitionRef.current.onend = () => {
+              setIsRecording(false);
+            };
+          }
+        } catch (err) {
+          console.error('Error initializing speech recognition:', err);
+        }
       }
     }
     
     return () => {
       if (recognitionRef.current) {
-        recognitionRef.current.abort();
+        try {
+          recognitionRef.current.abort();
+        } catch (err) {
+          console.error('Error aborting speech recognition:', err);
+        }
       }
     };
   }, []);
@@ -334,7 +344,11 @@ const AiAssistant = () => {
     }
     
     if (isRecording) {
-      recognitionRef.current.abort();
+      try {
+        recognitionRef.current.abort();
+      } catch (err) {
+        console.error('Error stopping speech recognition:', err);
+      }
       setIsRecording(false);
     } else {
       try {
