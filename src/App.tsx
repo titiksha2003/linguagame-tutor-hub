@@ -14,6 +14,9 @@ import Course from "./pages/Course";
 import Skill from "./pages/Skill";
 import Lesson from "./pages/Lesson";
 import VideoLessons from "./pages/VideoLessons";
+import VideoLessonsOverview from "./pages/VideoLessonsOverview";
+import PracticeTests from "./pages/PracticeTests";
+import LanguageDetails from "./pages/LanguageDetails";
 import Profile from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
 import NotFound from "./pages/NotFound";
@@ -57,7 +60,10 @@ const App = () => {
                 <Route path="/course/:languageId" element={<Course />} />
                 <Route path="/course/:languageId/:skillId" element={<Skill />} />
                 <Route path="/lesson/:languageId/:lessonId" element={<Lesson />} />
+                <Route path="/videos" element={<VideoLessonsOverview />} />
                 <Route path="/videos/:languageId" element={<VideoLessons />} />
+                <Route path="/practice-tests" element={<PracticeTests />} />
+                <Route path="/language/:languageId" element={<LanguageDetails />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="*" element={<NotFound />} />

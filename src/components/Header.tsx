@@ -32,6 +32,9 @@ const Header = () => {
     const videoMatch = location.pathname.match(/\/videos\/([^\/]+)/);
     if (videoMatch) return videoMatch[1];
     
+    const languageMatch = location.pathname.match(/\/language\/([^\/]+)/);
+    if (languageMatch) return languageMatch[1];
+    
     return progress.currentLanguage;
   })();
   
@@ -96,57 +99,53 @@ const Header = () => {
               </Tooltip>
             </TooltipProvider>
             
-            {currentLanguage && (
-              <>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Link 
-                        to={`/videos/${currentLanguage.id}`} 
-                        className={`p-2 rounded-full transition-colors duration-200 ${
-                          location.pathname.startsWith(`/videos/`) 
-                            ? 'bg-gray-100 dark:bg-gray-800' 
-                            : 'hover:bg-gray-100 dark:hover:bg-gray-800'
-                        }`}
-                      >
-                        <Play className={`h-5 w-5 ${
-                          location.pathname.startsWith(`/videos/`) 
-                            ? 'text-primary'
-                            : 'text-gray-700 dark:text-gray-300'
-                        }`} />
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Video Lessons</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link 
+                    to="/videos" 
+                    className={`p-2 rounded-full transition-colors duration-200 ${
+                      location.pathname.startsWith('/videos') 
+                        ? 'bg-gray-100 dark:bg-gray-800' 
+                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    <Play className={`h-5 w-5 ${
+                      location.pathname.startsWith('/videos') 
+                        ? 'text-primary'
+                        : 'text-gray-700 dark:text-gray-300'
+                    }`} />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Video Lessons</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
 
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Link 
-                        to={`/course/${currentLanguage.id}`} 
-                        className={`p-2 rounded-full transition-colors duration-200 ${
-                          location.pathname.startsWith(`/course/`) && !location.pathname.startsWith(`/courses`) 
-                            ? 'bg-gray-100 dark:bg-gray-800' 
-                            : 'hover:bg-gray-100 dark:hover:bg-gray-800'
-                        }`}
-                      >
-                        <CheckSquare className={`h-5 w-5 ${
-                          location.pathname.startsWith(`/course/`) && !location.pathname.startsWith(`/courses`) 
-                            ? 'text-primary'
-                            : 'text-gray-700 dark:text-gray-300'
-                        }`} />
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Practice Tests</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </>
-            )}
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link 
+                    to="/practice-tests" 
+                    className={`p-2 rounded-full transition-colors duration-200 ${
+                      location.pathname.startsWith('/practice-tests') || (location.pathname.startsWith('/course/') && !location.pathname.startsWith('/courses')) 
+                        ? 'bg-gray-100 dark:bg-gray-800' 
+                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    <CheckSquare className={`h-5 w-5 ${
+                      location.pathname.startsWith('/practice-tests') || (location.pathname.startsWith('/course/') && !location.pathname.startsWith('/courses')) 
+                        ? 'text-primary'
+                        : 'text-gray-700 dark:text-gray-300'
+                    }`} />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Practice Tests</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
 
             <TooltipProvider>
               <Tooltip>

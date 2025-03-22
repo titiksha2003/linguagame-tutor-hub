@@ -20,7 +20,7 @@ const LanguageCard = ({ language, index }: LanguageCardProps) => {
   
   const handleSelectLanguage = () => {
     setCurrentLanguage(language.id);
-    navigate(`/course/${language.id}`);
+    navigate(`/language/${language.id}`);
   };
   
   return (

@@ -440,12 +440,129 @@ export const spanishSkills: Skill[] = [
   }
 ];
 
-// Add more skills for other languages following the same pattern
-// This is just a starter example
+// Create French skills by duplicating Spanish skills and changing IDs and language reference
+export const frenchSkills: Skill[] = spanishSkills.map(skill => ({
+  ...skill,
+  id: skill.id.replace('spanish', 'french'),
+  languageId: 'french',
+  unlocks: skill.unlocks.map(unlock => unlock.replace('spanish', 'french')),
+  requiredSkills: skill.requiredSkills.map(req => req.replace('spanish', 'french')),
+  lessons: skill.lessons.map(lesson => ({
+    ...lesson,
+    id: lesson.id.replace('spanish', 'french'),
+    skillId: skill.id.replace('spanish', 'french')
+  }))
+}));
 
+// Create Japanese skills
+export const japaneseSkills: Skill[] = spanishSkills.map(skill => ({
+  ...skill,
+  id: skill.id.replace('spanish', 'japanese'),
+  languageId: 'japanese',
+  unlocks: skill.unlocks.map(unlock => unlock.replace('spanish', 'japanese')),
+  requiredSkills: skill.requiredSkills.map(req => req.replace('spanish', 'japanese')),
+  lessons: skill.lessons.map(lesson => ({
+    ...lesson,
+    id: lesson.id.replace('spanish', 'japanese'),
+    skillId: skill.id.replace('spanish', 'japanese')
+  }))
+}));
+
+// Create German skills
+export const germanSkills: Skill[] = spanishSkills.map(skill => ({
+  ...skill,
+  id: skill.id.replace('spanish', 'german'),
+  languageId: 'german',
+  unlocks: skill.unlocks.map(unlock => unlock.replace('spanish', 'german')),
+  requiredSkills: skill.requiredSkills.map(req => req.replace('spanish', 'german')),
+  lessons: skill.lessons.map(lesson => ({
+    ...lesson,
+    id: lesson.id.replace('spanish', 'german'),
+    skillId: skill.id.replace('spanish', 'german')
+  }))
+}));
+
+// Create Italian skills
+export const italianSkills: Skill[] = spanishSkills.map(skill => ({
+  ...skill,
+  id: skill.id.replace('spanish', 'italian'),
+  languageId: 'italian',
+  unlocks: skill.unlocks.map(unlock => unlock.replace('spanish', 'italian')),
+  requiredSkills: skill.requiredSkills.map(req => req.replace('spanish', 'italian')),
+  lessons: skill.lessons.map(lesson => ({
+    ...lesson,
+    id: lesson.id.replace('spanish', 'italian'),
+    skillId: skill.id.replace('spanish', 'italian')
+  }))
+}));
+
+// Create Portuguese skills
+export const portugueseSkills: Skill[] = spanishSkills.map(skill => ({
+  ...skill,
+  id: skill.id.replace('spanish', 'portuguese'),
+  languageId: 'portuguese',
+  unlocks: skill.unlocks.map(unlock => unlock.replace('spanish', 'portuguese')),
+  requiredSkills: skill.requiredSkills.map(req => req.replace('spanish', 'portuguese')),
+  lessons: skill.lessons.map(lesson => ({
+    ...lesson,
+    id: lesson.id.replace('spanish', 'portuguese'),
+    skillId: skill.id.replace('spanish', 'portuguese')
+  }))
+}));
+
+// Create Hindi skills
+export const hindiSkills: Skill[] = spanishSkills.map(skill => ({
+  ...skill,
+  id: skill.id.replace('spanish', 'hindi'),
+  languageId: 'hindi',
+  unlocks: skill.unlocks.map(unlock => unlock.replace('spanish', 'hindi')),
+  requiredSkills: skill.requiredSkills.map(req => req.replace('spanish', 'hindi')),
+  lessons: skill.lessons.map(lesson => ({
+    ...lesson,
+    id: lesson.id.replace('spanish', 'hindi'),
+    skillId: skill.id.replace('spanish', 'hindi')
+  }))
+}));
+
+// Create English skills
+export const englishSkills: Skill[] = spanishSkills.map(skill => ({
+  ...skill,
+  id: skill.id.replace('spanish', 'english'),
+  languageId: 'english',
+  unlocks: skill.unlocks.map(unlock => unlock.replace('spanish', 'english')),
+  requiredSkills: skill.requiredSkills.map(req => req.replace('spanish', 'english')),
+  lessons: skill.lessons.map(lesson => ({
+    ...lesson,
+    id: lesson.id.replace('spanish', 'english'),
+    skillId: skill.id.replace('spanish', 'english')
+  }))
+}));
+
+// Create Korean skills
+export const koreanSkills: Skill[] = spanishSkills.map(skill => ({
+  ...skill,
+  id: skill.id.replace('spanish', 'korean'),
+  languageId: 'korean',
+  unlocks: skill.unlocks.map(unlock => unlock.replace('spanish', 'korean')),
+  requiredSkills: skill.requiredSkills.map(req => req.replace('spanish', 'korean')),
+  lessons: skill.lessons.map(lesson => ({
+    ...lesson,
+    id: lesson.id.replace('spanish', 'korean'),
+    skillId: skill.id.replace('spanish', 'korean')
+  }))
+}));
+
+// Add all skills to allSkills array
 export const allSkills: Skill[] = [
   ...spanishSkills,
-  // Add other language skills here
+  ...frenchSkills,
+  ...japaneseSkills,
+  ...germanSkills,
+  ...italianSkills,
+  ...portugueseSkills,
+  ...hindiSkills,
+  ...englishSkills,
+  ...koreanSkills
 ];
 
 // Helper function to find a skill by ID
