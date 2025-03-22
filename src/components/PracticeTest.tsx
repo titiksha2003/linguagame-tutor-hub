@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
@@ -29,7 +30,7 @@ interface TestQuestion {
 
 const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
   const { user } = useAuth();
-  const { progress, completeLesson } = useProgress();
+  const { completeLesson } = useProgress();
   const { toast } = useToast();
   
   const [questions, setQuestions] = useState<TestQuestion[]>([]);
@@ -47,6 +48,19 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
     const skills = getSkillsByLanguage(languageId);
     let testQuestions: TestQuestion[] = [];
     
+    // Filter skills based on level
+    const levelToFilter = (() => {
+      if (level <= 2) return 'beginner';
+      if (level <= 4) return 'intermediate';
+      return 'advanced';
+    })();
+    
+    // Get all skills for the selected level
+    const levelSkills = skills.filter(skill => {
+      return skill.level === levelToFilter;
+    });
+    
+    // For level 1 checkpoint test
     if (level === 1) {
       const checkpointSkill = skills.find(skill => skill.id === `${languageId}-checkpoint-1`);
       if (checkpointSkill && checkpointSkill.lessons[0]) {
@@ -56,18 +70,29 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
         }));
       }
     } else {
-      const levelSkills = skills.filter(skill => {
-        const skillLevel = skill.level === 'beginner' ? 1 : 
-                         skill.level === 'intermediate' ? 3 : 5;
-        return skillLevel <= level;
-      });
-      
+      // For higher levels, extract questions according to level
+      // Get all questions from the skills at this level
       const allQuestions = levelSkills.flatMap(skill => 
         skill.lessons.flatMap(lesson => lesson.questions)
       );
       
+      // Shuffle and pick questions based on level (more questions for higher levels)
+      const questionCount = Math.min(10 + level * 2, allQuestions.length);
       const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
-      testQuestions = shuffledQuestions.slice(0, Math.min(10, shuffledQuestions.length)).map(q => ({
+      testQuestions = shuffledQuestions.slice(0, questionCount).map(q => ({
+        ...q,
+        ...shuffleQuestionOptions(q)
+      }));
+    }
+    
+    // If no questions were found (unlikely), use backup from any level
+    if (testQuestions.length === 0) {
+      const allQuestions = skills.flatMap(skill => 
+        skill.lessons.flatMap(lesson => lesson.questions)
+      );
+      
+      const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
+      testQuestions = shuffledQuestions.slice(0, 10).map(q => ({
         ...q,
         ...shuffleQuestionOptions(q)
       }));
@@ -100,10 +125,13 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
     } else {
       setTestCompleted(true);
       
-      const percentage = Math.round((score + (isCorrect ? 1 : 0)) / questions.length * 100);
+      const finalScore = score + (isCorrect ? 1 : 0);
+      const percentage = Math.round((finalScore / questions.length) * 100);
       
+      // Calculate XP based on level and score percentage
       const xpEarned = Math.round((percentage / 100) * level * 50);
       
+      // Create a unique lesson ID for this test completion
       const testLessonId = `${languageId}-test-level-${level}-${Date.now()}`;
       
       if (user) {
@@ -114,6 +142,18 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
           description: `You earned ${xpEarned} XP!`,
         });
       }
+    }
+  };
+
+  // Generate level description based on level number
+  const getLevelDescription = (level: number) => {
+    switch(level) {
+      case 1: return "Beginner (A1)";
+      case 2: return "Elementary (A2)";
+      case 3: return "Intermediate (B1)";
+      case 4: return "Upper Intermediate (B2)";
+      case 5: return "Advanced (C1-C2)";
+      default: return `Level ${level}`;
     }
   };
 
@@ -163,11 +203,13 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
               </div>
               
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                Test Completed!
+                {language?.name} - {getLevelDescription(level)} Test Completed!
               </h1>
               
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                {percentage >= 80 ? "Great job!" : percentage >= 60 ? "Good effort!" : "Keep practicing!"}
+                {percentage >= 80 ? "Great job! You've mastered this level!" : 
+                 percentage >= 60 ? "Good effort! You're progressing well." : 
+                 "Keep practicing! You'll improve with time."}
               </p>
               
               <div className="flex items-center justify-center gap-4 mb-6">
@@ -248,7 +290,7 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
             <span className="text-3xl mr-3">{language?.flag}</span>
             <div>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                {language?.name} Level {level} Test
+                {language?.name} - {getLevelDescription(level)} Test
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
                 Question {currentQuestionIndex + 1} of {questions.length}
