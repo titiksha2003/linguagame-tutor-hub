@@ -30,7 +30,7 @@ interface TestQuestion {
 
 const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
   const { user } = useAuth();
-  const { progress, addCompletedLesson, addXp } = useProgress();
+  const { progress, completeLesson } = useProgress();
   const { toast } = useToast();
   
   const [questions, setQuestions] = useState<TestQuestion[]>([]);
@@ -113,8 +113,13 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
       
       // Award XP based on score
       const xpEarned = Math.round((percentage / 100) * level * 50);
+      
+      // Create a unique lesson id for this test
+      const testLessonId = `${languageId}-test-level-${level}-${Date.now()}`;
+      
       if (user) {
-        addXp(xpEarned);
+        // Use the completeLesson function from context instead of addXp
+        completeLesson(testLessonId, xpEarned);
         
         toast({
           title: "Test Completed!",
@@ -232,8 +237,7 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
     );
   }
 
-  const currentQuestion = questions[currentQuestionIndex];
-  const progress = ((currentQuestionIndex) / questions.length) * 100;
+  const progressValue = ((currentQuestionIndex) / questions.length) * 100;
   
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
@@ -264,7 +268,7 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
           </div>
           
           <div className="mb-8 w-full">
-            <Progress value={progress} className="h-2" />
+            <Progress value={progressValue} className="h-2" />
           </div>
           
           <TestQuestion
