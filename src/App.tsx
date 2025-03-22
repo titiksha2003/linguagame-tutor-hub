@@ -15,6 +15,7 @@ import Skill from "./pages/Skill";
 import Lesson from "./pages/Lesson";
 import VideoLessons from "./pages/VideoLessons";
 import Profile from "./pages/Profile";
+import Leaderboard from "./pages/Leaderboard";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProgressProvider } from "./contexts/ProgressContext";
@@ -58,6 +59,7 @@ const App = () => {
                 <Route path="/lesson/:languageId/:lessonId" element={<Lesson />} />
                 <Route path="/videos/:languageId" element={<VideoLessons />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <AiAssistant />
