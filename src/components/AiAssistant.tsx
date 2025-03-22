@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Mic, Send, BotIcon, Loader2, VolumeX, Volume2 } from 'lucide-react';
@@ -203,7 +204,10 @@ const AiAssistant = () => {
   useEffect(() => {
     // Check if SpeechRecognition is available
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-      const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+      // Use type assertion to tell TypeScript that we know what we're doing
+      const SpeechRecognitionAPI = (window as any).SpeechRecognition || 
+                                  (window as any).webkitSpeechRecognition;
+      
       if (SpeechRecognitionAPI) {
         try {
           recognitionRef.current = new SpeechRecognitionAPI();
