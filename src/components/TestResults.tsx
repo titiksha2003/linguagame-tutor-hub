@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Check, Trophy } from 'lucide-react';
@@ -75,35 +74,28 @@ const TestResults = ({
     }
   };
 
-  const unlockNextLevel = () => {
+  const unlockNextLevel = React.useCallback(() => {
     if (percentage >= 80 && level === userLevel) {
-      // Create a unique test completion ID
       const testCompletionId = `${language?.id}-test-level-${level}-${Date.now()}`;
       
-      // Update user's level in the AuthContext
       if (user && language) {
-        // Calculate XP earned based on level and score
         const xpEarned = Math.round((percentage / 100) * level * 50);
         
-        // Complete the lesson to record progress
         completeLesson(testCompletionId, xpEarned);
         
-        // Update the user's level for this language
         updateUserLevel(language.id, level + 1);
         
-        // Show toast notification
         toast({
           title: "Level Unlocked!",
           description: `You've unlocked Level ${level + 1}: ${getLevelDescription(level + 1)}`,
         });
       }
     }
-  };
+  }, [percentage, level, userLevel, language, user, completeLesson, updateUserLevel, toast]);
 
-  // Call this to show the toast when the component mounts
   React.useEffect(() => {
     unlockNextLevel();
-  }, []);
+  }, [unlockNextLevel]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
@@ -184,6 +176,17 @@ const TestResults = ({
                 </p>
                 <p className="text-green-600 dark:text-green-500 text-sm mt-1">
                   Continue your learning journey with new challenges
+                </p>
+              </div>
+            )}
+            
+            {percentage < 80 && level === userLevel && (
+              <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-100 dark:border-amber-800 rounded-lg p-4 mb-6">
+                <p className="text-amber-800 dark:text-amber-400 font-medium">
+                  Almost there! You need at least 80% to unlock the next level
+                </p>
+                <p className="text-amber-600 dark:text-amber-500 text-sm mt-1">
+                  Try again to improve your score
                 </p>
               </div>
             )}

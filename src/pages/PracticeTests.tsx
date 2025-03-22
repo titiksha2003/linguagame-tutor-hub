@@ -101,9 +101,14 @@ const PracticeTests = () => {
               <div className="absolute left-1/2 top-10 bottom-10 w-1 bg-gray-200 dark:bg-gray-700 transform -translate-x-1/2 z-0"></div>
               
               {levelData.map((level, index) => {
+                // A level is completed if user's level is HIGHER than this level
                 const isCompleted = userLevel > level.id;
+                // A level is current if it equals the user's level
                 const isCurrent = userLevel === level.id;
-                const isLocked = level.id > userLevel;
+                // A level is locked if it's higher than user's level + 1 (we only unlock the next level)
+                const isLocked = level.id > userLevel && level.id !== userLevel + 1;
+                // A level is available but not current if it's exactly the next one after user's current level
+                const isNextAvailable = level.id === userLevel + 1;
                 
                 return (
                   <motion.div
@@ -122,6 +127,7 @@ const PracticeTests = () => {
                         "w-14 h-14 rounded-full flex items-center justify-center shadow-md border-4 transition-colors",
                         isCompleted ? "bg-green-500 border-green-200 text-white" : 
                         isCurrent ? "bg-blue-500 border-blue-200 text-white" : 
+                        isNextAvailable ? "bg-amber-500 border-amber-200 text-white" :
                         "bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500"
                       )}
                     >
@@ -137,11 +143,12 @@ const PracticeTests = () => {
                     {/* Level content */}
                     <div 
                       className={cn(
-                        "w-[calc(50%-3.5rem)] mx-4 p-4 rounded-lg shadow-sm transition-colors cursor-pointer",
-                        isCompleted ? "bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800" :
-                        isCurrent ? "bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-800 ring-2 ring-blue-500/20" :
+                        "w-[calc(50%-3.5rem)] mx-4 p-4 rounded-lg shadow-sm transition-colors",
+                        isCompleted ? "bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 cursor-pointer" :
+                        isCurrent ? "bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-800 ring-2 ring-blue-500/20 cursor-pointer" :
+                        isNextAvailable ? "bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-800 ring-2 ring-amber-500/20 cursor-pointer" :
                         isLocked ? "bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 opacity-60" :
-                        "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800"
+                        "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 cursor-pointer"
                       )}
                       onClick={() => {
                         if (!isLocked) {
@@ -164,27 +171,36 @@ const PracticeTests = () => {
                             {level.description}
                           </p>
                         </div>
-                        {(isCompleted || isCurrent) && (
+                        {isCompleted && (
                           <Button
                             size="sm" 
-                            variant={isCompleted ? "outline" : "default"}
-                            className={isCompleted ? "border-green-200 text-green-700 hover:bg-green-50" : ""}
+                            variant="outline"
+                            className="border-green-200 text-green-700 hover:bg-green-50"
                           >
-                            {isCompleted ? (
-                              <>
-                                <Check className="h-3 w-3 mr-1" /> Completed
-                              </>
-                            ) : (
-                              <>
-                                <BookOpen className="h-3 w-3 mr-1" /> Start Test
-                              </>
-                            )}
+                            <Check className="h-3 w-3 mr-1" /> Completed
+                          </Button>
+                        )}
+                        {isCurrent && (
+                          <Button
+                            size="sm" 
+                            variant="default"
+                          >
+                            <BookOpen className="h-3 w-3 mr-1" /> Start Test
+                          </Button>
+                        )}
+                        {isNextAvailable && (
+                          <Button
+                            size="sm" 
+                            variant="outline"
+                            className="border-amber-200 text-amber-700 hover:bg-amber-50"
+                          >
+                            <BookOpen className="h-3 w-3 mr-1" /> Available
                           </Button>
                         )}
                         {isLocked && (
                           <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center">
                             <Lock className="h-3 w-3 mr-1" /> 
-                            <span>Complete Level {level.id - 1}</span>
+                            <span>Complete Level {userLevel}</span>
                           </div>
                         )}
                       </div>
