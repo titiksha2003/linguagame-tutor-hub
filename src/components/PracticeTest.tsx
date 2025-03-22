@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
@@ -44,12 +43,10 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
   
   const language = languages.find(lang => lang.id === languageId);
   
-  // Generate test questions based on level
   useEffect(() => {
     const skills = getSkillsByLanguage(languageId);
     let testQuestions: TestQuestion[] = [];
     
-    // For level 1, use the checkpoint questions
     if (level === 1) {
       const checkpointSkill = skills.find(skill => skill.id === `${languageId}-checkpoint-1`);
       if (checkpointSkill && checkpointSkill.lessons[0]) {
@@ -59,20 +56,16 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
         }));
       }
     } else {
-      // For other levels, create more advanced questions from all skills
-      // Pick questions that correspond to the level
       const levelSkills = skills.filter(skill => {
         const skillLevel = skill.level === 'beginner' ? 1 : 
                          skill.level === 'intermediate' ? 3 : 5;
         return skillLevel <= level;
       });
       
-      // Get all questions from these skills
       const allQuestions = levelSkills.flatMap(skill => 
         skill.lessons.flatMap(lesson => lesson.questions)
       );
       
-      // Shuffle and pick 10 questions
       const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
       testQuestions = shuffledQuestions.slice(0, Math.min(10, shuffledQuestions.length)).map(q => ({
         ...q,
@@ -105,20 +98,15 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
       setIsCorrect(false);
       setShowHint(false);
     } else {
-      // Test completed
       setTestCompleted(true);
       
-      // Calculate percentage score
       const percentage = Math.round((score + (isCorrect ? 1 : 0)) / questions.length * 100);
       
-      // Award XP based on score
       const xpEarned = Math.round((percentage / 100) * level * 50);
       
-      // Create a unique lesson id for this test
       const testLessonId = `${languageId}-test-level-${level}-${Date.now()}`;
       
       if (user) {
-        // Use the completeLesson function from context instead of addXp
         completeLesson(testLessonId, xpEarned);
         
         toast({
@@ -237,6 +225,7 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
     );
   }
 
+  const currentQuestion = questions[currentQuestionIndex];
   const progressValue = ((currentQuestionIndex) / questions.length) * 100;
   
   return (
