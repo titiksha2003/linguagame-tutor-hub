@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useProgress } from '../contexts/ProgressContext';
@@ -48,19 +47,16 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
     const skills = getSkillsByLanguage(languageId);
     let testQuestions: TestQuestion[] = [];
     
-    // Filter skills based on level
     const levelToFilter = (() => {
       if (level <= 2) return 'beginner';
       if (level <= 4) return 'intermediate';
       return 'advanced';
     })();
     
-    // Get all skills for the selected level
     const levelSkills = skills.filter(skill => {
       return skill.level === levelToFilter;
     });
     
-    // For level 1 checkpoint test
     if (level === 1) {
       const checkpointSkill = skills.find(skill => skill.id === `${languageId}-checkpoint-1`);
       if (checkpointSkill && checkpointSkill.lessons[0]) {
@@ -70,13 +66,10 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
         }));
       }
     } else {
-      // For higher levels, extract questions according to level
-      // Get all questions from the skills at this level
       const allQuestions = levelSkills.flatMap(skill => 
         skill.lessons.flatMap(lesson => lesson.questions)
       );
       
-      // Shuffle and pick questions based on level (more questions for higher levels)
       const questionCount = Math.min(10 + level * 2, allQuestions.length);
       const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
       testQuestions = shuffledQuestions.slice(0, questionCount).map(q => ({
@@ -85,7 +78,6 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
       }));
     }
     
-    // If no questions were found (unlikely), use backup from any level
     if (testQuestions.length === 0) {
       const allQuestions = skills.flatMap(skill => 
         skill.lessons.flatMap(lesson => lesson.questions)
@@ -126,20 +118,14 @@ const PracticeTest = ({ languageId, level, onBack }: PracticeTestProps) => {
       setTestCompleted(true);
       
       const finalScore = score + (isCorrect ? 1 : 0);
-      const percentage = Math.round((finalScore / questions.length) * 100);
-      
-      // Calculate XP based on level and score percentage
-      const xpEarned = Math.round((percentage / 100) * level * 50);
-      
-      // Create a unique lesson ID for this test completion
-      const testLessonId = `${languageId}-test-level-${level}-${Date.now()}`;
+      const userLevel = user?.languages.find(l => l.id === languageId)?.level;
       
       if (user) {
-        completeLesson(testLessonId, xpEarned);
+        completeLesson(`${languageId}-test-level-${level}-${Date.now()}`, Math.round((finalScore / questions.length) * 100 * level * 50));
         
         toast({
           title: "Test Completed!",
-          description: `You earned ${xpEarned} XP!`,
+          description: `You earned ${Math.round((finalScore / questions.length) * 100 * level * 50)} XP!`,
         });
       }
     }

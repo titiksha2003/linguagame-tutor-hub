@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { toast } from 'sonner';
 
@@ -27,6 +26,9 @@ interface AuthContextType {
   logout: () => void;
   updateUser: (userData: Partial<User>) => void;
   addCompletedLesson: (languageId: string, lessonId: string, xp: number) => void;
+  addLanguage: (languageId: string, level: number, xp: number) => void;
+  removeLanguage: (languageId: string) => void;
+  updateUserLevel: (languageId: string, newLevel: number) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -37,7 +39,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check if user is stored in localStorage
     const storedUser = localStorage.getItem('linguaGameUser');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -45,7 +46,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(false);
   }, []);
 
-  // Save user to localStorage whenever it changes
   useEffect(() => {
     if (user) {
       localStorage.setItem('linguaGameUser', JSON.stringify(user));
@@ -57,10 +57,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setError(null);
     
     try {
-      // Simulate authentication API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // For demo purposes, create a mock user
       if (email === 'demo@example.com' && password === 'password') {
         const mockUser: User = {
           id: '1',
@@ -82,7 +80,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(mockUser);
         toast.success('Welcome back!');
       } else {
-        // Demo credentials
         throw new Error('Invalid credentials. Try demo@example.com / password');
       }
     } catch (err) {
@@ -98,10 +95,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setError(null);
     
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Create a new user
       const newUser: User = {
         id: Date.now().toString(),
         name,
@@ -145,21 +140,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const languageIndex = updatedLanguages.findIndex(lang => lang.id === languageId);
 
       if (languageIndex >= 0) {
-        // Language exists, update it
         const updatedLanguage = { ...updatedLanguages[languageIndex] };
         
-        // Add lesson if not already completed
         if (!updatedLanguage.completedLessons.includes(lessonId)) {
           updatedLanguage.completedLessons = [...updatedLanguage.completedLessons, lessonId];
           updatedLanguage.xp += xp;
           
-          // Update language level based on XP
           updatedLanguage.level = Math.floor(updatedLanguage.xp / 100) + 1;
           
           updatedLanguages[languageIndex] = updatedLanguage;
         }
       } else {
-        // Language doesn't exist, add it
         updatedLanguages.push({
           id: languageId,
           level: 1,
@@ -168,7 +159,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         });
       }
 
-      // Update total XP
       const totalXp = updatedLanguages.reduce((sum, lang) => sum + lang.xp, 0);
 
       toast.success(`+${xp} XP earned!`);
@@ -181,6 +171,97 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const addLanguage = (languageId: string, level: number, xp: number) => {
+    setUser(prev => {
+      if (!prev) return prev;
+      
+      const updatedLanguages = [...prev.languages];
+      const languageIndex = updatedLanguages.findIndex(lang => lang.id === languageId);
+
+      if (languageIndex >= 0) {
+        updatedLanguages[languageIndex].level = level;
+        updatedLanguages[languageIndex].xp = xp;
+      } else {
+        updatedLanguages.push({
+          id: languageId,
+          level,
+          xp,
+          completedLessons: []
+        });
+      }
+
+      return {
+        ...prev,
+        languages: updatedLanguages
+      };
+    });
+
+    if (user) {
+      const updatedUser = {
+        ...user,
+        languages: user.languages.map(lang => {
+          if (lang.id === languageId) {
+            return { ...lang, level, xp };
+          }
+          return lang;
+        })
+      };
+      localStorage.setItem('linguaGameUser', JSON.stringify(updatedUser));
+    }
+  };
+
+  const removeLanguage = (languageId: string) => {
+    setUser(prev => {
+      if (!prev) return prev;
+      
+      const updatedLanguages = prev.languages.filter(lang => lang.id !== languageId);
+      
+      return {
+        ...prev,
+        languages: updatedLanguages
+      };
+    });
+
+    if (user) {
+      const updatedUser = {
+        ...user,
+        languages: user.languages.filter(lang => lang.id !== languageId)
+      };
+      localStorage.setItem('linguaGameUser', JSON.stringify(updatedUser));
+    }
+  };
+
+  const updateUserLevel = (languageId: string, newLevel: number) => {
+    setUser(prev => {
+      if (!prev) return prev;
+      
+      const updatedLanguages = prev.languages.map(lang => {
+        if (lang.id === languageId) {
+          return { ...lang, level: newLevel };
+        }
+        return lang;
+      });
+      
+      return {
+        ...prev,
+        languages: updatedLanguages
+      };
+    });
+    
+    if (user) {
+      const updatedUser = {
+        ...user,
+        languages: user.languages.map(lang => {
+          if (lang.id === languageId) {
+            return { ...lang, level: newLevel };
+          }
+          return lang;
+        })
+      };
+      localStorage.setItem('linguaGameUser', JSON.stringify(updatedUser));
+    }
+  };
+
   const value = {
     user,
     isLoading,
@@ -189,7 +270,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     signup,
     logout,
     updateUser,
-    addCompletedLesson
+    addCompletedLesson,
+    addLanguage,
+    removeLanguage,
+    updateUserLevel
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

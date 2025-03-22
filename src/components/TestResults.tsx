@@ -7,6 +7,8 @@ import { Progress } from "@/components/ui/progress";
 import { Language } from '../data/languages';
 import Header from './Header';
 import { useToast } from '../hooks/use-toast';
+import { useProgress } from '../contexts/ProgressContext';
+import { useAuth } from '../contexts/AuthContext';
 
 interface TestResultsProps {
   language: Language | undefined;
@@ -28,6 +30,8 @@ const TestResults = ({
   onRetry 
 }: TestResultsProps) => {
   const { toast } = useToast();
+  const { user, updateUserLevel } = useAuth();
+  const { completeLesson } = useProgress();
   const percentage = Math.round((score / questionCount) * 100);
   
   const getLevelDescription = (level: number) => {
@@ -73,10 +77,26 @@ const TestResults = ({
 
   const unlockNextLevel = () => {
     if (percentage >= 80 && level === userLevel) {
-      toast({
-        title: "Level Unlocked!",
-        description: `You've unlocked Level ${level + 1}: ${getLevelDescription(level + 1)}`,
-      });
+      // Create a unique test completion ID
+      const testCompletionId = `${language?.id}-test-level-${level}-${Date.now()}`;
+      
+      // Update user's level in the AuthContext
+      if (user && language) {
+        // Calculate XP earned based on level and score
+        const xpEarned = Math.round((percentage / 100) * level * 50);
+        
+        // Complete the lesson to record progress
+        completeLesson(testCompletionId, xpEarned);
+        
+        // Update the user's level for this language
+        updateUserLevel(language.id, level + 1);
+        
+        // Show toast notification
+        toast({
+          title: "Level Unlocked!",
+          description: `You've unlocked Level ${level + 1}: ${getLevelDescription(level + 1)}`,
+        });
+      }
     }
   };
 
