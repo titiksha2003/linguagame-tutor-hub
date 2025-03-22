@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Mic, Send, BotIcon, Loader2, VolumeX, Volume2 } from 'lucide-react';
@@ -11,12 +10,6 @@ interface Message {
   text: string;
   isUser: boolean;
   timestamp: Date;
-}
-
-// Define WebkitSpeechRecognition for TypeScript
-interface IWindow extends Window {
-  SpeechRecognition?: typeof SpeechRecognition;
-  webkitSpeechRecognition?: typeof SpeechRecognition;
 }
 
 // Language-specific responses for common questions
@@ -205,19 +198,18 @@ const AiAssistant = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Web Speech API recognition setup
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
   
   useEffect(() => {
     // Check if SpeechRecognition is available
-    const windowWithSpeech = window as IWindow;
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-      const SpeechRecognitionAPI = windowWithSpeech.SpeechRecognition || windowWithSpeech.webkitSpeechRecognition;
+      const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognitionAPI) {
         recognitionRef.current = new SpeechRecognitionAPI();
         recognitionRef.current.continuous = false;
         recognitionRef.current.interimResults = false;
         
-        recognitionRef.current.onresult = (event: any) => {
+        recognitionRef.current.onresult = (event: SpeechRecognitionEvent) => {
           const transcript = event.results[0][0].transcript;
           setInputText(transcript);
           setIsRecording(false);
@@ -228,8 +220,8 @@ const AiAssistant = () => {
           }, 500);
         };
         
-        recognitionRef.current.onerror = (event: any) => {
-          console.error('Speech recognition error', event.error);
+        recognitionRef.current.onerror = (event: Event) => {
+          console.error('Speech recognition error', event);
           setIsRecording(false);
           toast.error("Voice recognition error. Please try again or type your message.");
         };
