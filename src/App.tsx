@@ -46,13 +46,14 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <AuthProvider>
-          <ProgressProvider>
-            <LanguageTutorProvider>
-              <Toaster />
-              <Sonner />
-              <BrowserRouter>
+      <BrowserRouter>
+        <TooltipProvider>
+          <AuthProvider>
+            <ProgressProvider>
+              <LanguageTutorProvider>
+                {/* Move toasters inside BrowserRouter since they may use hooks that need router context */}
+                <Toaster />
+                <Sonner />
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/login" element={<Login />} />
@@ -71,11 +72,11 @@ const App = () => {
                   <Route path="*" element={<NotFound />} />
                 </Routes>
                 <AiAssistant />
-              </BrowserRouter>
-            </LanguageTutorProvider>
-          </ProgressProvider>
-        </AuthProvider>
-      </TooltipProvider>
+              </LanguageTutorProvider>
+            </ProgressProvider>
+          </AuthProvider>
+        </TooltipProvider>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 };
