@@ -6,8 +6,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { ArrowLeft, BookOpen } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Header from '../components/Header';
-import { getVideosByLanguage, VideoLesson } from '../data/videoLessons';
-import VideoLesson from '../components/VideoLesson';
+import { getVideosByLanguage, VideoLesson as VideoLessonType } from '../data/videoLessons';
+import VideoLessonComponent from '../components/VideoLesson';
 import { languages } from '../data/languages';
 
 const VideoLessons = () => {
@@ -15,8 +15,8 @@ const VideoLessons = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   
-  const [videos, setVideos] = useState<VideoLesson[]>([]);
-  const [selectedVideo, setSelectedVideo] = useState<VideoLesson | null>(null);
+  const [videos, setVideos] = useState<VideoLessonType[]>([]);
+  const [selectedVideo, setSelectedVideo] = useState<VideoLessonType | null>(null);
   
   useEffect(() => {
     if (!languageId) return;
@@ -47,7 +47,7 @@ const VideoLessons = () => {
     return <div>Language not found</div>;
   }
   
-  const handleVideoSelect = (video: VideoLesson) => {
+  const handleVideoSelect = (video: VideoLessonType) => {
     setSelectedVideo(video);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -99,7 +99,7 @@ const VideoLessons = () => {
             {/* Main content - Selected video */}
             <div className="lg:col-span-2">
               {selectedVideo ? (
-                <VideoLesson
+                <VideoLessonComponent
                   key={selectedVideo.id}
                   videoId={selectedVideo.videoId}
                   title={selectedVideo.title}
