@@ -1,13 +1,13 @@
 
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, BookOpen } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Header from '../components/Header';
 import { getVideosByLanguage, VideoLesson } from '../data/videoLessons';
-import VideoPlayer from '../components/VideoPlayer';
+import VideoLesson from '../components/VideoLesson';
 import { languages } from '../data/languages';
 
 const VideoLessons = () => {
@@ -99,43 +99,17 @@ const VideoLessons = () => {
             {/* Main content - Selected video */}
             <div className="lg:col-span-2">
               {selectedVideo ? (
-                <motion.div
+                <VideoLesson
                   key={selectedVideo.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden"
-                >
-                  <VideoPlayer videoId={selectedVideo.videoId} />
-                  
-                  <div className="p-6">
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                      {selectedVideo.title}
-                    </h2>
-                    
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">
-                      {selectedVideo.description}
-                    </p>
-                    
-                    <div className="flex justify-between">
-                      <Button
-                        variant="outline"
-                        onClick={handlePreviousVideo}
-                        disabled={videos.indexOf(selectedVideo) === 0}
-                      >
-                        <ArrowLeft className="mr-2 h-4 w-4" />
-                        Previous Lesson
-                      </Button>
-                      
-                      <Button
-                        onClick={handleNextVideo}
-                        disabled={videos.indexOf(selectedVideo) === videos.length - 1}
-                      >
-                        Next Lesson
-                        <ArrowLeft className="ml-2 h-4 w-4 rotate-180" />
-                      </Button>
-                    </div>
-                  </div>
-                </motion.div>
+                  videoId={selectedVideo.videoId}
+                  title={selectedVideo.title}
+                  description={selectedVideo.description}
+                  onNext={handleNextVideo}
+                  onPrevious={handlePreviousVideo}
+                  hasPrevious={videos.indexOf(selectedVideo) !== 0}
+                  hasNext={videos.indexOf(selectedVideo) !== videos.length - 1}
+                  languageId={languageId}
+                />
               ) : (
                 <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8 text-center">
                   <p className="text-gray-600 dark:text-gray-300">
@@ -145,8 +119,36 @@ const VideoLessons = () => {
               )}
             </div>
             
-            {/* Sidebar - Video list */}
-            <div>
+            {/* Sidebar - Video list and language selector */}
+            <div className="space-y-6">
+              {/* Language selector */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
+                <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+                  <h3 className="font-semibold text-gray-900 dark:text-white">
+                    All Languages
+                  </h3>
+                </div>
+                <div className="grid grid-cols-3 gap-2 p-3">
+                  {languages.map((lang) => (
+                    <Link
+                      key={lang.id}
+                      to={`/videos/${lang.id}`}
+                      className={`flex flex-col items-center p-2 rounded-lg transition-colors ${
+                        lang.id === languageId 
+                          ? 'bg-primary/10 border border-primary/30'
+                          : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                      }`}
+                    >
+                      <span className="text-2xl mb-1">{lang.flag}</span>
+                      <span className="text-xs text-center font-medium text-gray-900 dark:text-white">
+                        {lang.name}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Video list */}
               <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
                 <div className="p-4 border-b border-gray-200 dark:border-gray-700">
                   <h3 className="font-semibold text-gray-900 dark:text-white">
@@ -154,7 +156,7 @@ const VideoLessons = () => {
                   </h3>
                 </div>
                 
-                <div className="divide-y divide-gray-200 dark:divide-gray-700">
+                <div className="divide-y divide-gray-200 dark:divide-gray-700 max-h-[600px] overflow-y-auto">
                   {videos.length > 0 ? (
                     videos.map((video) => (
                       <div
@@ -180,7 +182,7 @@ const VideoLessons = () => {
                 </div>
               </div>
               
-              <div className="mt-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4">
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
                   Ready to test your knowledge?
                 </h3>
@@ -188,7 +190,8 @@ const VideoLessons = () => {
                   className="w-full"
                   onClick={() => navigate(`/course/${languageId}`)}
                 >
-                  Go to Practice Exercises
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Go to Practice Tests
                 </Button>
               </div>
             </div>

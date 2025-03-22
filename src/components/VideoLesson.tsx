@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer';
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
 
 interface VideoLessonProps {
   videoId: string;
@@ -13,6 +14,7 @@ interface VideoLessonProps {
   onNext?: () => void;
   hasPrevious?: boolean;
   hasNext?: boolean;
+  languageId: string;
 }
 
 const VideoLesson = ({ 
@@ -22,8 +24,11 @@ const VideoLesson = ({
   onPrevious, 
   onNext,
   hasPrevious = false,
-  hasNext = true
+  hasNext = true,
+  languageId
 }: VideoLessonProps) => {
+  const navigate = useNavigate();
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -40,7 +45,7 @@ const VideoLesson = ({
           <p className="text-gray-600 dark:text-gray-300 mb-6">{description}</p>
         )}
         
-        <div className="flex justify-between">
+        <div className="flex flex-wrap gap-3 justify-between">
           <Button
             variant="outline"
             onClick={onPrevious}
@@ -49,6 +54,15 @@ const VideoLesson = ({
           >
             <ChevronLeft className="mr-2 h-4 w-4" />
             Previous Lesson
+          </Button>
+          
+          <Button
+            variant="outline"
+            onClick={() => navigate(`/course/${languageId}`)}
+            className="bg-amber-100 hover:bg-amber-200 text-amber-800 border-amber-300 dark:bg-amber-900/30 dark:hover:bg-amber-800/30 dark:text-amber-300 dark:border-amber-700"
+          >
+            <BookOpen className="mr-2 h-4 w-4" />
+            Practice Tests
           </Button>
           
           <Button

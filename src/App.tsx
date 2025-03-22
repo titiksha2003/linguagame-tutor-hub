@@ -18,10 +18,16 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProgressProvider } from "./contexts/ProgressContext";
+import AiAssistant from "./components/AiAssistant";
 
 const queryClient = new QueryClient();
 
 const App = () => {
+  // Update document title with new app name
+  useEffect(() => {
+    document.title = "Wizenko - Language Learning";
+  }, []);
+
   // Check for theme preference
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -54,6 +60,7 @@ const App = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
+              <AiAssistant />
             </BrowserRouter>
           </ProgressProvider>
         </AuthProvider>

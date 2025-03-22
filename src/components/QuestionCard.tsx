@@ -5,6 +5,7 @@ import { Question } from '../data/lessons';
 import { Button } from "@/components/ui/button";
 import { AlertCircle, CornerDownRight, Lightbulb } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { shuffleQuestionOptions } from '../utils/shuffleOptions';
 
 interface QuestionCardProps {
   question: Question;
@@ -16,6 +17,7 @@ const QuestionCard = ({ question, onAnswered }: QuestionCardProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [shuffledQuestion, setShuffledQuestion] = useState(() => shuffleQuestionOptions(question));
   
   useEffect(() => {
     // Reset state when new question is loaded
@@ -23,6 +25,7 @@ const QuestionCard = ({ question, onAnswered }: QuestionCardProps) => {
     setIsSubmitted(false);
     setShowHint(false);
     setIsCorrect(false);
+    setShuffledQuestion(shuffleQuestionOptions(question));
   }, [question]);
   
   const handleOptionSelect = (index: number) => {
@@ -33,7 +36,7 @@ const QuestionCard = ({ question, onAnswered }: QuestionCardProps) => {
   const handleSubmit = () => {
     if (selectedOption === null) return;
     
-    const correct = selectedOption === question.correctAnswer;
+    const correct = selectedOption === shuffledQuestion.correctAnswer;
     setIsCorrect(correct);
     setIsSubmitted(true);
     
@@ -52,7 +55,7 @@ const QuestionCard = ({ question, onAnswered }: QuestionCardProps) => {
     >
       <div className="mb-6">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-          {question.question}
+          {shuffledQuestion.question}
         </h3>
         
         <div className="flex justify-between items-center mt-1">
@@ -90,7 +93,7 @@ const QuestionCard = ({ question, onAnswered }: QuestionCardProps) => {
               <div className="flex items-start gap-2">
                 <Lightbulb className="h-4 w-4 text-amber-500 mt-0.5" />
                 <p className="text-sm text-amber-800 dark:text-amber-300">
-                  {question.hint}
+                  {shuffledQuestion.hint}
                 </p>
               </div>
             </motion.div>
@@ -99,13 +102,13 @@ const QuestionCard = ({ question, onAnswered }: QuestionCardProps) => {
       </div>
       
       <div className="space-y-3">
-        {question.options.map((option, index) => (
+        {shuffledQuestion.options.map((option, index) => (
           <button
             key={index}
             className={`w-full text-left p-4 rounded-lg border ${
               selectedOption === index
                 ? isSubmitted
-                  ? index === question.correctAnswer
+                  ? index === shuffledQuestion.correctAnswer
                     ? 'bg-green-50 dark:bg-green-900/20 border-green-500 dark:border-green-500/50'
                     : 'bg-red-50 dark:bg-red-900/20 border-red-500 dark:border-red-500/50'
                   : 'bg-primary-foreground border-primary ring-2 ring-primary/20'
@@ -118,7 +121,7 @@ const QuestionCard = ({ question, onAnswered }: QuestionCardProps) => {
               <div className={`flex items-center justify-center w-8 h-8 rounded-full ${
                 selectedOption === index
                   ? isSubmitted
-                    ? index === question.correctAnswer
+                    ? index === shuffledQuestion.correctAnswer
                       ? 'bg-green-500 text-white'
                       : 'bg-red-500 text-white'
                     : 'bg-primary text-white'
@@ -128,7 +131,7 @@ const QuestionCard = ({ question, onAnswered }: QuestionCardProps) => {
               </div>
               <span className={`${
                 selectedOption === index && isSubmitted
-                  ? index === question.correctAnswer
+                  ? index === shuffledQuestion.correctAnswer
                     ? 'text-green-700 dark:text-green-300'
                     : 'text-red-700 dark:text-red-300'
                   : 'text-gray-900 dark:text-white'
@@ -137,14 +140,14 @@ const QuestionCard = ({ question, onAnswered }: QuestionCardProps) => {
               </span>
             </div>
             
-            {isSubmitted && selectedOption === index && selectedOption !== question.correctAnswer && (
+            {isSubmitted && selectedOption === index && selectedOption !== shuffledQuestion.correctAnswer && (
               <div className="mt-2 flex items-center text-sm text-red-600 dark:text-red-400">
                 <AlertCircle className="h-4 w-4 mr-1" />
                 Incorrect
               </div>
             )}
             
-            {isSubmitted && index === question.correctAnswer && (
+            {isSubmitted && index === shuffledQuestion.correctAnswer && (
               <div className="mt-2 flex items-center text-sm text-green-600 dark:text-green-400">
                 <CornerDownRight className="h-4 w-4 mr-1" />
                 Correct answer

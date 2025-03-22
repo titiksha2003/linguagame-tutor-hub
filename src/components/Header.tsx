@@ -3,13 +3,14 @@ import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useProgress } from '../contexts/ProgressContext';
-import { Flame, Home, Globe, Trophy, User, LogOut, BookOpen, Play, CheckSquare } from 'lucide-react';
+import { Flame, Home, Trophy, User, LogOut, BookOpen, Play, CheckSquare } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { languages } from '../data/languages';
+import WizenkoLogo from './WizenkoLogo';
 
 const Header = () => {
   const { user, logout } = useAuth();
@@ -42,12 +43,7 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo and brand */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2 group">
-              <Globe className="h-8 w-8 text-brand-blue group-hover:rotate-12 transition-transform duration-300" />
-              <span className="font-display text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-green-600">
-                LinguaGame
-              </span>
-            </Link>
+            <WizenkoLogo />
           </div>
 
           {/* Navigation */}
@@ -65,7 +61,7 @@ const Header = () => {
                   >
                     <Home className={`h-5 w-5 ${
                       location.pathname === '/dashboard' 
-                        ? 'text-brand-blue'
+                        ? 'text-primary'
                         : 'text-gray-700 dark:text-gray-300'
                     }`} />
                   </Link>
@@ -87,9 +83,9 @@ const Header = () => {
                         : 'hover:bg-gray-100 dark:hover:bg-gray-800'
                     }`}
                   >
-                    <Globe className={`h-5 w-5 ${
+                    <BookOpen className={`h-5 w-5 ${
                       location.pathname === '/courses' 
-                        ? 'text-brand-blue'
+                        ? 'text-primary'
                         : 'text-gray-700 dark:text-gray-300'
                     }`} />
                   </Link>
@@ -115,7 +111,7 @@ const Header = () => {
                       >
                         <Play className={`h-5 w-5 ${
                           location.pathname.startsWith(`/videos/`) 
-                            ? 'text-brand-blue'
+                            ? 'text-primary'
                             : 'text-gray-700 dark:text-gray-300'
                         }`} />
                       </Link>
@@ -139,7 +135,7 @@ const Header = () => {
                       >
                         <CheckSquare className={`h-5 w-5 ${
                           location.pathname.startsWith(`/course/`) && !location.pathname.startsWith(`/courses`) 
-                            ? 'text-brand-blue'
+                            ? 'text-primary'
                             : 'text-gray-700 dark:text-gray-300'
                         }`} />
                       </Link>
@@ -197,7 +193,7 @@ const Header = () => {
                   <Button variant="ghost" className="relative rounded-full h-10 w-10 p-0 overflow-hidden">
                     <Avatar className="h-10 w-10 transition-transform duration-200 hover:scale-105">
                       <AvatarImage src={user.avatar} alt={user.name} />
-                      <AvatarFallback className="bg-brand-blue text-white">
+                      <AvatarFallback className="bg-primary text-white">
                         {user.name.substring(0, 2).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
