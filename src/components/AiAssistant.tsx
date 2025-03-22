@@ -13,6 +13,12 @@ interface Message {
   timestamp: Date;
 }
 
+// Define WebkitSpeechRecognition for TypeScript
+interface IWindow extends Window {
+  SpeechRecognition?: typeof SpeechRecognition;
+  webkitSpeechRecognition?: typeof SpeechRecognition;
+}
+
 // Language-specific responses for common questions
 const languageResponses = {
   french: {
@@ -203,32 +209,35 @@ const AiAssistant = () => {
   
   useEffect(() => {
     // Check if SpeechRecognition is available
+    const windowWithSpeech = window as IWindow;
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      recognitionRef.current = new SpeechRecognition();
-      recognitionRef.current.continuous = false;
-      recognitionRef.current.interimResults = false;
-      
-      recognitionRef.current.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
-        setInputText(transcript);
-        setIsRecording(false);
+      const SpeechRecognitionAPI = windowWithSpeech.SpeechRecognition || windowWithSpeech.webkitSpeechRecognition;
+      if (SpeechRecognitionAPI) {
+        recognitionRef.current = new SpeechRecognitionAPI();
+        recognitionRef.current.continuous = false;
+        recognitionRef.current.interimResults = false;
         
-        // Automatically submit after voice input
-        setTimeout(() => {
-          handleSubmitWithText(transcript);
-        }, 500);
-      };
-      
-      recognitionRef.current.onerror = (event: any) => {
-        console.error('Speech recognition error', event.error);
-        setIsRecording(false);
-        toast.error("Voice recognition error. Please try again or type your message.");
-      };
-      
-      recognitionRef.current.onend = () => {
-        setIsRecording(false);
-      };
+        recognitionRef.current.onresult = (event: any) => {
+          const transcript = event.results[0][0].transcript;
+          setInputText(transcript);
+          setIsRecording(false);
+          
+          // Automatically submit after voice input
+          setTimeout(() => {
+            handleSubmitWithText(transcript);
+          }, 500);
+        };
+        
+        recognitionRef.current.onerror = (event: any) => {
+          console.error('Speech recognition error', event.error);
+          setIsRecording(false);
+          toast.error("Voice recognition error. Please try again or type your message.");
+        };
+        
+        recognitionRef.current.onend = () => {
+          setIsRecording(false);
+        };
+      }
     }
     
     return () => {

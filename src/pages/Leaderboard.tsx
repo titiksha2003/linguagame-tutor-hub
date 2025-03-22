@@ -157,9 +157,9 @@ const Leaderboard = () => {
             
             <LeaderboardEntry
               rank={mockUserRank.rank}
-              username={user?.displayName || "Current User"}
+              username={user?.name || "Current User"}
               score={mockUserRank.score}
-              language={user?.languages[0]?.name || "Spanish"}
+              language={user?.languages[0]?.id || "Spanish"}
               badge={mockUserRank.badge as "gold" | "silver" | "bronze"}
               isCurrentUser={true}
             />
@@ -186,7 +186,7 @@ const Leaderboard = () => {
                   language={entry.language}
                   avatar={entry.avatar}
                   badge={entry.badge as "gold" | "silver" | "bronze"}
-                  isCurrentUser={user?.id === entry.id}
+                  isCurrentUser={user?.id === entry.id.toString()}
                 />
               ))}
             </div>
