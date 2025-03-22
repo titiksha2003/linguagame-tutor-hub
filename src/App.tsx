@@ -23,6 +23,7 @@ import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProgressProvider } from "./contexts/ProgressContext";
 import AiAssistant from "./components/AiAssistant";
+import { LanguageTutorProvider } from "./contexts/LanguageTutorContext";
 
 const queryClient = new QueryClient();
 
@@ -48,28 +49,30 @@ const App = () => {
       <TooltipProvider>
         <AuthProvider>
           <ProgressProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/courses" element={<Courses />} />
-                <Route path="/course/:languageId" element={<Course />} />
-                <Route path="/course/:languageId/:skillId" element={<Skill />} />
-                <Route path="/lesson/:languageId/:lessonId" element={<Lesson />} />
-                <Route path="/videos" element={<VideoLessonsOverview />} />
-                <Route path="/videos/:languageId" element={<VideoLessons />} />
-                <Route path="/practice-tests" element={<PracticeTests />} />
-                <Route path="/language/:languageId" element={<LanguageDetails />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-              <AiAssistant />
-            </BrowserRouter>
+            <LanguageTutorProvider>
+              <Toaster />
+              <Sonner />
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/courses" element={<Courses />} />
+                  <Route path="/course/:languageId" element={<Course />} />
+                  <Route path="/course/:languageId/:skillId" element={<Skill />} />
+                  <Route path="/lesson/:languageId/:lessonId" element={<Lesson />} />
+                  <Route path="/videos" element={<VideoLessonsOverview />} />
+                  <Route path="/videos/:languageId" element={<VideoLessons />} />
+                  <Route path="/practice-tests" element={<PracticeTests />} />
+                  <Route path="/language/:languageId" element={<LanguageDetails />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/leaderboard" element={<Leaderboard />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+                <AiAssistant />
+              </BrowserRouter>
+            </LanguageTutorProvider>
           </ProgressProvider>
         </AuthProvider>
       </TooltipProvider>

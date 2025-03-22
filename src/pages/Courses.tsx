@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import { languages } from '../data/languages';
 import LanguageCard from '../components/LanguageCard';
 import Header from '../components/Header';
-import { ArrowLeft, Play, CheckSquare } from 'lucide-react';
+import { ArrowLeft, Play, CheckSquare, Globe, BookOpen } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { Separator } from "@/components/ui/separator";
 
 const Courses = () => {
   const navigate = useNavigate();
@@ -40,9 +41,12 @@ const Courses = () => {
           
           {user && userLanguages.length > 0 && (
             <>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Languages you're learning
-              </h2>
+              <div className="flex items-center gap-2 mb-6">
+                <BookOpen className="h-5 w-5 text-primary" />
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Languages You're Learning
+                </h2>
+              </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
                 {userLanguages.map((language, index) => (
@@ -108,12 +112,17 @@ const Courses = () => {
                   </motion.div>
                 ))}
               </div>
+              
+              <Separator className="my-8" />
             </>
           )}
           
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            {user && userLanguages.length > 0 ? 'Languages to Discover' : 'Choose a language'}
-          </h1>
+          <div className="flex items-center gap-2 mb-6">
+            <Globe className="h-5 w-5 text-primary" />
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              {user && userLanguages.length > 0 ? 'Languages to Discover' : 'Choose a language'}
+            </h1>
+          </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherLanguages.map((language, index) => (
