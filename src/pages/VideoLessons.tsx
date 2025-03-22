@@ -119,35 +119,8 @@ const VideoLessons = () => {
               )}
             </div>
             
-            {/* Sidebar - Video list and language selector */}
+            {/* Sidebar - Video list only, language selector removed */}
             <div className="space-y-6">
-              {/* Language selector */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
-                <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">
-                    All Languages
-                  </h3>
-                </div>
-                <div className="grid grid-cols-3 gap-2 p-3">
-                  {languages.map((lang) => (
-                    <Link
-                      key={lang.id}
-                      to={`/videos/${lang.id}`}
-                      className={`flex flex-col items-center p-2 rounded-lg transition-colors ${
-                        lang.id === languageId 
-                          ? 'bg-primary/10 border border-primary/30'
-                          : 'hover:bg-gray-100 dark:hover:bg-gray-700'
-                      }`}
-                    >
-                      <span className="text-2xl mb-1">{lang.flag}</span>
-                      <span className="text-xs text-center font-medium text-gray-900 dark:text-white">
-                        {lang.name}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-              
               {/* Video list */}
               <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
                 <div className="p-4 border-b border-gray-200 dark:border-gray-700">

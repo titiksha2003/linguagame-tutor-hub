@@ -58,7 +58,7 @@ const VideoLesson = ({
           
           <Button
             variant="outline"
-            onClick={() => navigate(`/practice-tests`)}
+            onClick={() => navigate(`/course/${languageId}`)}
             className="bg-amber-100 hover:bg-amber-200 text-amber-800 border-amber-300 dark:bg-amber-900/30 dark:hover:bg-amber-800/30 dark:text-amber-300 dark:border-amber-700"
           >
             <BookOpen className="mr-2 h-4 w-4" />

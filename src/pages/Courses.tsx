@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { languages } from '../data/languages';
 import LanguageCard from '../components/LanguageCard';
@@ -111,7 +112,7 @@ const Courses = () => {
           )}
           
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            {user && userLanguages.length > 0 ? 'Start a new language' : 'Choose a language'}
+            {user && userLanguages.length > 0 ? 'Languages to Discover' : 'Choose a language'}
           </h1>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
