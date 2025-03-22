@@ -4,6 +4,7 @@ import { ArrowLeft, Check, Trophy } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Language } from '../data/languages';
+import Header from './Header';
 
 interface TestResultsProps {
   language: Language | undefined;
