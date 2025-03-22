@@ -71,7 +71,8 @@ const Lesson = () => {
       setXpEarned(earnedXP);
       
       // Complete the lesson
-      completeLesson(languageId, lessonId, earnedXP);
+      // Fix: Passing only the required arguments according to the function signature
+      completeLesson(lessonId, earnedXP);
       setIsLessonCompleted(true);
     }
   };
