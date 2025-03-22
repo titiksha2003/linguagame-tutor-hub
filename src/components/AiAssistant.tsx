@@ -293,7 +293,8 @@ const conversationTopics = {
     italian: ["Ciao! (Hello!)", "Come stai? (How are you?)", "Piacere di conoscerti. (Nice to meet you.)", "A più tardi! (See you later!)"],
     korean: ["안녕하세요! (Annyeonghaseyo! - Hello!)", "어떻게 지내세요? (Eotteoke jineseoyo? - How are you?)", "만나서 반갑습니다. (Mannaseo bangapseumnida. - Nice to meet you.)", "나중에 봐요! (Najunge bwayo! - See you later!)"],
     portuguese: ["Olá! (Hello!)", "Como está? (How are you?)", "Prazer em conhecê-lo(a). (Nice to meet you.)", "Até logo! (See you later!)"],
-    hindi: ["नमस्ते! (Namaste! - Hello!)", "आप कैसे हैं? (Aap kaise hain? - How are you?)", "आपसे मिलकर खुशी हुई। (Aapse milkar khushi hui. - Nice to meet you.)", "फिर मिलेंगे! (Phir milenge! - See you later!)"]
+    hindi: ["नमस्ते! (Namaste! - Hello!)", "आप कैसे हैं? (Aap kaise hain? - How are you?)", "आपसे मिलकर खुशी हुई। (Aapse milkar khushi hui. - Nice to meet you.)", "फिर मिलेंगे! (Phir milenge! - See you later!)"],
+    english: ["Hello!", "Hi there!", "How are you?", "Nice to meet you.", "See you later!"]
   },
   dining: {
     french: ["Je voudrais réserver une table. (I would like to reserve a table.)", "L'addition, s'il vous plaît. (The bill, please.)", "C'est délicieux! (This is delicious!)", "Qu'est-ce que vous recommandez? (What do you recommend?)"],
@@ -303,7 +304,8 @@ const conversationTopics = {
     italian: ["Vorrei prenotare un tavolo. (I would like to reserve a table.)", "Il conto, per favore. (The bill, please.)", "È delizioso! (This is delicious!)", "Cosa consiglia? (What do you recommend?)"],
     korean: ["예약하고 싶습니다. (Yeyakago sipseumnida. - I would like to make a reservation.)", "계산서 주세요. (Gyesanseo juseyo. - The bill, please.)", "맛있어요! (Mashisseoyo! - This is delicious!)", "추천하시는 것이 있나요? (Chucheonhasineun geosi issnayo? - What do you recommend?)"],
     portuguese: ["Eu gostaria de reservar uma mesa. (I would like to reserve a table.)", "A conta, por favor. (The bill, please.)", "Está delicioso! (This is delicious!)", "O que você recomenda? (What do you recommend?)"],
-    hindi: ["मैं एक टेबल आरक्षित करना चाहूंगा/चाहूंगी। (Main ek table aarakshit karna chahunga/chahungi. - I would like to reserve a table.)", "बिल, कृपया। (Bill, kripya. - The bill, please.)", "यह स्वादिष्ट है! (Yah svaadisht hai! - This is delicious!)", "आप क्या अनुशंसा करते हैं? (Aap kya anushansa karte hain? - What do you recommend?)"]
+    hindi: ["मैं एक टेबल आरक्षित करना चाहूंगा/चाहूंगी। (Main ek table aarakshit karna chahunga/chahungi. - I would like to reserve a table.)", "बिल, कृपया। (Bill, kripya. - The bill, please.)", "यह स्वादिष्ट है! (Yah svaadisht hai! - This is delicious!)", "आप क्या अनुशंसा करते हैं? (Aap kya anushansa karte hain? - What do you recommend?)"],
+    english: ["I would like to reserve a table.", "The bill, please.", "This is delicious!", "What do you recommend?"]
   },
   shopping: {
     french: ["Combien ça coûte? (How much does this cost?)", "Je cherche... (I'm looking for...)", "C'est trop cher. (That's too expensive.)", "Avez-vous ceci en une autre taille/couleur? (Do you have this in another size/color?)"],
@@ -313,7 +315,8 @@ const conversationTopics = {
     italian: ["Quanto costa questo? (How much does this cost?)", "Sto cercando... (I'm looking for...)", "È troppo costoso. (That's too expensive.)", "Avete questo in un'altra taglia/colore? (Do you have this in another size/color?)"],
     korean: ["이거 얼마예요? (Igeo eolmayeyo? - How much does this cost?)", "저는 ...을/를 찾고 있어요. (Jeoneun ...eul/reul chatgo isseoyo. - I'm looking for...)", "너무 비싸요. (Neomu bissayo. - That's too expensive.)", "이것 다른 사이즈/색상 있어요? (Igeot dareun saijeu/saeksang isseoyo? - Do you have this in another size/color?)"],
     portuguese: ["Quanto custa isto? (How much does this cost?)", "Estou procurando... (I'm looking for...)", "É muito caro. (That's too expensive.)", "Tem isto em outro tamanho/cor? (Do you have this in another size/color?)"],
-    hindi: ["यह कितने का है? (Yeh kitne ka hai? - How much does this cost?)", "मैं ... ढूंढ रहा/रही हूं। (Main ... dhoondh raha/rahi hoon. - I'm looking for...)", "यह बहुत महंगा है। (Yeh bahut mehnga hai. - That's too expensive.)", "क्या आपके पास यह दूसरे आकार/रंग में है? (Kya aapke paas yeh doosre aakar/rang mein hai? - Do you have this in another size/color?)"]
+    hindi: ["यह कितने का है? (Yeh kitne ka hai? - How much does this cost?)", "मैं ... ढूंढ रहा/रही हूं। (Main ... dhoondh raha/rahi hoon. - I'm looking for...)", "यह बहुत महंगा है। (Yeh bahut mehnga hai. - That's too expensive.)", "क्या आपके पास यह दूसरे आकार/रंग में है? (Kya aapke paas yeh doosre aakar/rang mein hai? - Do you have this in another size/color?)"],
+    english: ["How much does this cost?", "I'm looking for...", "That's too expensive.", "Do you have this in another size/color?"]
   },
   directions: {
     french: ["Où est...? (Where is...?)", "Tournez à gauche/droite. (Turn left/right.)", "Allez tout droit. (Go straight ahead.)", "C'est loin d'ici? (Is it far from here?)"],
@@ -323,7 +326,8 @@ const conversationTopics = {
     italian: ["Dov'è...? (Where is...?)", "Giri a sinistra/destra. (Turn left/right.)", "Vada dritto. (Go straight ahead.)", "È lontano da qui? (Is it far from here?)"],
     korean: ["...이/가 어디에 있어요? (...i/ga eodie isseoyo? - Where is...?)", "왼쪽/오른쪽으로 돌아가세요. (Oenjjok/oreunjjogeuro doragaseyo. - Turn left/right.)", "직진하세요. (Jikjinhaseyo. - Go straight ahead.)", "여기서 멀어요? (Yeogiseo meoreoyo? - Is it far from here?)"],
     portuguese: ["Onde está...? (Where is...?)", "Vire à esquerda/direita. (Turn left/right.)", "Siga em frente. (Go straight ahead.)", "É longe daqui? (Is it far from here?)"],
-    hindi: ["... कहां है? (... kahaan hai? - Where is...?)", "बाएं/दाएं मुड़ें। (Baayen/daayen muden. - Turn left/right.)", "सीधे जाएं। (Seedhe jaayen. - Go straight ahead.)", "क्या यह यहां से दूर है? (Kya yeh yahaan se door hai? - Is it far from here?)"]
+    hindi: ["... कहां है? (... kahaan hai? - Where is...?)", "बाएं/दाएं मुड़ें। (Baayen/daayen muden. - Turn left/right.)", "सीधे जाएं। (Seedhe jaayen. - Go straight ahead.)", "क्या यह यहां से दूर है? (Kya yeh yahaan se door hai? - Is it far from here?)"],
+    english: ["Where is...?", "Turn left/right.", "Go straight ahead.", "Is it far from here?"]
   },
   emergencies: {
     french: ["Au secours! (Help!)", "J'ai besoin d'un médecin. (I need a doctor.)", "Appelez une ambulance! (Call an ambulance!)", "Où est l'hôpital le plus proche? (Where is the nearest hospital?)"],
@@ -333,7 +337,8 @@ const conversationTopics = {
     italian: ["Aiuto! (Help!)", "Ho bisogno di un medico. (I need a doctor.)", "Chiami un'ambulanza! (Call an ambulance!)", "Dov'è l'ospedale più vicino? (Where is the nearest hospital?)"],
     korean: ["도와주세요! (Dowajuseyo! - Help!)", "의사가 필요해요. (Uisaga pilyohaeyo. - I need a doctor.)", "구급차를 불러주세요! (Gugeupchareul bulleojuseyo! - Call an ambulance!)", "가장 가까운 병원이 어디예요? (Gajang gakkaun byeongwoni eodiyeyo? - Where is the nearest hospital?)"],
     portuguese: ["Socorro! (Help!)", "Preciso de um médico. (I need a doctor.)", "Chame uma ambulância! (Call an ambulance!)", "Onde é o hospital mais próximo? (Where is the nearest hospital?)"],
-    hindi: ["बचाओ! (Bachao! - Help!)", "मुझे एक डॉक्टर की जरूरत है। (Mujhe ek doctor ki zaroorat hai. - I need a doctor.)", "एम्बुलेंस बुलाओ! (Ambulance bulao! - Call an ambulance!)", "निकटतम अस्पताल कहां है? (Nikatam aspatal kahaan hai? - Where is the nearest hospital?)"]
+    hindi: ["बचाओ! (Bachao! - Help!)", "मुझे एक डॉक्टर की जरूरत है। (Mujhe ek doctor ki zaroorat hai. - I need a doctor.)", "एम्बुलेंस बुलाओ! (Ambulance bulao! - Call an ambulance!)", "निकटतम अस्पताल कहां है? (Nikatam aspatal kahaan hai? - Where is the nearest hospital?)"],
+    english: ["Help!", "I need a doctor.", "Call an ambulance!", "Where is the nearest hospital?"]
   }
 };
 
@@ -771,3 +776,4 @@ const AiAssistant = () => {
 };
 
 export default AiAssistant;
+
