@@ -116,9 +116,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-13",
-        title: "Spanish Lesson 13 - Travel Phrases",
-        description: "Essential travel vocabulary and phrases in Spanish.",
-        videoId: "RUzErZk-FWA",
+        title: "Spanish Lesson 13 - How to Use 'Estar'",
+        description: "Learn how to correctly use the verb 'estar' in Spanish.",
+        videoId: "9ovM6bntSlw",
         languageId: "spanish",
         order: 13
       },
