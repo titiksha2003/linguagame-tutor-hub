@@ -52,9 +52,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-5",
-        title: "Spanish Lesson 5 - Colors",
+        title: "Spanish Lesson 5 - Colors in Spanish",
         description: "Learn the names of colors in Spanish.",
-        videoId: "qNJRGHk7Yq0",
+        videoId: "K6NSvBvQYBY",
         languageId: "spanish",
         order: 5
       },
