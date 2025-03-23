@@ -173,9 +173,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-20",
-        title: "Spanish Lesson 20 - Common Expressions",
-        description: "Common idiomatic expressions in Spanish.",
-        videoId: "4n1SiCoJoVQ",
+        title: "Spanish Lesson 20 - School Supplies Vocabulary",
+        description: "Learn vocabulary for school supplies and classroom items in Spanish.",
+        videoId: "oiIvAyX8PEg",
         languageId: "spanish",
         order: 20
       }
