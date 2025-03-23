@@ -108,17 +108,17 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-12",
-        title: "Spanish Lesson 12 - Travel Phrases",
-        description: "Essential travel vocabulary and phrases in Spanish.",
-        videoId: "RUzErZk-FWA",
+        title: "Spanish Lesson 12 - Definite and Indefinite Articles",
+        description: "Learn about definite and indefinite articles in Spanish.",
+        videoId: "YeTIwDcKwZ4",
         languageId: "spanish",
         order: 12
       },
       {
         id: "spanish-video-13",
-        title: "Spanish Lesson 13 - Shopping Vocabulary",
-        description: "Learn vocabulary for shopping in Spanish.",
-        videoId: "CiRF9t4hwxM",
+        title: "Spanish Lesson 13 - Travel Phrases",
+        description: "Essential travel vocabulary and phrases in Spanish.",
+        videoId: "RUzErZk-FWA",
         languageId: "spanish",
         order: 13
       },
@@ -1017,4 +1017,3 @@ export function getVideosByLanguage(languageId: string): VideoLesson[] {
   const languageVideos = videoLessons.find(l => l.languageId === languageId);
   return languageVideos ? languageVideos.videos : [];
 }
-
