@@ -60,9 +60,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-6",
-        title: "Spanish Lesson 6 - Family Members",
-        description: "Learn vocabulary for family members in Spanish.",
-        videoId: "W1RnkwPkLk0",
+        title: "Spanish Lesson 6 - Days of the Week",
+        description: "Learn vocabulary for days of the week in Spanish.",
+        videoId: "wwZgwnTIb58",
         languageId: "spanish",
         order: 6
       },
