@@ -68,9 +68,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-7",
-        title: "Spanish Lesson 7 - Food and Dining",
+        title: "Spanish Lesson 7 - Dates for Beginners",
         description: "Learn food vocabulary and phrases for ordering in restaurants.",
-        videoId: "0ysgDkT1WAQ",
+        videoId: "fVNMU4xj9Nk",
         languageId: "spanish",
         order: 7
       },
@@ -1017,3 +1017,4 @@ export function getVideosByLanguage(languageId: string): VideoLesson[] {
   const languageVideos = videoLessons.find(l => l.languageId === languageId);
   return languageVideos ? languageVideos.videos : [];
 }
+
