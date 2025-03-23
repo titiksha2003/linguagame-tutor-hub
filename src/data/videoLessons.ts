@@ -1,4 +1,3 @@
-
 export interface VideoLesson {
   id: string;
   title: string;
@@ -165,9 +164,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-19",
-        title: "Spanish Lesson 19 - Future Tense",
-        description: "How to express future actions in Spanish.",
-        videoId: "jnIXEaOLzXw",
+        title: "Spanish Lesson 19 - Verbs: \"IR\" (To Go)",
+        description: "Learn how to use the important Spanish verb IR (to go) in different contexts.",
+        videoId: "bebEA8RMgus",
         languageId: "spanish",
         order: 19
       },
@@ -878,143 +877,4 @@ export const videoLessons: LanguageVideos[] = [
         title: "Portuguese Lesson 4 - Basic Phrases",
         description: "Common phrases for everyday situations.",
         videoId: "Z2Y6V1vpFgM",
-        languageId: "portuguese",
-        order: 4
-      },
-      {
-        id: "portuguese-video-5",
-        title: "Portuguese Lesson 5 - Colors",
-        description: "Learn the colors in Portuguese.",
-        videoId: "JcXVTXRJ7kQ",
-        languageId: "portuguese",
-        order: 5
-      },
-      {
-        id: "portuguese-video-6",
-        title: "Portuguese Lesson 6 - Family Members",
-        description: "Learn vocabulary for family members in Portuguese.",
-        videoId: "PYhPKYCT-4E",
-        languageId: "portuguese",
-        order: 6
-      },
-      {
-        id: "portuguese-video-7",
-        title: "Portuguese Lesson 7 - Food and Dining",
-        description: "Essential food vocabulary and dining phrases in Portuguese.",
-        videoId: "arLUYtkCVvU",
-        languageId: "portuguese",
-        order: 7
-      },
-      {
-        id: "portuguese-video-8",
-        title: "Portuguese Lesson 8 - Days and Months",
-        description: "Learn the days of the week and months in Portuguese.",
-        videoId: "YAYyB2AwzUA",
-        languageId: "portuguese",
-        order: 8
-      },
-      {
-        id: "portuguese-video-9",
-        title: "Portuguese Lesson 9 - Telling Time",
-        description: "Learn how to tell time in Portuguese.",
-        videoId: "WN-9gvOaC8U",
-        languageId: "portuguese",
-        order: 9
-      },
-      {
-        id: "portuguese-video-10",
-        title: "Portuguese Lesson 10 - Basic Conversations",
-        description: "Practice basic conversations in Portuguese.",
-        videoId: "mFpQQJO4GA0",
-        languageId: "portuguese",
-        order: 10
-      },
-      {
-        id: "portuguese-video-11",
-        title: "Portuguese Lesson 11 - Present Tense Verbs",
-        description: "Learn present tense verb conjugation in Portuguese.",
-        videoId: "DfYdBn8y9iE",
-        languageId: "portuguese",
-        order: 11
-      },
-      {
-        id: "portuguese-video-12",
-        title: "Portuguese Lesson 12 - Travel Phrases",
-        description: "Essential travel vocabulary and phrases in Portuguese.",
-        videoId: "h2I5kKsrSqw",
-        languageId: "portuguese",
-        order: 12
-      },
-      {
-        id: "portuguese-video-13",
-        title: "Portuguese Lesson 13 - Shopping Vocabulary",
-        description: "Learn vocabulary for shopping in Portuguese.",
-        videoId: "clpBPBM-LnQ",
-        languageId: "portuguese",
-        order: 13
-      },
-      {
-        id: "portuguese-video-14",
-        title: "Portuguese Lesson 14 - Body Parts",
-        description: "Learn the names of body parts in Portuguese.",
-        videoId: "B5AaKY8KNF4",
-        languageId: "portuguese",
-        order: 14
-      },
-      {
-        id: "portuguese-video-15",
-        title: "Portuguese Lesson 15 - Describing People",
-        description: "Learn to describe people's appearances in Portuguese.",
-        videoId: "jmCLVY5zHzM",
-        languageId: "portuguese",
-        order: 15
-      },
-      {
-        id: "portuguese-video-16",
-        title: "Portuguese Lesson 16 - Directions",
-        description: "Learn to ask for and give directions in Portuguese.",
-        videoId: "JElcGGx_F8w",
-        languageId: "portuguese",
-        order: 16
-      },
-      {
-        id: "portuguese-video-17",
-        title: "Portuguese Lesson 17 - Hobbies and Activities",
-        description: "Vocabulary for hobbies and leisure activities in Portuguese.",
-        videoId: "DULyUJRsiIY",
-        languageId: "portuguese",
-        order: 17
-      },
-      {
-        id: "portuguese-video-18",
-        title: "Portuguese Lesson 18 - Past Tense Introduction",
-        description: "Introduction to past tense in Portuguese.",
-        videoId: "L2GTUk4VhQQ",
-        languageId: "portuguese",
-        order: 18
-      },
-      {
-        id: "portuguese-video-19",
-        title: "Portuguese Lesson 19 - Future Tense",
-        description: "How to express future actions in Portuguese.",
-        videoId: "QAF9h8vO-bA",
-        languageId: "portuguese",
-        order: 19
-      },
-      {
-        id: "portuguese-video-20",
-        title: "Portuguese Lesson 20 - Common Expressions",
-        description: "Common idiomatic expressions in Portuguese.",
-        videoId: "K8yW6AuQeMo",
-        languageId: "portuguese",
-        order: 20
-      }
-    ]
-  }
-];
-
-// Helper function to get videos by language
-export function getVideosByLanguage(languageId: string): VideoLesson[] {
-  const languageVideos = videoLessons.find(l => l.languageId === languageId);
-  return languageVideos ? languageVideos.videos : [];
-}
+        languageId: "port
