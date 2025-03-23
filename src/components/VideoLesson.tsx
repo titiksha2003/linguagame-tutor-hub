@@ -29,6 +29,11 @@ const VideoLesson = ({
 }: VideoLessonProps) => {
   const navigate = useNavigate();
   
+  const handlePracticeTestClick = () => {
+    // Navigate to the practice-tests page and set the specific language
+    navigate(`/practice-tests`, { state: { selectedLanguage: languageId } });
+  };
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -58,7 +63,7 @@ const VideoLesson = ({
           
           <Button
             variant="outline"
-            onClick={() => navigate(`/course/${languageId}`)}
+            onClick={handlePracticeTestClick}
             className="bg-amber-100 hover:bg-amber-200 text-amber-800 border-amber-300 dark:bg-amber-900/30 dark:hover:bg-amber-800/30 dark:text-amber-300 dark:border-amber-700"
           >
             <BookOpen className="mr-2 h-4 w-4" />

@@ -119,7 +119,7 @@ const LanguageDetails = () => {
                   variant="outline"
                   size="lg"
                   className="flex-1"
-                  onClick={() => navigate(`/course/${language.id}`)}
+                  onClick={() => navigate(`/practice-tests`, { state: { selectedLanguage: language.id } })}
                 >
                   <CheckSquare className="mr-2 h-5 w-5" />
                   Practice Tests

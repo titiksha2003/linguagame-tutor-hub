@@ -3,14 +3,13 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { languages } from '../data/languages';
 import Header from '../components/Header';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { ArrowLeft, BookOpen, Check, CheckSquare, ChevronRight, Lock } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import PracticeTest from '../components/PracticeTest';
 import { cn } from '@/lib/utils';
 
-// Define level data structure with titles and descriptions
 const levelData = [
   { id: 1, title: "Introduction & Alphabet", description: "Learn the alphabet, pronunciation basics, and introducing yourself" },
   { id: 2, title: "Basic Greetings & Expressions", description: "Common greetings, farewells, and polite expressions" },
@@ -42,20 +41,20 @@ const levelData = [
 const PracticeTests = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+  const location = useLocation();
+  
+  const initialLanguage = location.state?.selectedLanguage || null;
+  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(initialLanguage);
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
 
-  // Filter user's languages if logged in
   const userLanguages = user 
     ? languages.filter(lang => user.languages.some(ul => ul.id === lang.id)) 
     : [];
   
-  // Other languages
   const otherLanguages = user 
     ? languages.filter(lang => !user.languages.some(ul => ul.id === lang.id))
     : languages;
 
-  // If language and level selected, show test
   if (selectedLanguage && selectedLevel !== null) {
     return (
       <PracticeTest 
@@ -68,7 +67,6 @@ const PracticeTests = () => {
     );
   }
 
-  // If only language selected, show level selection (learning path)
   if (selectedLanguage) {
     const language = languages.find(lang => lang.id === selectedLanguage);
     const userLevel = user?.languages.find(l => l.id === selectedLanguage)?.level || 1;
@@ -97,17 +95,12 @@ const PracticeTests = () => {
             </div>
 
             <div className="relative max-w-5xl mx-auto pb-20">
-              {/* Path connector line */}
               <div className="absolute left-1/2 top-10 bottom-10 w-1 bg-gray-200 dark:bg-gray-700 transform -translate-x-1/2 z-0"></div>
               
               {levelData.map((level, index) => {
-                // A level is completed if user's level is HIGHER than this level
                 const isCompleted = userLevel > level.id;
-                // A level is current if it equals the user's level
                 const isCurrent = userLevel === level.id;
-                // A level is locked if it's higher than user's level + 1 (we only unlock the next level)
                 const isLocked = level.id > userLevel && level.id !== userLevel + 1;
-                // A level is available but not current if it's exactly the next one after user's current level
                 const isNextAvailable = level.id === userLevel + 1;
                 
                 return (
@@ -121,7 +114,6 @@ const PracticeTests = () => {
                       index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                     )}
                   >
-                    {/* Level marker */}
                     <div 
                       className={cn(
                         "w-14 h-14 rounded-full flex items-center justify-center shadow-md border-4 transition-colors",
@@ -140,7 +132,6 @@ const PracticeTests = () => {
                       )}
                     </div>
                     
-                    {/* Level content */}
                     <div 
                       className={cn(
                         "w-[calc(50%-3.5rem)] mx-4 p-4 rounded-lg shadow-sm transition-colors",
@@ -215,7 +206,6 @@ const PracticeTests = () => {
     );
   }
 
-  // Default view - language selection
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       <Header />

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -189,13 +188,7 @@ const Course = () => {
             <Button
               size="lg"
               className="button-shadow"
-              onClick={() => {
-                const skills = getSkillsByLanguage(languageId);
-                if (skills.length > 0) {
-                  const firstSkill = skills[0];
-                  navigate(`/course/${languageId}/${firstSkill.id}`);
-                }
-              }}
+              onClick={() => navigate(`/practice-tests`, { state: { selectedLanguage: languageId } })}
             >
               Start Learning {language.name}
               <ChevronRight className="ml-2 h-4 w-4" />
