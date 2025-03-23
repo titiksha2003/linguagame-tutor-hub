@@ -92,9 +92,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-10",
-        title: "Spanish Lesson 10 - Basic Conversations",
-        description: "Learn to have basic conversations in Spanish.",
-        videoId: "Rj_W-Z1GvdY",
+        title: "Spanish Lesson 10 - Adjectives to use with SER",
+        description: "Learn to use adjectives with the verb SER in Spanish.",
+        videoId: "MGOvu-0gGXk",
         languageId: "spanish",
         order: 10
       },
