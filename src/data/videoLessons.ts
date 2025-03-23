@@ -84,9 +84,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-9",
-        title: "Spanish Lesson 9 - Telling Time",
+        title: "Spanish Lesson 9 - Verb SER in Spanish",
         description: "Learn how to tell time in Spanish.",
-        videoId: "NHPh02UK9o8",
+        videoId: "bmpPhSNt1J4",
         languageId: "spanish",
         order: 9
       },
