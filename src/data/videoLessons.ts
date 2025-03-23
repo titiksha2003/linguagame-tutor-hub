@@ -140,9 +140,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-16",
-        title: "Spanish Lesson 16 - Directions",
-        description: "Learn to ask for and give directions in Spanish.",
-        videoId: "YGQYoYPYnsM",
+        title: "Spanish Lesson 16 - Telling Time in Spanish",
+        description: "Learn how to tell time in Spanish.",
+        videoId: "_FRiRJz_r4g",
         languageId: "spanish",
         order: 16
       },
