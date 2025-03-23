@@ -1,4 +1,3 @@
-
 export interface VideoLesson {
   id: string;
   title: string;
@@ -29,9 +28,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-2",
-        title: "Spanish Lesson 2 - Common Phrases",
-        description: "Master everyday Spanish phrases that will help you in common situations.",
-        videoId: "9lqk66jtMfU",
+        title: "Counting in Spanish",
+        description: "Learn how to count and use numbers in Spanish.",
+        videoId: "qIyhRvk7qlk",
         languageId: "spanish",
         order: 2
       },
@@ -750,7 +749,7 @@ export const videoLessons: LanguageVideos[] = [
       {
         id: "german-video-9",
         title: "German Lesson 9 - Telling Time",
-        description: "Learn to tell time in German.",
+        description: "How to tell time in German.",
         videoId: "kgtzQMdARrU",
         languageId: "german",
         order: 9
