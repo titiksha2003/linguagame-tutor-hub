@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useProgressContext } from './contexts/ProgressContext';
-import { useLanguageTutorContext } from './contexts/LanguageTutorContext';
+import { useProgress } from './contexts/ProgressContext';
+import { useLanguageTutor } from './contexts/LanguageTutorContext';
 import Dashboard from './pages/Dashboard';
 import Courses from './pages/Courses';
 import Course from './pages/Course';
@@ -21,11 +22,11 @@ import AiAssistant from './components/AiAssistant';
 import GroqChatAssistant from './components/GroqChatAssistant';
 
 function App() {
-  const { initialized: progressInitialized } = useProgressContext();
-  const { initialized: languageInitialized } = useLanguageTutorContext();
+  const { progress } = useProgress();
+  const initialized = progress !== undefined;
 
   // Wait for context initialization
-  if (!progressInitialized || !languageInitialized) {
+  if (!initialized) {
     return (
       <div className="flex h-screen w-full items-center justify-center">
         <div className="flex flex-col items-center gap-2">
