@@ -124,9 +124,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-14",
-        title: "Spanish Lesson 14 - Body Parts",
-        description: "Learn the names of body parts in Spanish.",
-        videoId: "nQ3-22jPXFk",
+        title: "Spanish Lesson 14 - AR Verbs in Spanish",
+        description: "Learn how to conjugate and use AR verbs in Spanish.",
+        videoId: "TF71Ca3def8",
         languageId: "spanish",
         order: 14
       },
