@@ -1,3 +1,4 @@
+
 export interface VideoLesson {
   id: string;
   title: string;
@@ -156,9 +157,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-18",
-        title: "Spanish Lesson 18 - Past Tense Introduction",
-        description: "Introduction to past tense in Spanish.",
-        videoId: "iOkzHfC4fIw",
+        title: "Spanish Lesson 18 - Spanish Contractions AL and DEL",
+        description: "Learn about Spanish contractions AL and DEL and how to use them correctly.",
+        videoId: "nWPZZWIwWxg",
         languageId: "spanish",
         order: 18
       },
@@ -1017,4 +1018,3 @@ export function getVideosByLanguage(languageId: string): VideoLesson[] {
   const languageVideos = videoLessons.find(l => l.languageId === languageId);
   return languageVideos ? languageVideos.videos : [];
 }
-
