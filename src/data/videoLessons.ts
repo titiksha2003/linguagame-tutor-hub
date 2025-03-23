@@ -100,9 +100,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-11",
-        title: "Spanish Lesson 11 - Present Tense Verbs",
-        description: "Learn present tense conjugation in Spanish.",
-        videoId: "R5fB3wcLXXs",
+        title: "Spanish Lesson 11 - Using Like in Spanish",
+        description: "Learn how to express likes and preferences in Spanish.",
+        videoId: "uLr3ognAdjA",
         languageId: "spanish",
         order: 11
       },
@@ -1017,3 +1017,4 @@ export function getVideosByLanguage(languageId: string): VideoLesson[] {
   const languageVideos = videoLessons.find(l => l.languageId === languageId);
   return languageVideos ? languageVideos.videos : [];
 }
+
