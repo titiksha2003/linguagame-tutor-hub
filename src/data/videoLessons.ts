@@ -28,7 +28,7 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-2",
-        title: "Counting in Spanish",
+        title: "Spanish Lesson 2 - Counting in Spanish",
         description: "Learn how to count and use numbers in Spanish.",
         videoId: "qIyhRvk7qlk",
         languageId: "spanish",
