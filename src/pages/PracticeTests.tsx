@@ -1,11 +1,10 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { languages } from '../data/languages';
 import Header from '../components/Header';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { ArrowLeft, BookOpen, Check, CheckSquare, ChevronRight, Lock } from 'lucide-react';
+import { ArrowLeft, BookOpen, ChevronRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import PracticeTest from '../components/PracticeTest';
 import { cn } from '@/lib/utils';
@@ -69,7 +68,6 @@ const PracticeTests = () => {
 
   if (selectedLanguage) {
     const language = languages.find(lang => lang.id === selectedLanguage);
-    const userLevel = user?.languages.find(l => l.id === selectedLanguage)?.level || 1;
     
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
@@ -98,11 +96,6 @@ const PracticeTests = () => {
               <div className="absolute left-1/2 top-10 bottom-10 w-1 bg-gray-200 dark:bg-gray-700 transform -translate-x-1/2 z-0"></div>
               
               {levelData.map((level, index) => {
-                const isCompleted = userLevel > level.id;
-                const isCurrent = userLevel === level.id;
-                const isLocked = level.id > userLevel && level.id !== userLevel + 1;
-                const isNextAvailable = level.id === userLevel + 1;
-                
                 return (
                   <motion.div
                     key={level.id}
@@ -114,86 +107,32 @@ const PracticeTests = () => {
                       index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                     )}
                   >
-                    <div 
-                      className={cn(
-                        "w-14 h-14 rounded-full flex items-center justify-center shadow-md border-4 transition-colors",
-                        isCompleted ? "bg-green-500 border-green-200 text-white" : 
-                        isCurrent ? "bg-blue-500 border-blue-200 text-white" : 
-                        isNextAvailable ? "bg-amber-500 border-amber-200 text-white" :
-                        "bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500"
-                      )}
-                    >
-                      {isCompleted ? (
-                        <Check className="h-6 w-6" />
-                      ) : isLocked ? (
-                        <Lock className="h-5 w-5" />
-                      ) : (
-                        <span className="text-lg font-bold">{level.id}</span>
-                      )}
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center shadow-md border-4 transition-colors bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+                      <span className="text-lg font-bold">{level.id}</span>
                     </div>
                     
                     <div 
                       className={cn(
                         "w-[calc(50%-3.5rem)] mx-4 p-4 rounded-lg shadow-sm transition-colors",
-                        isCompleted ? "bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 cursor-pointer" :
-                        isCurrent ? "bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-800 ring-2 ring-blue-500/20 cursor-pointer" :
-                        isNextAvailable ? "bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-800 ring-2 ring-amber-500/20 cursor-pointer" :
-                        isLocked ? "bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 opacity-60" :
                         "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 cursor-pointer"
                       )}
-                      onClick={() => {
-                        if (!isLocked) {
-                          setSelectedLevel(level.id);
-                        }
-                      }}
+                      onClick={() => setSelectedLevel(level.id)}
                     >
                       <div className="flex items-start justify-between">
                         <div>
-                          <h3 className={cn(
-                            "font-semibold",
-                            isLocked ? "text-gray-500 dark:text-gray-400" : "text-gray-900 dark:text-white"
-                          )}>
+                          <h3 className="font-semibold text-gray-900 dark:text-white">
                             Level {level.id}: {level.title}
                           </h3>
-                          <p className={cn(
-                            "text-sm mt-1",
-                            isLocked ? "text-gray-400 dark:text-gray-500" : "text-gray-600 dark:text-gray-300"
-                          )}>
+                          <p className="text-sm mt-1 text-gray-600 dark:text-gray-300">
                             {level.description}
                           </p>
                         </div>
-                        {isCompleted && (
-                          <Button
-                            size="sm" 
-                            variant="outline"
-                            className="border-green-200 text-green-700 hover:bg-green-50"
-                          >
-                            <Check className="h-3 w-3 mr-1" /> Completed
-                          </Button>
-                        )}
-                        {isCurrent && (
-                          <Button
-                            size="sm" 
-                            variant="default"
-                          >
-                            <BookOpen className="h-3 w-3 mr-1" /> Start Test
-                          </Button>
-                        )}
-                        {isNextAvailable && (
-                          <Button
-                            size="sm" 
-                            variant="outline"
-                            className="border-amber-200 text-amber-700 hover:bg-amber-50"
-                          >
-                            <BookOpen className="h-3 w-3 mr-1" /> Available
-                          </Button>
-                        )}
-                        {isLocked && (
-                          <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center">
-                            <Lock className="h-3 w-3 mr-1" /> 
-                            <span>Complete Level {userLevel}</span>
-                          </div>
-                        )}
+                        <Button
+                          size="sm" 
+                          variant="default"
+                        >
+                          <BookOpen className="h-3 w-3 mr-1" /> Start Test
+                        </Button>
                       </div>
                     </div>
                   </motion.div>
@@ -272,8 +211,8 @@ const PracticeTests = () => {
                             className="w-full" 
                             size="sm"
                           >
-                            <CheckSquare className="mr-2 h-4 w-4" />
-                            Continue Learning
+                            <BookOpen className="mr-2 h-4 w-4" />
+                            Practice Tests
                           </Button>
                         </div>
                       </div>
@@ -322,8 +261,8 @@ const PracticeTests = () => {
                         className="w-full" 
                         size="sm"
                       >
-                        <CheckSquare className="mr-2 h-4 w-4" />
-                        Start Learning
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Practice Tests
                       </Button>
                     </div>
                   </div>

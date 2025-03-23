@@ -1,6 +1,7 @@
+
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Check, Trophy } from 'lucide-react';
+import { ArrowLeft, Trophy } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Language } from '../data/languages';
@@ -66,7 +67,7 @@ const TestResults = ({
 
   const getResultMessage = () => {
     if (percentage >= 80) {
-      return "Great job! You've mastered this level!";
+      return "Great job! You've done well on this level!";
     } else if (percentage >= 60) {
       return "Good effort! You're making progress.";
     } else {
@@ -74,28 +75,18 @@ const TestResults = ({
     }
   };
 
-  const unlockNextLevel = React.useCallback(() => {
-    if (percentage >= 80 && level === userLevel) {
-      const testCompletionId = `${language?.id}-test-level-${level}-${Date.now()}`;
-      
-      if (user && language) {
-        const xpEarned = Math.round((percentage / 100) * level * 50);
-        
-        completeLesson(testCompletionId, xpEarned);
-        
-        updateUserLevel(language.id, level + 1);
-        
-        toast({
-          title: "Level Unlocked!",
-          description: `You've unlocked Level ${level + 1}: ${getLevelDescription(level + 1)}`,
-        });
-      }
-    }
-  }, [percentage, level, userLevel, language, user, completeLesson, updateUserLevel, toast]);
-
   React.useEffect(() => {
-    unlockNextLevel();
-  }, [unlockNextLevel]);
+    if (user && language) {
+      const testCompletionId = `${language?.id}-test-level-${level}-${Date.now()}`;
+      const xpEarned = Math.round((percentage / 100) * level * 50);
+      completeLesson(testCompletionId, xpEarned);
+      
+      toast({
+        title: "Test Completed!",
+        description: `You earned ${xpEarned} XP!`,
+      });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
@@ -169,28 +160,6 @@ const TestResults = ({
               }`} />
             </div>
             
-            {percentage >= 80 && level === userLevel && (
-              <div className="bg-green-50 dark:bg-green-900/30 border border-green-100 dark:border-green-800 rounded-lg p-4 mb-6">
-                <p className="text-green-800 dark:text-green-400 font-medium">
-                  Congratulations! You've unlocked Level {level + 1}
-                </p>
-                <p className="text-green-600 dark:text-green-500 text-sm mt-1">
-                  Continue your learning journey with new challenges
-                </p>
-              </div>
-            )}
-            
-            {percentage < 80 && level === userLevel && (
-              <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-100 dark:border-amber-800 rounded-lg p-4 mb-6">
-                <p className="text-amber-800 dark:text-amber-400 font-medium">
-                  Almost there! You need at least 80% to unlock the next level
-                </p>
-                <p className="text-amber-600 dark:text-amber-500 text-sm mt-1">
-                  Try again to improve your score
-                </p>
-              </div>
-            )}
-            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 variant="outline" 
@@ -201,7 +170,6 @@ const TestResults = ({
               </Button>
               
               <Button onClick={onRetry}>
-                <Check className="mr-2 h-4 w-4" />
                 Try Again
               </Button>
             </div>
