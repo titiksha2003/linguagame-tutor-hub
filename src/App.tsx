@@ -1,84 +1,67 @@
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { useProgressContext } from './contexts/ProgressContext';
+import { useLanguageTutorContext } from './contexts/LanguageTutorContext';
+import Dashboard from './pages/Dashboard';
+import Courses from './pages/Courses';
+import Course from './pages/Course';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Profile from './pages/Profile';
+import Skill from './pages/Skill';
+import Lesson from './pages/Lesson';
+import NotFound from './pages/NotFound';
+import Index from './pages/Index';
+import LanguageDetails from './pages/LanguageDetails';
+import Leaderboard from './pages/Leaderboard';
+import PracticeTests from './pages/PracticeTests';
+import VideoLessons from './pages/VideoLessons';
+import VideoLessonsOverview from './pages/VideoLessonsOverview';
+import AiAssistant from './components/AiAssistant';
+import GroqChatAssistant from './components/GroqChatAssistant';
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import Index from "./pages/Index";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import Dashboard from "./pages/Dashboard";
-import Courses from "./pages/Courses";
-import Course from "./pages/Course";
-import Skill from "./pages/Skill";
-import Lesson from "./pages/Lesson";
-import VideoLessons from "./pages/VideoLessons";
-import VideoLessonsOverview from "./pages/VideoLessonsOverview";
-import PracticeTests from "./pages/PracticeTests";
-import LanguageDetails from "./pages/LanguageDetails";
-import Profile from "./pages/Profile";
-import Leaderboard from "./pages/Leaderboard";
-import NotFound from "./pages/NotFound";
-import { AuthProvider } from "./contexts/AuthContext";
-import { ProgressProvider } from "./contexts/ProgressContext";
-import AiAssistant from "./components/AiAssistant";
-import { LanguageTutorProvider } from "./contexts/LanguageTutorContext";
+function App() {
+  const { initialized: progressInitialized } = useProgressContext();
+  const { initialized: languageInitialized } = useLanguageTutorContext();
 
-const queryClient = new QueryClient();
-
-const App = () => {
-  // Update document title with new app name
-  useEffect(() => {
-    document.title = "Wizenko - Language Learning";
-  }, []);
-
-  // Check for theme preference
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark" || 
-        (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
+  // Wait for context initialization
+  if (!progressInitialized || !languageInitialized) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        <div className="flex flex-col items-center gap-2">
+          <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-t-2 border-primary"></div>
+          <p className="text-sm text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <TooltipProvider>
-          <AuthProvider>
-            <ProgressProvider>
-              <LanguageTutorProvider>
-                {/* Move toasters inside BrowserRouter since they may use hooks that need router context */}
-                <Toaster />
-                <Sonner />
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/signup" element={<SignUp />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/courses" element={<Courses />} />
-                  <Route path="/course/:languageId" element={<Course />} />
-                  <Route path="/course/:languageId/:skillId" element={<Skill />} />
-                  <Route path="/lesson/:languageId/:lessonId" element={<Lesson />} />
-                  <Route path="/videos" element={<VideoLessonsOverview />} />
-                  <Route path="/videos/:languageId" element={<VideoLessons />} />
-                  <Route path="/practice-tests" element={<PracticeTests />} />
-                  <Route path="/language/:languageId" element={<LanguageDetails />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/leaderboard" element={<Leaderboard />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-                <AiAssistant />
-              </LanguageTutorProvider>
-            </ProgressProvider>
-          </AuthProvider>
-        </TooltipProvider>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/course/:id" element={<Course />} />
+        <Route path="/skill/:id" element={<Skill />} />
+        <Route path="/lesson/:id" element={<Lesson />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/languages/:id" element={<LanguageDetails />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/practice-tests" element={<PracticeTests />} />
+        <Route path="/video-lessons" element={<VideoLessons />} />
+        <Route path="/video-lessons-overview" element={<VideoLessonsOverview />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      
+      {/* Choose one of the AI assistants to display - 
+          You can use AiAssistant (original) or GroqChatAssistant (new Groq-powered version) */}
+      {/* <AiAssistant /> */}
+      <GroqChatAssistant />
+    </>
   );
-};
+}
 
 export default App;
