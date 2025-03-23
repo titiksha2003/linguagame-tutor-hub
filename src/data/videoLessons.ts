@@ -148,9 +148,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-17",
-        title: "Spanish Lesson 17 - Hobbies and Activities",
-        description: "Vocabulary for hobbies and leisure activities in Spanish.",
-        videoId: "SZFIgGCJ_X0",
+        title: "Spanish Lesson 17 - Understanding Time",
+        description: "Learn concepts of time and how to discuss timing in Spanish.",
+        videoId: "ouYnBFwTCKQ",
         languageId: "spanish",
         order: 17
       },
@@ -1017,3 +1017,4 @@ export function getVideosByLanguage(languageId: string): VideoLesson[] {
   const languageVideos = videoLessons.find(l => l.languageId === languageId);
   return languageVideos ? languageVideos.videos : [];
 }
+
