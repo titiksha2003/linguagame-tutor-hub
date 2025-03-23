@@ -36,9 +36,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-3",
-        title: "Spanish Lesson 3 - Numbers and Counting",
+        title: "Spanish Lesson 3 - Tool For Learning Spanish",
         description: "Learn how to count and use numbers in Spanish.",
-        videoId: "AH5Q2lvWEzc",
+        videoId: "FRV9fvWjMHA",
         languageId: "spanish",
         order: 3
       },
