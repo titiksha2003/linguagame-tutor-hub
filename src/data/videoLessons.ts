@@ -76,9 +76,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-8",
-        title: "Spanish Lesson 8 - Weather and Seasons",
+        title: "Spanish Lesson 8 - How to Greet in Spanish",
         description: "Learn to talk about weather and seasons in Spanish.",
-        videoId: "WOkTAKdP3U4",
+        videoId: "AqfQQZVmTUw",
         languageId: "spanish",
         order: 8
       },
@@ -1017,4 +1017,3 @@ export function getVideosByLanguage(languageId: string): VideoLesson[] {
   const languageVideos = videoLessons.find(l => l.languageId === languageId);
   return languageVideos ? languageVideos.videos : [];
 }
-
