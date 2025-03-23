@@ -132,9 +132,9 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "spanish-video-15",
-        title: "Spanish Lesson 15 - Describing People",
-        description: "Learn to describe people's appearances in Spanish.",
-        videoId: "H3oQ9q2LHv8",
+        title: "Spanish Lesson 15 - Most Effective Learning Technique",
+        description: "Learn the most effective techniques for mastering Spanish.",
+        videoId: "xY820GPbDOs",
         languageId: "spanish",
         order: 15
       },
