@@ -13,22 +13,22 @@ const WizenkoLogo = ({ size = 'md', showText = true }: WizenkoLogoProps) => {
     sm: {
       container: 'h-8 w-8',
       eyes: 'h-1.5 w-1.5',
-      ears: 'h-2 w-2',
-      tail: 'h-3 w-3',
+      beak: 'h-2.5 w-2.5',
+      wings: 'h-3 w-3',
       spacing: 'space-x-1.5'
     },
     md: {
       container: 'h-10 w-10',
       eyes: 'h-2 w-2',
-      ears: 'h-2.5 w-2.5',
-      tail: 'h-4 w-4',
+      beak: 'h-3 w-3',
+      wings: 'h-4 w-4',
       spacing: 'space-x-2'
     },
     lg: {
       container: 'h-16 w-16',
       eyes: 'h-3 w-3',
-      ears: 'h-4 w-4',
-      tail: 'h-6 w-6',
+      beak: 'h-5 w-5',
+      wings: 'h-6 w-6',
       spacing: 'space-x-3'
     }
   };
@@ -37,26 +37,32 @@ const WizenkoLogo = ({ size = 'md', showText = true }: WizenkoLogoProps) => {
     <Link to="/" className="flex items-center space-x-2 group">
       <div className="relative">
         <motion.div
-          className={`${sizes[size].container} rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center relative shadow-md overflow-visible`}
+          className={`${sizes[size].container} rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center relative shadow-md overflow-visible`}
           whileHover={{ scale: 1.1 }}
           transition={{ type: 'spring', stiffness: 400, damping: 10 }}
         >
-          {/* Fox ears */}
+          {/* Bird wings */}
           <motion.div 
-            className={`absolute -top-2 -left-1 ${sizes[size].ears} rounded-full bg-amber-500`}
-            animate={{ rotate: [-5, 5, -5] }}
+            className={`absolute -left-2 top-1/2 transform -translate-y-1/2 ${sizes[size].wings} rounded-full bg-sky-300`}
+            animate={{ 
+              rotate: [-5, -25, -5],
+              scale: [1, 0.95, 1]
+            }}
             transition={{ 
               repeat: Infinity, 
-              duration: 2,
+              duration: 1.5,
               ease: "easeInOut" 
             }}
           />
           <motion.div 
-            className={`absolute -top-2 -right-1 ${sizes[size].ears} rounded-full bg-amber-500`}
-            animate={{ rotate: [5, -5, 5] }}
+            className={`absolute -right-2 top-1/2 transform -translate-y-1/2 ${sizes[size].wings} rounded-full bg-sky-300`}
+            animate={{ 
+              rotate: [5, 25, 5],
+              scale: [1, 0.95, 1]
+            }}
             transition={{ 
               repeat: Infinity, 
-              duration: 2,
+              duration: 1.5,
               ease: "easeInOut" 
             }}
           />
@@ -88,38 +94,35 @@ const WizenkoLogo = ({ size = 'md', showText = true }: WizenkoLogoProps) => {
             </motion.div>
           </div>
           
-          {/* Nose */}
-          <div 
-            className="absolute bg-gray-900 rounded-full"
-            style={{ 
-              width: `${size === 'lg' ? '8px' : size === 'md' ? '6px' : '4px'}`,
-              height: `${size === 'lg' ? '6px' : size === 'md' ? '4px' : '3px'}`,
-              bottom: `${size === 'lg' ? '30%' : '35%'}` 
-            }}
-          />
-          
-          {/* Mouth */}
+          {/* Beak */}
           <motion.div 
-            className="absolute bg-gray-800 rounded-lg"
+            className={`absolute bg-amber-500 rotate-45`}
             style={{ 
-              width: `${size === 'lg' ? '10px' : size === 'md' ? '8px' : '6px'}`,
-              height: `${size === 'lg' ? '2px' : size === 'md' ? '1.5px' : '1px'}`,
-              bottom: '25%' 
+              width: `${size === 'lg' ? '12px' : size === 'md' ? '10px' : '8px'}`,
+              height: `${size === 'lg' ? '10px' : size === 'md' ? '8px' : '6px'}`,
+              bottom: '30%',
+              borderRadius: '40% 60% 60% 40% / 40% 40% 60% 60%'
             }}
-            animate={{ width: ['60%', '40%', '60%'] }}
+            animate={{ 
+              scaleY: [1, 0.9, 1],
+              rotate: [45, 45, 45]
+            }}
             transition={{ 
               repeat: Infinity, 
               repeatType: "reverse", 
-              duration: 2
+              duration: 1.5
             }}
           />
           
-          {/* Fox tail */}
+          {/* Bird tail */}
           <motion.div 
-            className={`absolute ${sizes[size].tail} bg-amber-400 rounded-full`}
+            className={`absolute bg-sky-200`}
             style={{ 
-              bottom: '-10%',
-              right: '-20%'
+              width: `${size === 'lg' ? '10px' : size === 'md' ? '8px' : '6px'}`,
+              height: `${size === 'lg' ? '6px' : size === 'md' ? '5px' : '4px'}`,
+              bottom: '10%',
+              right: '-15%',
+              borderRadius: '0 50% 50% 0'
             }}
             animate={{ 
               rotate: [0, 15, 0, -15, 0],
@@ -143,7 +146,7 @@ const WizenkoLogo = ({ size = 'md', showText = true }: WizenkoLogoProps) => {
       </div>
       
       {showText && (
-        <span className="font-display text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-amber-700">
+        <span className="font-display text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-sky-700">
           Wizenko
         </span>
       )}
