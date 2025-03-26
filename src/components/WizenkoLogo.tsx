@@ -1,15 +1,21 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import StaticBirdLogo from './logo/StaticBirdLogo';
 
 interface WizenkoLogoProps {
   size?: 'sm' | 'md' | 'lg';
   showText?: boolean;
   className?: string;
+  staticOnly?: boolean;
 }
 
-const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLogoProps) => {
+const WizenkoLogo = ({ 
+  size = 'md', 
+  showText = true, 
+  className = '',
+  staticOnly = false
+}: WizenkoLogoProps) => {
   const birdRef = useRef<HTMLDivElement>(null);
   const animationCompleted = useRef(false);
 
@@ -46,18 +52,30 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
     }
   };
 
-  // Pause animation after one loop for better performance
+  if (staticOnly) {
+    const sizeInPixels = size === 'sm' ? 32 : size === 'md' ? 40 : 64;
+    
+    return (
+      <Link to="/" className={`flex items-center space-x-2 group ${className}`}>
+        <StaticBirdLogo variant="favicon" size={sizeInPixels} />
+        
+        {showText && (
+          <span className="font-display text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-sky-700">
+            Wizenko
+          </span>
+        )}
+      </Link>
+    );
+  }
+
   useEffect(() => {
     let timeout: NodeJS.Timeout;
     
-    // Reset animation state on component mount
     animationCompleted.current = false;
     
-    // We'll pause animation after ~5 seconds (one loop)
     timeout = setTimeout(() => {
       animationCompleted.current = true;
       
-      // If we have access to the element, we can add a class to indicate animation completed
       if (birdRef.current) {
         birdRef.current.classList.add('animation-paused');
       }
@@ -69,7 +87,6 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
   return (
     <Link to="/" className={`flex items-center space-x-2 group ${className}`}>
       <div className="relative" ref={birdRef}>
-        {/* Bird body - no longer a perfect circle, more oval shaped */}
         <motion.div
           className={`${sizes[size].container} rounded-2xl bg-[#6EC5E9] dark:bg-[#5DAED2] flex items-center justify-center relative shadow-md overflow-visible`}
           initial={{ scale: 1 }}
@@ -82,7 +99,6 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
             borderBottomRightRadius: '50%',
           }}
         >
-          {/* Bird wings - reshaped to look more like wings */}
           <motion.div 
             className={`absolute -left-1.5 top-1/2 transform -translate-y-1/3 ${sizes[size].wings} bg-[#9CDBF3] dark:bg-[#7EC3E9]`}
             style={{ 
@@ -116,7 +132,6 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
             }}
           />
           
-          {/* Bird tail - more prominent */}
           <motion.div 
             className={`absolute bg-[#9CDBF3] dark:bg-[#7EC3E9] ${sizes[size].tail}`}
             style={{ 
@@ -136,13 +151,12 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
             }}
           />
           
-          {/* Face */}
           <motion.div 
             className="absolute flex flex-col items-center justify-center"
             style={{ top: '30%' }}
             animate={{
-              y: [0, -2, 0, -2, 0], // Nodding motion
-              rotate: [-5, 5, -5] // Head tilt
+              y: [0, -2, 0, -2, 0],
+              rotate: [-5, 5, -5]
             }}
             transition={{
               repeat: Infinity,
@@ -151,7 +165,6 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
               times: [0, 0.25, 0.5, 0.75, 1]
             }}
           >
-            {/* Glasses */}
             <motion.div 
               className={`absolute ${sizes[size].glasses} h-[0.15rem] bg-amber-900 rounded-full z-10`}
               style={{ top: '45%' }}
@@ -166,7 +179,6 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
               }}
             />
             
-            {/* Eyes with glasses */}
             <div className={`flex ${sizes[size].spacing} relative z-20`}>
               <motion.div 
                 className={`${sizes[size].eyes} rounded-full bg-white flex items-center justify-center relative z-0`}
@@ -194,7 +206,7 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
                   scaleY: [1, 0.1, 1],
                   transition: {
                     repeat: Infinity,
-                    repeatDelay: 2.7, // Slight offset for more natural look
+                    repeatDelay: 2.7,
                     duration: 0.15
                   }
                 }}
@@ -210,7 +222,6 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
             </div>
           </motion.div>
           
-          {/* Beak - more prominent and triangular */}
           <motion.div 
             className={`absolute bg-[#FDBA74] dark:bg-[#F59E0B]`}
             style={{ 
@@ -229,7 +240,6 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
             }}
           />
           
-          {/* Book */}
           <motion.div 
             className={`absolute ${sizes[size].book} bg-[#FFF7E5] dark:bg-[#FFF0D9] border border-amber-200 dark:border-amber-300 rounded-sm overflow-hidden z-10`}
             style={{
@@ -248,7 +258,6 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
               times: [0, 0.5, 0.75, 1]
             }}
           >
-            {/* Book pages */}
             <motion.div 
               className="absolute inset-0 flex flex-col justify-center items-center"
               animate={{
@@ -265,7 +274,6 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
             </motion.div>
           </motion.div>
           
-          {/* Graduation cap */}
           <motion.div 
             className="absolute transform rotate-15 z-30"
             style={{
