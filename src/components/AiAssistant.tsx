@@ -106,7 +106,7 @@ const languageResponses = {
     hello: "Hello in Italian is 'Ciao' (pronounced: chow) for casual greetings. 'Buongiorno' (bwon-jor-no) means 'Good morning/day', and 'Buonasera' (bwon-ah-seh-rah) means 'Good evening'.",
     goodbye: "Goodbye in Italian is 'Arrivederci' (pronounced: ah-ree-veh-dehr-chee). For a more casual goodbye, you can use 'Ciao' again, as it works for both hello and goodbye.",
     thankyou: "Thank you in Italian is 'Grazie' (pronounced: grah-tsee-eh). For 'thank you very much', say 'Grazie mille' (grah-tsee-eh mee-leh).",
-    howareyou: "How are you in Italian is 'Come stai?' (pronounced: koh-meh stai) for informal or 'Come sta?' (koh-meh stah) for formal situations.",
+    howareyou: "How are you in Italian is 'Come stai?' (pronounced: koh-meh stai) for informal or 'Come sta?' (pronounced: koh-meh stah) for formal situations.",
     love: "Love in Italian is 'Amore' (pronounced: ah-mor-eh). To say 'I love you', use 'Ti amo' (tee ah-mo) for romantic relationships or 'Ti voglio bene' (tee vol-yo beh-neh) for family and friends.",
     yes: "Yes in Italian is 'Sì' (pronounced: see).",
     no: "No in Italian is 'No' (pronounced: noh).",
@@ -226,4 +226,4 @@ const grammarExplanations = {
     "Italian adjectives usually agree in gender and number with the noun they modify and typically follow the noun. For example: 'una casa bella' (a beautiful house) vs 'un libro bello' (a beautiful book).",
     "Italian verb conjugation depends on the subject. The main subject pronouns are io (I), tu (you, informal), lui/lei (he/she), noi (we), voi (you, plural), and loro (they).",
     "In Italian, subject pronouns are often omitted because the verb ending already indicates the person: 'Parlo italiano' (I speak Italian) instead of 'Io parlo italiano'.",
-    "Question formation in Italian is often done by changing the intonation of a statement or by using question words (chi, cosa, dove,
+    "Question formation in Italian is often done by changing the intonation of a statement or by using question words (chi
