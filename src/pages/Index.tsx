@@ -42,7 +42,7 @@ const Index = () => {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight text-gray-900 dark:text-white mb-4">
                   Learn a new language with{' '}
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-green-600">
-                    LinguaGame
+                    Wizenko
                   </span>
                 </h1>
                 
@@ -128,7 +128,7 @@ const Index = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white mb-4">
-                Why learn with LinguaGame?
+                Why learn with Wizenko?
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                 Our proven approach makes language learning engaging and effective for millions of users worldwide.
@@ -204,12 +204,12 @@ const Index = () => {
             <div className="flex items-center mb-4 md:mb-0">
               <Globe className="h-6 w-6 text-brand-blue mr-2" />
               <span className="font-display font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-green-600">
-                LinguaGame
+                Wizenko
               </span>
             </div>
             
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              © {new Date().getFullYear()} LinguaGame. All rights reserved.
+              © {new Date().getFullYear()} Wizenko. All rights reserved.
             </p>
           </div>
         </div>
