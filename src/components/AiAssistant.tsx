@@ -112,7 +112,7 @@ const languageResponses = {
     no: "No in Italian is 'No' (pronounced: noh).",
     introduction: "To introduce yourself in Italian, say 'Mi chiamo [your name]' (mee kee-ah-mo), or 'Sono [your name]' (so-no), which both mean 'I am [your name]'.",
     please: "Please in Italian is 'Per favore' (pronounced: pehr fah-vor-eh) or simply 'Per piacere' (pehr pya-cheh-reh).",
-    excuse: "Excuse me in Italian is 'Scusi' (pronounced: skoo-zee) or 'Mi scusi' (mee skoo-zee).",
+    excuse: "Excuse me in Italian is 'Scusi' (pronounced: scusi) or 'Mi scusi' (mee scusi).",
     time: "To ask for the time in Italian, say 'Che ora è?' (pronounced: keh or-ah eh).",
     help: "Help in Italian is 'Aiuto' (pronounced: ah-yoo-toh). To ask for help, say 'Può aiutarmi?' (pwoh ah-yoo-tar-mee) which means 'Can you help me?'.",
     understand: "I understand in Italian is 'Capisco' (pronounced: kah-pee-sko). I don't understand is 'Non capisco' (non kah-pee-sko).",
@@ -226,4 +226,8 @@ const grammarExplanations = {
     "Italian adjectives usually agree in gender and number with the noun they modify and typically follow the noun. For example: 'una casa bella' (a beautiful house) vs 'un libro bello' (a beautiful book).",
     "Italian verb conjugation depends on the subject. The main subject pronouns are io (I), tu (you, informal), lui/lei (he/she), noi (we), voi (you, plural), and loro (they).",
     "In Italian, subject pronouns are often omitted because the verb ending already indicates the person: 'Parlo italiano' (I speak Italian) instead of 'Io parlo italiano'.",
-    "Question formation in Italian is often done by changing the intonation of a statement or by using question words (chi -
+    "Question formation in Italian is often done by changing the intonation of a statement or by using question words (chi - who, cosa - what, come - how, dove - where, quando - when, perché - why) to construct interrogative sentences.",
+    "The word order in Italian questions remains similar to statements, with the question word placed at the beginning or integrated into the sentence."
+  ]
+};
+
