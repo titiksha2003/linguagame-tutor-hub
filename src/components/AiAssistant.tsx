@@ -47,7 +47,7 @@ const languageResponses = {
     yes: "Yes in French is 'Oui' (pronounced: wee). For emphasis, you can say 'Oui, absolument' (wee, ab-so-lu-mahn).",
     no: "No in French is 'Non' (pronounced: nohn).",
     introduction: "To introduce yourself in French, say 'Je m'appelle [your name]' (zhuh mah-pel), which means 'My name is [your name]'.",
-    please: "Please in French is 'S'il vous plaît' (formal, pronounced: seel voo pleh) or 'S'il te plaît' (casual, pronounced: seel tuh pleh).",
+    please: "Please in French is 'S'il vous plaît' (formal, pronounced: seel vou pleh) or 'S'il te plaît' (casual, pronounced: seel tuh pleh).",
     excuse: "Excuse me in French is 'Excusez-moi' (pronounced: ex-kew-zay mwah).",
     time: "To ask for the time in French, say 'Quelle heure est-il?' (pronounced: kel uhr eh-teel).",
     help: "Help in French is 'Aide' (pronounced: ed). To ask for help, say 'Pouvez-vous m'aider?' (poo-vay voo may-day) which means 'Can you help me?'.",
