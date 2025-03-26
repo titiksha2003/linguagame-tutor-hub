@@ -113,7 +113,7 @@ const languageResponses = {
     please: "Please in Italian is 'Per favore' (pronounced: pehr fah-vor-eh) or simply 'Per piacere' (pehr pya-cheh-reh).",
     excuse: "Excuse me in Italian is 'Scusi' (pronounced: scusi) or 'Mi scusi' (mee scusi).",
     time: "To ask for the time in Italian, say 'Che ora è?' (pronounced: keh or-ah eh).",
-    help: "Help in Italian is 'Aiuto' (pronounced: ah-yoo-toh). To ask for help, say 'Può aiutarmi?' (poh-jee mee ah-zhoo-dar-mee) which means 'Can you help me?'.",
+    help: "Help in Italian is 'Aiuto' (pronounced: ah-zhoo-dah). To ask for help, say 'Può aiutarmi?' (poh-jee mee ah-zhoo-dar-mee) which means 'Can you help me?'.",
     understand: "I understand in Italian is 'Capisco' (pronounced: kah-pee-sko). I don't understand is 'Non capisco' (non kah-pee-sko).",
     food: "Some essential food-related Italian words include: ristorante (restaurant, pronounced: ree-stor-ahn-teh), caffè (kaf-feh), menù (meh-noo), il conto (bill, pronounced: eel kon-toh)."
   },
@@ -240,3 +240,4 @@ const AiAssistant = () => {
 };
 
 export default AiAssistant;
+
