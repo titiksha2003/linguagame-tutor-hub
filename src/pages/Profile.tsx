@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Sun, Moon, Upload, LogOut } from 'lucide-react';
+import { Sun, Moon, Upload, LogOut, Globe, BookOpen } from 'lucide-react';
+import LearningButton from '../components/LearningButton';
 
 const Profile = () => {
   const { user, updateUser, logout } = useAuth();
@@ -68,10 +69,10 @@ const Profile = () => {
   
   if (!user) return null;
   
-  // Find user's primary language
-  const currentLanguage = languages.find(lang => 
-    lang.id === progress.currentLanguage
-  );
+  // Get user's learning languages
+  const learningLanguages = user.languages.map(userLang => {
+    return languages.find(lang => lang.id === userLang.id);
+  }).filter(Boolean);
   
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
@@ -143,31 +144,62 @@ const Profile = () => {
                   </div>
                 </div>
                 
-                {/* Language preference */}
-                {currentLanguage && (
-                  <div className="mt-6">
-                    <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                      Current Language
+                {/* Learning languages section */}
+                <div className="mt-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
+                      <BookOpen className="mr-2 h-5 w-5 text-brand-blue" />
+                      Languages You're Learning
                     </h2>
-                    
-                    <div className="flex items-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                      <span className="text-3xl mr-3">{currentLanguage.flag}</span>
-                      <div>
-                        <p className="font-medium text-gray-900 dark:text-white">{currentLanguage.name}</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">{currentLanguage.nativeName}</p>
-                      </div>
-                      
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="ml-auto"
-                        onClick={() => navigate('/courses')}
-                      >
-                        Change
-                      </Button>
-                    </div>
+                    <LearningButton />
                   </div>
-                )}
+                  
+                  {learningLanguages.length > 0 ? (
+                    <div className="space-y-3">
+                      {learningLanguages.map(language => {
+                        if (!language) return null;
+                        const userLang = user.languages.find(l => l.id === language.id);
+                        
+                        return (
+                          <div key={language.id} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                            <div className="flex items-center">
+                              <span className="text-3xl mr-3">{language.flag}</span>
+                              <div>
+                                <p className="font-medium text-gray-900 dark:text-white">{language.name}</p>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">
+                                  Level {userLang?.level || 1} • {userLang?.xp || 0} XP
+                                </p>
+                              </div>
+                            </div>
+                            
+                            <div className="flex items-center">
+                              <div className="hidden sm:block h-1.5 w-24 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden mr-3">
+                                <div 
+                                  className="h-full bg-brand-blue rounded-full"
+                                  style={{ width: `${Math.min((userLang?.xp || 0) % 100) / 100 * 100, 100)}%` }}
+                                />
+                              </div>
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => navigate(`/language/${language.id}`)}
+                              >
+                                Practice
+                              </Button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="p-6 bg-gray-50 dark:bg-gray-700/50 rounded-lg text-center">
+                      <p className="text-gray-500 dark:text-gray-400 mb-3">
+                        You haven't selected any languages to learn yet.
+                      </p>
+                      <LearningButton />
+                    </div>
+                  )}
+                </div>
                 
                 {/* Theme toggle */}
                 <div className="mt-6">
