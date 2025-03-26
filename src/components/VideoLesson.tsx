@@ -2,6 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { useProgress } from '@/contexts/ProgressContext';
 import VideoPlayer from './VideoPlayer';
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, BookOpen, Share2, CheckCircle } from 'lucide-react';
@@ -29,6 +31,10 @@ const VideoLesson = ({
   languageId
 }: VideoLessonProps) => {
   const navigate = useNavigate();
+  const { user, addCompletedLesson } = useAuth();
+  const { markVideoAsWatched, isVideoWatched } = useProgress();
+  
+  const isCompleted = isVideoWatched(videoId);
   
   const handlePracticeTestClick = () => {
     // Navigate to the practice-tests page and set the specific language
@@ -55,7 +61,14 @@ const VideoLesson = ({
   };
   
   const handleMarkComplete = () => {
-    // In a real app, this would update the user's progress
+    // Mark video as watched in progress context
+    markVideoAsWatched(videoId);
+    
+    // If user is logged in, also add completed lesson with some XP
+    if (user) {
+      addCompletedLesson(languageId, videoId, 10);
+    }
+    
     toast.success("Lesson marked as complete!");
   };
   
@@ -117,13 +130,17 @@ const VideoLesson = ({
           </Button>
           
           <Button
-            variant="outline"
+            variant={isCompleted ? "default" : "outline"}
             size="sm"
             onClick={handleMarkComplete}
-            className="text-green-600 border-green-200 hover:bg-green-50 dark:text-green-400 dark:border-green-800 dark:hover:bg-green-900/30"
+            className={isCompleted 
+              ? "bg-green-600 hover:bg-green-700 text-white" 
+              : "text-green-600 border-green-200 hover:bg-green-50 dark:text-green-400 dark:border-green-800 dark:hover:bg-green-900/30"
+            }
+            disabled={isCompleted}
           >
             <CheckCircle className="mr-2 h-4 w-4" />
-            Mark Complete
+            {isCompleted ? "Completed" : "Mark Complete"}
           </Button>
         </div>
       </div>

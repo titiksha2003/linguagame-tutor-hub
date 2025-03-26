@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { toast } from 'sonner';
 
@@ -33,10 +34,30 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Database to store all users
+interface UserDatabase {
+  [email: string]: {
+    password: string;
+    userData: User;
+  };
+}
+
+// Load users from localStorage or initialize empty database
+const loadUserDatabase = (): UserDatabase => {
+  const storedUsers = localStorage.getItem('linguaGameUserDatabase');
+  return storedUsers ? JSON.parse(storedUsers) : {};
+};
+
+// Save users to localStorage
+const saveUserDatabase = (database: UserDatabase) => {
+  localStorage.setItem('linguaGameUserDatabase', JSON.stringify(database));
+};
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [userDatabase, setUserDatabase] = useState<UserDatabase>(loadUserDatabase());
 
   useEffect(() => {
     const storedUser = localStorage.getItem('linguaGameUser');
@@ -52,6 +73,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [user]);
 
+  // Save user database whenever it changes
+  useEffect(() => {
+    saveUserDatabase(userDatabase);
+  }, [userDatabase]);
+
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     setError(null);
@@ -59,6 +85,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // Check if demo account
       if (email === 'demo@example.com' && password === 'password') {
         const mockUser: User = {
           id: '1',
@@ -79,8 +106,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         };
         setUser(mockUser);
         toast.success('Welcome back!');
+      } 
+      // Check if user exists in database
+      else if (userDatabase[email]) {
+        if (userDatabase[email].password === password) {
+          setUser(userDatabase[email].userData);
+          toast.success('Welcome back!');
+        } else {
+          throw new Error('Invalid password');
+        }
       } else {
-        throw new Error('Invalid credentials. Try demo@example.com / password');
+        throw new Error('User not found. Please sign up first.');
       }
     } catch (err) {
       setError((err as Error).message);
@@ -97,6 +133,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // Check if user already exists
+      if (userDatabase[email]) {
+        throw new Error('User with this email already exists');
+      }
+      
       const newUser: User = {
         id: Date.now().toString(),
         name,
@@ -108,6 +149,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         languages: []
       };
       
+      // Add user to database
+      setUserDatabase(prev => ({
+        ...prev,
+        [email]: {
+          password,
+          userData: newUser
+        }
+      }));
+      
+      // Set current user
       setUser(newUser);
       toast.success('Account created successfully!');
     } catch (err) {
@@ -126,7 +177,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const updateUser = (userData: Partial<User>) => {
     if (user) {
-      setUser({ ...user, ...userData });
+      const updatedUser = { ...user, ...userData };
+      setUser(updatedUser);
+      
+      // Update user in database if not demo account
+      if (user.email !== 'demo@example.com' && userDatabase[user.email]) {
+        setUserDatabase(prev => ({
+          ...prev,
+          [user.email]: {
+            ...prev[user.email],
+            userData: updatedUser
+          }
+        }));
+      }
     }
   };
 
@@ -163,11 +226,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       toast.success(`+${xp} XP earned!`);
 
-      return {
+      const updatedUser = {
         ...prevUser,
         languages: updatedLanguages,
         xp: totalXp
       };
+      
+      // Update user in database if not demo account
+      if (prevUser.email !== 'demo@example.com' && userDatabase[prevUser.email]) {
+        setUserDatabase(prev => ({
+          ...prev,
+          [prevUser.email]: {
+            ...prev[prevUser.email],
+            userData: updatedUser
+          }
+        }));
+      }
+
+      return updatedUser;
     });
   };
 
@@ -190,24 +266,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         });
       }
 
-      return {
+      const updatedUser = {
         ...prev,
         languages: updatedLanguages
       };
-    });
-
-    if (user) {
-      const updatedUser = {
-        ...user,
-        languages: user.languages.map(lang => {
-          if (lang.id === languageId) {
-            return { ...lang, level, xp };
+      
+      // Update user in database if not demo account
+      if (prev.email !== 'demo@example.com' && userDatabase[prev.email]) {
+        setUserDatabase(prevDb => ({
+          ...prevDb,
+          [prev.email]: {
+            ...prevDb[prev.email],
+            userData: updatedUser
           }
-          return lang;
-        })
-      };
-      localStorage.setItem('linguaGameUser', JSON.stringify(updatedUser));
-    }
+        }));
+      }
+
+      return updatedUser;
+    });
   };
 
   const removeLanguage = (languageId: string) => {
@@ -216,19 +292,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       
       const updatedLanguages = prev.languages.filter(lang => lang.id !== languageId);
       
-      return {
+      const updatedUser = {
         ...prev,
         languages: updatedLanguages
       };
-    });
+      
+      // Update user in database if not demo account
+      if (prev.email !== 'demo@example.com' && userDatabase[prev.email]) {
+        setUserDatabase(prevDb => ({
+          ...prevDb,
+          [prev.email]: {
+            ...prevDb[prev.email],
+            userData: updatedUser
+          }
+        }));
+      }
 
-    if (user) {
-      const updatedUser = {
-        ...user,
-        languages: user.languages.filter(lang => lang.id !== languageId)
-      };
-      localStorage.setItem('linguaGameUser', JSON.stringify(updatedUser));
-    }
+      return updatedUser;
+    });
   };
 
   const updateUserLevel = (languageId: string, newLevel: number) => {
@@ -242,24 +323,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return lang;
       });
       
-      return {
+      const updatedUser = {
         ...prev,
         languages: updatedLanguages
       };
-    });
-    
-    if (user) {
-      const updatedUser = {
-        ...user,
-        languages: user.languages.map(lang => {
-          if (lang.id === languageId) {
-            return { ...lang, level: newLevel };
+      
+      // Update user in database if not demo account
+      if (prev.email !== 'demo@example.com' && userDatabase[prev.email]) {
+        setUserDatabase(prevDb => ({
+          ...prevDb,
+          [prev.email]: {
+            ...prevDb[prev.email],
+            userData: updatedUser
           }
-          return lang;
-        })
-      };
-      localStorage.setItem('linguaGameUser', JSON.stringify(updatedUser));
-    }
+        }));
+      }
+
+      return updatedUser;
+    });
   };
 
   const value = {
