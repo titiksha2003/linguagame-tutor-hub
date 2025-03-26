@@ -1,4 +1,3 @@
-
 export interface VideoLesson {
   id: string;
   title: string;
@@ -947,7 +946,7 @@ export const videoLessons: LanguageVideos[] = [
       },
       {
         id: "portuguese-video-13",
-        title: "Portuguese Lesson 13 - Shopping",
+        title: "Portuguese Lesson 13 - Shopping Vocabulary",
         description: "Words and phrases for shopping in Portuguese.",
         videoId: "CcqUSYOGSVQ",
         languageId: "portuguese",
@@ -1007,6 +1006,504 @@ export const videoLessons: LanguageVideos[] = [
         description: "Common idiomatic expressions in Portuguese.",
         videoId: "rHwNPzyHVQw",
         languageId: "portuguese",
+        order: 20
+      }
+    ]
+  },
+  {
+    languageId: "hindi",
+    playlistUrl: "https://www.youtube.com/watch?v=ctq6UQ5RRjk&list=PLOZKbRUo1Hv_05LhV58HOZgSLrClIvQwm",
+    videos: [
+      {
+        id: "hindi-video-1",
+        title: "Hindi Lesson 1 - Introduction to Hindi",
+        description: "Learn the basics of Hindi language with this introductory lesson.",
+        videoId: "ctq6UQ5RRjk",
+        languageId: "hindi",
+        order: 1
+      },
+      {
+        id: "hindi-video-2",
+        title: "Hindi Lesson 2 - Devanagari Script Basics",
+        description: "Learn the fundamentals of the Devanagari script used in Hindi.",
+        videoId: "5wdH6WxF7X4",
+        languageId: "hindi",
+        order: 2
+      },
+      {
+        id: "hindi-video-3",
+        title: "Hindi Lesson 3 - Common Greetings",
+        description: "Learn essential greetings and phrases in Hindi.",
+        videoId: "xQZQ6is7SuU",
+        languageId: "hindi",
+        order: 3
+      },
+      {
+        id: "hindi-video-4",
+        title: "Hindi Lesson 4 - Numbers and Counting",
+        description: "Learn to count and use numbers in Hindi.",
+        videoId: "-DGCrffTDp0",
+        languageId: "hindi",
+        order: 4
+      },
+      {
+        id: "hindi-video-5",
+        title: "Hindi Lesson 5 - Basic Phrases",
+        description: "Learn common phrases for everyday situations in Hindi.",
+        videoId: "Z18R6u97vqY",
+        languageId: "hindi",
+        order: 5
+      },
+      {
+        id: "hindi-video-6",
+        title: "Hindi Lesson 6 - Family Vocabulary",
+        description: "Learn words for family members in Hindi.",
+        videoId: "0cHV8D7FypU",
+        languageId: "hindi",
+        order: 6
+      },
+      {
+        id: "hindi-video-7",
+        title: "Hindi Lesson 7 - Food and Dining",
+        description: "Essential food vocabulary and dining phrases in Hindi.",
+        videoId: "KdmkCvG4PuU",
+        languageId: "hindi",
+        order: 7
+      },
+      {
+        id: "hindi-video-8",
+        title: "Hindi Lesson 8 - Days and Months",
+        description: "Learn days of the week and months in Hindi.",
+        videoId: "9svwAhZ_TPA",
+        languageId: "hindi",
+        order: 8
+      },
+      {
+        id: "hindi-video-9",
+        title: "Hindi Lesson 9 - Telling Time",
+        description: "Learn how to tell time in Hindi.",
+        videoId: "e17YhTlVxKM",
+        languageId: "hindi",
+        order: 9
+      },
+      {
+        id: "hindi-video-10",
+        title: "Hindi Lesson 10 - Basic Conversations",
+        description: "Practice simple conversations in Hindi.",
+        videoId: "N7D4aFfHsP0",
+        languageId: "hindi",
+        order: 10
+      },
+      {
+        id: "hindi-video-11",
+        title: "Hindi Lesson 11 - Verbs and Actions",
+        description: "Learn common verbs and action words in Hindi.",
+        videoId: "MRG3lctIhKs",
+        languageId: "hindi",
+        order: 11
+      },
+      {
+        id: "hindi-video-12",
+        title: "Hindi Lesson 12 - Weather Expressions",
+        description: "Talk about weather in Hindi.",
+        videoId: "pQXpQfm1mHE",
+        languageId: "hindi",
+        order: 12
+      },
+      {
+        id: "hindi-video-13",
+        title: "Hindi Lesson 13 - Shopping Vocabulary",
+        description: "Essential shopping vocabulary in Hindi.",
+        videoId: "JDaZgZVOLLs",
+        languageId: "hindi",
+        order: 13
+      },
+      {
+        id: "hindi-video-14",
+        title: "Hindi Lesson 14 - Travel Phrases",
+        description: "Learn useful travel phrases in Hindi.",
+        videoId: "p8PqHIPJ4pA",
+        languageId: "hindi",
+        order: 14
+      },
+      {
+        id: "hindi-video-15",
+        title: "Hindi Lesson 15 - Describing People",
+        description: "Learn to describe people in Hindi.",
+        videoId: "uEFUnb5S4Zo",
+        languageId: "hindi",
+        order: 15
+      },
+      {
+        id: "hindi-video-16",
+        title: "Hindi Lesson 16 - Directions",
+        description: "Asking for and giving directions in Hindi.",
+        videoId: "LJ4jbwxGIUg",
+        languageId: "hindi",
+        order: 16
+      },
+      {
+        id: "hindi-video-17",
+        title: "Hindi Lesson 17 - Hobbies and Interests",
+        description: "Discussing hobbies and interests in Hindi.",
+        videoId: "6yIGJGMPeMM",
+        languageId: "hindi",
+        order: 17
+      },
+      {
+        id: "hindi-video-18",
+        title: "Hindi Lesson 18 - Simple Past Tense",
+        description: "Learn about past tense in Hindi.",
+        videoId: "0PxaE_WyI_I",
+        languageId: "hindi",
+        order: 18
+      },
+      {
+        id: "hindi-video-19",
+        title: "Hindi Lesson 19 - Future Tense",
+        description: "Express future actions in Hindi.",
+        videoId: "qXc184AQt4k",
+        languageId: "hindi",
+        order: 19
+      },
+      {
+        id: "hindi-video-20",
+        title: "Hindi Lesson 20 - Common Expressions",
+        description: "Learn common expressions and idioms in Hindi.",
+        videoId: "Y6wZ-s1UASs",
+        languageId: "hindi",
+        order: 20
+      }
+    ]
+  },
+  {
+    languageId: "english",
+    playlistUrl: "https://www.youtube.com/watch?v=juKd26qkNAw&list=PL55B3H6jTZKUQh_GrrOcKLqCY8q2tYiKM",
+    videos: [
+      {
+        id: "english-video-1",
+        title: "English Lesson 1 - Introduction for Beginners",
+        description: "Start your journey to English fluency with this introductory lesson.",
+        videoId: "juKd26qkNAw",
+        languageId: "english",
+        order: 1
+      },
+      {
+        id: "english-video-2",
+        title: "English Lesson 2 - Greetings and Introductions",
+        description: "Learn common greetings and how to introduce yourself in English.",
+        videoId: "xkQ3M6UjCsE",
+        languageId: "english",
+        order: 2
+      },
+      {
+        id: "english-video-3",
+        title: "English Lesson 3 - Basic Conversations",
+        description: "Practice basic conversation patterns in English.",
+        videoId: "NMzC0-y4oXE",
+        languageId: "english",
+        order: 3
+      },
+      {
+        id: "english-video-4",
+        title: "English Lesson 4 - Numbers and Counting",
+        description: "Learn to count and use numbers in English.",
+        videoId: "zbhK8LgH-lQ",
+        languageId: "english",
+        order: 4
+      },
+      {
+        id: "english-video-5",
+        title: "English Lesson 5 - Present Simple Tense",
+        description: "Learn the present simple tense in English grammar.",
+        videoId: "VbA-xYptgU0",
+        languageId: "english",
+        order: 5
+      },
+      {
+        id: "english-video-6",
+        title: "English Lesson 6 - Family Vocabulary",
+        description: "Learn vocabulary for family relationships in English.",
+        videoId: "FSwfN-Fo2Fc",
+        languageId: "english",
+        order: 6
+      },
+      {
+        id: "english-video-7",
+        title: "English Lesson 7 - Food and Dining",
+        description: "Essential food vocabulary and restaurant phrases in English.",
+        videoId: "ZA64QaiE9Hk",
+        languageId: "english",
+        order: 7
+      },
+      {
+        id: "english-video-8",
+        title: "English Lesson 8 - Days, Months, and Seasons",
+        description: "Learn days, months, and seasons in English.",
+        videoId: "nnLR5hcBMQY",
+        languageId: "english",
+        order: 8
+      },
+      {
+        id: "english-video-9",
+        title: "English Lesson 9 - Telling Time",
+        description: "Learn how to tell time in English.",
+        videoId: "h8Q7MAKdc3A",
+        languageId: "english",
+        order: 9
+      },
+      {
+        id: "english-video-10",
+        title: "English Lesson 10 - Present Continuous Tense",
+        description: "Learn the present continuous tense in English.",
+        videoId: "D1LcnUv6NbM",
+        languageId: "english",
+        order: 10
+      },
+      {
+        id: "english-video-11",
+        title: "English Lesson 11 - Common Verbs",
+        description: "Learn common verbs and their usage in English.",
+        videoId: "vJQb-jNRsnY",
+        languageId: "english",
+        order: 11
+      },
+      {
+        id: "english-video-12",
+        title: "English Lesson 12 - Weather Expressions",
+        description: "Talk about weather in English.",
+        videoId: "KazVQfP4MK0",
+        languageId: "english",
+        order: 12
+      },
+      {
+        id: "english-video-13",
+        title: "English Lesson 13 - Shopping Vocabulary",
+        description: "Essential shopping vocabulary in English.",
+        videoId: "qKJl11EZT8g",
+        languageId: "english",
+        order: 13
+      },
+      {
+        id: "english-video-14",
+        title: "English Lesson 14 - Past Simple Tense",
+        description: "Learn the past simple tense in English.",
+        videoId: "gdnSsimcJNE",
+        languageId: "english",
+        order: 14
+      },
+      {
+        id: "english-video-15",
+        title: "English Lesson 15 - Describing People",
+        description: "Learn to describe people's appearance and personality in English.",
+        videoId: "gVaW4KEZgDU",
+        languageId: "english",
+        order: 15
+      },
+      {
+        id: "english-video-16",
+        title: "English Lesson 16 - Asking for Directions",
+        description: "Learn to ask for and give directions in English.",
+        videoId: "PWSx0NUBYpw",
+        languageId: "english",
+        order: 16
+      },
+      {
+        id: "english-video-17",
+        title: "English Lesson 17 - Hobbies and Free Time",
+        description: "Discuss hobbies and leisure activities in English.",
+        videoId: "NF5EcHtPqdU",
+        languageId: "english",
+        order: 17
+      },
+      {
+        id: "english-video-18",
+        title: "English Lesson 18 - Future Tense",
+        description: "Learn to talk about future plans in English.",
+        videoId: "9sWKK6diJH4",
+        languageId: "english",
+        order: 18
+      },
+      {
+        id: "english-video-19",
+        title: "English Lesson 19 - Modal Verbs",
+        description: "Learn modal verbs like can, could, must in English.",
+        videoId: "ko6CktOUOXI",
+        languageId: "english",
+        order: 19
+      },
+      {
+        id: "english-video-20",
+        title: "English Lesson 20 - Common Phrases and Idioms",
+        description: "Learn everyday expressions and idioms in English.",
+        videoId: "8H-lRgE2NVY",
+        languageId: "english",
+        order: 20
+      }
+    ]
+  },
+  {
+    languageId: "korean",
+    playlistUrl: "https://www.youtube.com/watch?v=N8mXasK3Yww&list=PLxL_SuFq4-Y_IdIFUMH8_XJQoXUeOH37v",
+    videos: [
+      {
+        id: "korean-video-1",
+        title: "Korean Lesson 1 - Introduction to Korean",
+        description: "Begin your journey learning Korean with this introductory lesson.",
+        videoId: "N8mXasK3Yww",
+        languageId: "korean",
+        order: 1
+      },
+      {
+        id: "korean-video-2",
+        title: "Korean Lesson 2 - Hangul Alphabet Basics",
+        description: "Learn the Korean alphabet (Hangul) fundamentals.",
+        videoId: "PukQI54JWoI",
+        languageId: "korean",
+        order: 2
+      },
+      {
+        id: "korean-video-3",
+        title: "Korean Lesson 3 - Basic Greetings",
+        description: "Learn essential greetings in Korean.",
+        videoId: "YzXKZd5r5zs",
+        languageId: "korean",
+        order: 3
+      },
+      {
+        id: "korean-video-4",
+        title: "Korean Lesson 4 - Self Introduction",
+        description: "Learn how to introduce yourself in Korean.",
+        videoId: "g7xz5wgiwAQ",
+        languageId: "korean",
+        order: 4
+      },
+      {
+        id: "korean-video-5",
+        title: "Korean Lesson 5 - Numbers in Korean",
+        description: "Learn how to count in Korean (both native and Sino-Korean numbers).",
+        videoId: "uFMV_iZKvso",
+        languageId: "korean",
+        order: 5
+      },
+      {
+        id: "korean-video-6",
+        title: "Korean Lesson 6 - Basic Phrases",
+        description: "Learn useful everyday expressions in Korean.",
+        videoId: "ZEFgsNr5hfA",
+        languageId: "korean",
+        order: 6
+      },
+      {
+        id: "korean-video-7",
+        title: "Korean Lesson 7 - Food and Restaurants",
+        description: "Learn vocabulary for food and dining in Korean.",
+        videoId: "oKW7TlxLM8I",
+        languageId: "korean",
+        order: 7
+      },
+      {
+        id: "korean-video-8",
+        title: "Korean Lesson 8 - Time and Calendar",
+        description: "Learn to express time, days, and dates in Korean.",
+        videoId: "vBjVuwgn9ZQ",
+        languageId: "korean",
+        order: 8
+      },
+      {
+        id: "korean-video-9",
+        title: "Korean Lesson 9 - Basic Verbs",
+        description: "Learn essential verbs in Korean.",
+        videoId: "A3h-yk8DxJw",
+        languageId: "korean",
+        order: 9
+      },
+      {
+        id: "korean-video-10",
+        title: "Korean Lesson 10 - Particles in Korean",
+        description: "Learn about particles (markers) in Korean grammar.",
+        videoId: "iJtF9OLsAws",
+        languageId: "korean",
+        order: 10
+      },
+      {
+        id: "korean-video-11",
+        title: "Korean Lesson 11 - Family Terms",
+        description: "Learn vocabulary for family members in Korean.",
+        videoId: "pV4gcGQ6dO0",
+        languageId: "korean",
+        order: 11
+      },
+      {
+        id: "korean-video-12",
+        title: "Korean Lesson 12 - Weather Expressions",
+        description: "Talk about weather in Korean.",
+        videoId: "qxAymS_BvFY",
+        languageId: "korean",
+        order: 12
+      },
+      {
+        id: "korean-video-13",
+        title: "Korean Lesson 13 - Shopping Vocabulary",
+        description: "Essential shopping vocabulary in Korean.",
+        videoId: "Q-AWZZOb4Vw",
+        languageId: "korean",
+        order: 13
+      },
+      {
+        id: "korean-video-14",
+        title: "Korean Lesson 14 - Travel Phrases",
+        description: "Learn useful travel phrases in Korean.",
+        videoId: "k6sHSDxKc8I",
+        languageId: "korean",
+        order: 14
+      },
+      {
+        id: "korean-video-15",
+        title: "Korean Lesson 15 - Past Tense",
+        description: "Learn to express past actions in Korean.",
+        videoId: "5h4CqXZKCpI",
+        languageId: "korean",
+        order: 15
+      },
+      {
+        id: "korean-video-16",
+        title: "Korean Lesson 16 - Future Tense",
+        description: "Express future actions in Korean.",
+        videoId: "PwrW9V-aG8M",
+        languageId: "korean",
+        order: 16
+      },
+      {
+        id: "korean-video-17",
+        title: "Korean Lesson 17 - Hobbies and Interests",
+        description: "Talk about hobbies and interests in Korean.",
+        videoId: "OlOG9i_BP_o",
+        languageId: "korean",
+        order: 17
+      },
+      {
+        id: "korean-video-18",
+        title: "Korean Lesson 18 - Describing People",
+        description: "Learn to describe people in Korean.",
+        videoId: "8H5UiUZq5X0",
+        languageId: "korean",
+        order: 18
+      },
+      {
+        id: "korean-video-19",
+        title: "Korean Lesson 19 - Honorifics in Korean",
+        description: "Understanding the honorific system in Korean.",
+        videoId: "wTVfbl1jKmA",
+        languageId: "korean",
+        order: 19
+      },
+      {
+        id: "korean-video-20",
+        title: "Korean Lesson 20 - Common Expressions",
+        description: "Learn common idiomatic expressions in Korean.",
+        videoId: "8XnvAa9Ooec",
+        languageId: "korean",
         order: 20
       }
     ]

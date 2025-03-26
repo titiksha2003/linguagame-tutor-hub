@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer';
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
+import { ChevronLeft, ChevronRight, BookOpen, Share2, CheckCircle } from 'lucide-react';
+import { toast } from "sonner";
 
 interface VideoLessonProps {
   videoId: string;
@@ -34,6 +35,30 @@ const VideoLesson = ({
     navigate(`/practice-tests`, { state: { selectedLanguage: languageId } });
   };
   
+  const handleShareVideo = () => {
+    const videoUrl = `https://youtube.com/watch?v=${videoId}`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        text: `Check out this ${title} video lesson!`,
+        url: videoUrl,
+      })
+      .then(() => toast.success("Video shared successfully!"))
+      .catch((error) => console.log('Error sharing', error));
+    } else {
+      // Fallback for browsers that don't support the Web Share API
+      navigator.clipboard.writeText(videoUrl)
+        .then(() => toast.success("Video link copied to clipboard!"))
+        .catch(() => toast.error("Failed to copy link"));
+    }
+  };
+  
+  const handleMarkComplete = () => {
+    // In a real app, this would update the user's progress
+    toast.success("Lesson marked as complete!");
+  };
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -50,7 +75,7 @@ const VideoLesson = ({
           <p className="text-gray-600 dark:text-gray-300 mb-6">{description}</p>
         )}
         
-        <div className="flex flex-wrap gap-3 justify-between">
+        <div className="flex flex-wrap gap-3 justify-between mb-4">
           <Button
             variant="outline"
             onClick={onPrevious}
@@ -77,6 +102,28 @@ const VideoLesson = ({
           >
             Next Lesson
             <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+        
+        <div className="flex flex-wrap gap-3 mt-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleShareVideo}
+            className="text-blue-600 border-blue-200 hover:bg-blue-50 dark:text-blue-400 dark:border-blue-800 dark:hover:bg-blue-900/30"
+          >
+            <Share2 className="mr-2 h-4 w-4" />
+            Share Lesson
+          </Button>
+          
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleMarkComplete}
+            className="text-green-600 border-green-200 hover:bg-green-50 dark:text-green-400 dark:border-green-800 dark:hover:bg-green-900/30"
+          >
+            <CheckCircle className="mr-2 h-4 w-4" />
+            Mark Complete
           </Button>
         </div>
       </div>
