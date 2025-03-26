@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { toast } from 'sonner';
 
@@ -78,6 +77,49 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     saveUserDatabase(userDatabase);
   }, [userDatabase]);
 
+  const signup = async (name: string, email: string, password: string) => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Check if user already exists
+      if (userDatabase[email]) {
+        throw new Error('User with this email already exists');
+      }
+      
+      const newUser: User = {
+        id: Date.now().toString(),
+        name,
+        email,
+        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${name.replace(/\s/g, '')}&backgroundColor=c0aede,f9d1a2,fada5e`,
+        xp: 0,
+        streak: 0,
+        dailyGoal: 20,
+        languages: []
+      };
+      
+      // Add user to database
+      setUserDatabase(prev => ({
+        ...prev,
+        [email]: {
+          password,
+          userData: newUser
+        }
+      }));
+      
+      // Set current user
+      setUser(newUser);
+      toast.success('Account created successfully!');
+    } catch (err) {
+      setError((err as Error).message);
+      toast.error((err as Error).message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     setError(null);
@@ -91,7 +133,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           id: '1',
           name: 'Demo User',
           email: 'demo@example.com',
-          avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${Math.random()}`,
+          avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=DemoUser&backgroundColor=c0aede,f9d1a2,fada5e`,
           xp: 120,
           streak: 5,
           dailyGoal: 20,
@@ -118,49 +160,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } else {
         throw new Error('User not found. Please sign up first.');
       }
-    } catch (err) {
-      setError((err as Error).message);
-      toast.error((err as Error).message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const signup = async (name: string, email: string, password: string) => {
-    setIsLoading(true);
-    setError(null);
-    
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Check if user already exists
-      if (userDatabase[email]) {
-        throw new Error('User with this email already exists');
-      }
-      
-      const newUser: User = {
-        id: Date.now().toString(),
-        name,
-        email,
-        avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${Math.random()}`,
-        xp: 0,
-        streak: 0,
-        dailyGoal: 20,
-        languages: []
-      };
-      
-      // Add user to database
-      setUserDatabase(prev => ({
-        ...prev,
-        [email]: {
-          password,
-          userData: newUser
-        }
-      }));
-      
-      // Set current user
-      setUser(newUser);
-      toast.success('Account created successfully!');
     } catch (err) {
       setError((err as Error).message);
       toast.error((err as Error).message);
