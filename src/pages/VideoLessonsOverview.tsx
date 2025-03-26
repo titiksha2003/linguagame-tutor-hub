@@ -5,8 +5,9 @@ import { languages } from '../data/languages';
 import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { ArrowLeft, Play } from 'lucide-react';
+import { ArrowLeft, Play, BookOpen } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const VideoLessonsOverview = () => {
   const navigate = useNavigate();
@@ -44,8 +45,9 @@ const VideoLessonsOverview = () => {
           
           {user && userLanguages.length > 0 && (
             <>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Languages You're Learning
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                <BookOpen className="h-5 w-5 text-primary" />
+                Currently Learning
               </h2>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
@@ -97,11 +99,13 @@ const VideoLessonsOverview = () => {
                   </motion.div>
                 ))}
               </div>
+              
+              <Separator className="my-8" />
             </>
           )}
           
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            {user && userLanguages.length > 0 ? "Languages to Discover" : "Available Languages"}
+            {user && userLanguages.length > 0 ? "Available Languages" : "All Languages"}
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

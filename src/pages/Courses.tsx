@@ -1,7 +1,6 @@
 
 import { motion } from 'framer-motion';
 import { languages } from '../data/languages';
-import LanguageCard from '../components/LanguageCard';
 import Header from '../components/Header';
 import { ArrowLeft, Play, CheckSquare, Globe, BookOpen } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -44,7 +43,7 @@ const Courses = () => {
               <div className="flex items-center gap-2 mb-6">
                 <BookOpen className="h-5 w-5 text-primary" />
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Languages You're Learning
+                  Currently Learning
                 </h2>
               </div>
               
@@ -120,13 +119,68 @@ const Courses = () => {
           <div className="flex items-center gap-2 mb-6">
             <Globe className="h-5 w-5 text-primary" />
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              {user && userLanguages.length > 0 ? 'Languages to Discover' : 'Choose a language'}
+              {user && userLanguages.length > 0 ? 'Available Languages' : 'Choose a language'}
             </h1>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherLanguages.map((language, index) => (
-              <LanguageCard key={language.id} language={language} index={index} />
+              <motion.div 
+                key={language.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="cursor-pointer"
+                onClick={() => navigate(`/course/${language.id}`)}
+              >
+                <div 
+                  className="group overflow-hidden rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow"
+                  style={{ borderTopColor: language.color, borderTopWidth: '4px' }}
+                >
+                  <div className="p-6">
+                    <div className="flex items-start justify-between">
+                      <div className="flex space-x-3 items-center">
+                        <span className="text-3xl">{language.flag}</span>
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                            {language.name}
+                          </h3>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            {language.nativeName}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 flex flex-col space-y-2">
+                          <Button 
+                            className="w-full" 
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/videos/${language.id}`);
+                            }}
+                          >
+                            <Play className="mr-2 h-4 w-4" />
+                            Watch Video Lessons
+                          </Button>
+                          
+                          <Button 
+                            variant="outline" 
+                            className="w-full" 
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/course/${language.id}`);
+                            }}
+                          >
+                            <CheckSquare className="mr-2 h-4 w-4" />
+                            Practice Tests
+                          </Button>
+                        </div>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>

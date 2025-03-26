@@ -7,8 +7,9 @@ import { languages } from '../data/languages';
 import LanguageCard from '../components/LanguageCard';
 import UserProgress from '../components/UserProgress';
 import Header from '../components/Header';
-import { ArrowRight, Flame, Trophy, Play, CheckSquare, BookOpen } from 'lucide-react';
+import { ArrowRight, Flame, Trophy, Play, CheckSquare, BookOpen, Globe } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -166,11 +167,11 @@ const Dashboard = () => {
                   
                   <div className="mt-4 space-y-3">
                     {[
-                      { name: 'Sofia Garcia', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=1', xp: 450 },
+                      { name: 'Sofia Garcia', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SofiaGarcia&backgroundColor=c0aede,f9d1a2,fada5e', xp: 450 },
                       { name: 'Demo User', avatar: user.avatar, xp: user.xp, isCurrentUser: true },
-                      { name: 'Alex Kim', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=2', xp: 320 },
-                      { name: 'Maria Lopez', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=3', xp: 180 },
-                      { name: 'John Smith', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=4', xp: 150 }
+                      { name: 'Alex Kim', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AlexKim&backgroundColor=c0aede,f9d1a2,fada5e', xp: 320 },
+                      { name: 'Maria Lopez', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MariaLopez&backgroundColor=c0aede,f9d1a2,fada5e', xp: 180 },
+                      { name: 'John Smith', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JohnSmith&backgroundColor=c0aede,f9d1a2,fada5e', xp: 150 }
                     ].sort((a, b) => b.xp - a.xp).map((leader, index) => (
                       <div 
                         key={index}
@@ -220,8 +221,9 @@ const Dashboard = () => {
             <div className="md:w-2/3">
               {userLanguages.length > 0 && (
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                    Continue learning
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                    <BookOpen className="h-5 w-5 text-primary" />
+                    Currently Learning
                   </h2>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -229,32 +231,37 @@ const Dashboard = () => {
                       <LanguageCard key={language.id} language={language} index={index} />
                     ))}
                   </div>
+                  
+                  {otherLanguages.length > 0 && <Separator className="my-8" />}
                 </div>
               )}
               
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  {userLanguages.length > 0 ? 'Start a new language' : 'Choose a language to learn'}
-                </h2>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {otherLanguages.slice(0, 6).map((language, index) => (
-                    <LanguageCard key={language.id} language={language} index={index} />
-                  ))}
-                </div>
-                
-                {otherLanguages.length > 6 && (
-                  <div className="mt-6 text-center">
-                    <Button
-                      variant="outline"
-                      onClick={() => navigate('/courses')}
-                    >
-                      View all languages
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+              {otherLanguages.length > 0 && (
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                    <Globe className="h-5 w-5 text-primary" />
+                    {userLanguages.length > 0 ? 'Available Languages' : 'Choose a language to learn'}
+                  </h2>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {otherLanguages.slice(0, 6).map((language, index) => (
+                      <LanguageCard key={language.id} language={language} index={index} />
+                    ))}
                   </div>
-                )}
-              </div>
+                  
+                  {otherLanguages.length > 6 && (
+                    <div className="mt-6 text-center">
+                      <Button
+                        variant="outline"
+                        onClick={() => navigate('/courses')}
+                      >
+                        View all languages
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
