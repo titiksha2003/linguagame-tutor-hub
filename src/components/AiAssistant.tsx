@@ -226,4 +226,4 @@ const grammarExplanations = {
     "Italian adjectives usually agree in gender and number with the noun they modify and typically follow the noun. For example: 'una casa bella' (a beautiful house) vs 'un libro bello' (a beautiful book).",
     "Italian verb conjugation depends on the subject. The main subject pronouns are io (I), tu (you, informal), lui/lei (he/she), noi (we), voi (you, plural), and loro (they).",
     "In Italian, subject pronouns are often omitted because the verb ending already indicates the person: 'Parlo italiano' (I speak Italian) instead of 'Io parlo italiano'.",
-    "Question formation in Italian is often done by changing the intonation of a statement or by using question words (chi, cosa
+    "Question formation in Italian is often done by changing the intonation of a statement or by using question words (chi, cosa, dove,
