@@ -18,27 +18,30 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
       container: 'h-8 w-8',
       eyes: 'h-1.5 w-1.5',
       beak: 'h-2.5 w-2.5',
-      wings: 'h-3 w-3',
+      wings: 'h-3 w-2.5',
       book: 'h-2 w-2.5',
       glasses: 'h-1 w-3',
+      tail: 'h-2 w-1.5',
       spacing: 'space-x-1.5'
     },
     md: {
       container: 'h-10 w-10',
       eyes: 'h-2 w-2',
       beak: 'h-3 w-3',
-      wings: 'h-4 w-4',
+      wings: 'h-4 w-3',
       book: 'h-3 w-4',
       glasses: 'h-1.5 w-4',
+      tail: 'h-2.5 w-2',
       spacing: 'space-x-2'
     },
     lg: {
       container: 'h-16 w-16',
       eyes: 'h-3 w-3',
       beak: 'h-5 w-5',
-      wings: 'h-6 w-6',
+      wings: 'h-6 w-4.5',
       book: 'h-5 w-6',
       glasses: 'h-2 w-6',
+      tail: 'h-4 w-3',
       spacing: 'space-x-3'
     }
   };
@@ -66,42 +69,80 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
   return (
     <Link to="/" className={`flex items-center space-x-2 group ${className}`}>
       <div className="relative" ref={birdRef}>
+        {/* Bird body - no longer a perfect circle, more oval shaped */}
         <motion.div
-          className={`${sizes[size].container} rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center relative shadow-md overflow-visible`}
+          className={`${sizes[size].container} rounded-2xl bg-[#6EC5E9] dark:bg-[#5DAED2] flex items-center justify-center relative shadow-md overflow-visible`}
+          initial={{ scale: 1 }}
           whileHover={{ scale: 1.1 }}
           transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+          style={{ 
+            borderTopLeftRadius: '60%', 
+            borderTopRightRadius: '60%',
+            borderBottomLeftRadius: '50%', 
+            borderBottomRightRadius: '50%',
+          }}
         >
-          {/* Bird wings */}
+          {/* Bird wings - reshaped to look more like wings */}
           <motion.div 
-            className={`absolute -left-2 top-1/2 transform -translate-y-1/2 ${sizes[size].wings} rounded-full bg-sky-300`}
+            className={`absolute -left-1.5 top-1/2 transform -translate-y-1/3 ${sizes[size].wings} bg-[#9CDBF3] dark:bg-[#7EC3E9]`}
+            style={{ 
+              borderRadius: '60% 20% 60% 30%',
+              transformOrigin: 'right center'
+            }}
             animate={{ 
-              rotate: [-5, -25, -5],
+              rotate: [-5, -20, -5],
               scale: [1, 0.95, 1]
             }}
             transition={{ 
               repeat: Infinity, 
-              duration: 1.5,
+              duration: 1.8,
               ease: "easeInOut" 
             }}
           />
           <motion.div 
-            className={`absolute -right-2 top-1/2 transform -translate-y-1/2 ${sizes[size].wings} rounded-full bg-sky-300`}
+            className={`absolute -right-1.5 top-1/2 transform -translate-y-1/3 ${sizes[size].wings} bg-[#9CDBF3] dark:bg-[#7EC3E9]`}
+            style={{ 
+              borderRadius: '20% 60% 30% 60%',
+              transformOrigin: 'left center'
+            }}
             animate={{ 
-              rotate: [5, 25, 5],
+              rotate: [5, 20, 5],
               scale: [1, 0.95, 1]
             }}
             transition={{ 
               repeat: Infinity, 
-              duration: 1.5,
+              duration: 1.8,
+              ease: "easeInOut" 
+            }}
+          />
+          
+          {/* Bird tail - more prominent */}
+          <motion.div 
+            className={`absolute bg-[#9CDBF3] dark:bg-[#7EC3E9] ${sizes[size].tail}`}
+            style={{ 
+              bottom: '15%',
+              right: '-20%',
+              borderRadius: '20% 50% 50% 20%',
+              transform: 'rotate(20deg)'
+            }}
+            animate={{ 
+              rotate: [20, 35, 20, 5, 20],
+              x: [0, 1, 0, -1, 0]
+            }}
+            transition={{ 
+              repeat: Infinity, 
+              duration: 2.5,
               ease: "easeInOut" 
             }}
           />
           
           {/* Face */}
           <motion.div 
-            className={`flex ${sizes[size].spacing} items-center justify-center`}
+            className="absolute flex flex-col items-center justify-center"
+            style={{ top: '30%' }}
             animate={{
-              y: [0, -2, 0, -2, 0] // Nodding motion
+              y: [0, -2, 0, -2, 0], // Nodding motion
+              rotate: [-5, 5, -5] // Head tilt
             }}
             transition={{
               repeat: Infinity,
@@ -112,7 +153,8 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
           >
             {/* Glasses */}
             <motion.div 
-              className={`absolute ${size === 'sm' ? 'top-[35%]' : 'top-[36%]'} ${sizes[size].glasses} h-[0.15rem] bg-amber-900 rounded-full z-10`}
+              className={`absolute ${sizes[size].glasses} h-[0.15rem] bg-amber-900 rounded-full z-10`}
+              style={{ top: '45%' }}
               initial={{ opacity: 0, y: -5 }}
               animate={{ 
                 opacity: 1,
@@ -125,55 +167,60 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
             />
             
             {/* Eyes with glasses */}
-            <motion.div 
-              className={`${sizes[size].eyes} rounded-full bg-white flex items-center justify-center relative z-0`}
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ 
-                repeat: Infinity, 
-                repeatType: "reverse", 
-                duration: 3
-              }}
-            >
-              <div className="h-1/2 w-1/2 rounded-full bg-gray-900" />
+            <div className={`flex ${sizes[size].spacing} relative z-20`}>
               <motion.div 
-                className="absolute inset-0 border-2 border-amber-900 rounded-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              />
-            </motion.div>
-            
-            <motion.div 
-              className={`${sizes[size].eyes} rounded-full bg-white flex items-center justify-center relative z-0`}
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ 
-                repeat: Infinity, 
-                repeatType: "reverse", 
-                duration: 3
-              }}
-            >
-              <div className="h-1/2 w-1/2 rounded-full bg-gray-900" />
+                className={`${sizes[size].eyes} rounded-full bg-white flex items-center justify-center relative z-0`}
+                animate={{ 
+                  scaleY: [1, 0.1, 1],
+                  transition: {
+                    repeat: Infinity,
+                    repeatDelay: 2.5,
+                    duration: 0.15
+                  }
+                }}
+              >
+                <div className="h-1/2 w-1/2 rounded-full bg-gray-900" />
+                <motion.div 
+                  className="absolute inset-0 border-2 border-amber-900 rounded-full"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                />
+              </motion.div>
+              
               <motion.div 
-                className="absolute inset-0 border-2 border-amber-900 rounded-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              />
-            </motion.div>
+                className={`${sizes[size].eyes} rounded-full bg-white flex items-center justify-center relative z-0`}
+                animate={{ 
+                  scaleY: [1, 0.1, 1],
+                  transition: {
+                    repeat: Infinity,
+                    repeatDelay: 2.7, // Slight offset for more natural look
+                    duration: 0.15
+                  }
+                }}
+              >
+                <div className="h-1/2 w-1/2 rounded-full bg-gray-900" />
+                <motion.div 
+                  className="absolute inset-0 border-2 border-amber-900 rounded-full"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                />
+              </motion.div>
+            </div>
           </motion.div>
           
-          {/* Beak */}
+          {/* Beak - more prominent and triangular */}
           <motion.div 
-            className={`absolute bg-amber-500 rotate-45`}
+            className={`absolute bg-[#FDBA74] dark:bg-[#F59E0B]`}
             style={{ 
-              width: `${size === 'lg' ? '12px' : size === 'md' ? '10px' : '8px'}`,
+              width: `${size === 'lg' ? '14px' : size === 'md' ? '11px' : '9px'}`,
               height: `${size === 'lg' ? '10px' : size === 'md' ? '8px' : '6px'}`,
-              bottom: '30%',
-              borderRadius: '40% 60% 60% 40% / 40% 40% 60% 60%'
+              bottom: '40%',
+              borderRadius: '50% 50% 50% 50% / 30% 30% 70% 70%'
             }}
             animate={{ 
               scaleY: [1, 0.9, 1],
-              rotate: [45, 45, 45]
             }}
             transition={{ 
               repeat: Infinity, 
@@ -184,10 +231,9 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
           
           {/* Book */}
           <motion.div 
-            className={`absolute ${sizes[size].book} bg-blue-100 border border-blue-300 rounded-sm overflow-hidden`}
+            className={`absolute ${sizes[size].book} bg-[#FFF7E5] dark:bg-[#FFF0D9] border border-amber-200 dark:border-amber-300 rounded-sm overflow-hidden z-10`}
             style={{
-              bottom: `-${size === 'lg' ? '20%' : size === 'md' ? '25%' : '30%'}`,
-              zIndex: -1,
+              bottom: `-${size === 'lg' ? '25%' : size === 'md' ? '30%' : '35%'}`,
               transformOrigin: 'center top'
             }}
             initial={{ rotateX: 70, y: 10, opacity: 0 }}
@@ -204,7 +250,7 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
           >
             {/* Book pages */}
             <motion.div 
-              className="absolute inset-0 flex justify-center items-center"
+              className="absolute inset-0 flex flex-col justify-center items-center"
               animate={{
                 background: ['linear-gradient(180deg, #E5E7EB 0%, #F3F4F6 100%)', 'linear-gradient(180deg, #DBEAFE 0%, #EFF6FF 100%)']
               }}
@@ -219,30 +265,9 @@ const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLo
             </motion.div>
           </motion.div>
           
-          {/* Bird tail */}
-          <motion.div 
-            className={`absolute bg-sky-200`}
-            style={{ 
-              width: `${size === 'lg' ? '10px' : size === 'md' ? '8px' : '6px'}`,
-              height: `${size === 'lg' ? '6px' : size === 'md' ? '5px' : '4px'}`,
-              bottom: '10%',
-              right: '-15%',
-              borderRadius: '0 50% 50% 0'
-            }}
-            animate={{ 
-              rotate: [0, 15, 0, -15, 0],
-              x: [0, 2, 0, -2, 0]
-            }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 2,
-              ease: "easeInOut" 
-            }}
-          />
-          
           {/* Graduation cap */}
           <motion.div 
-            className="absolute transform rotate-15 z-10"
+            className="absolute transform rotate-15 z-30"
             style={{
               top: `-${size === 'lg' ? '20%' : size === 'md' ? '25%' : '30%'}`,
               right: `-${size === 'lg' ? '10%' : size === 'md' ? '15%' : '20%'}`
