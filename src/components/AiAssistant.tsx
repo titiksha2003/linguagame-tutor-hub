@@ -36,7 +36,6 @@ interface QuizQuestion {
   type: 'MCQ' | 'FillInBlanks' | 'CorrectSentence';
 }
 
-// Enhanced language-specific responses for common questions
 const languageResponses = {
   french: {
     hello: "Hello in French is 'Bonjour' (pronounced: bon-zhoor). You can also use 'Salut' (sah-loo) in casual settings.",
@@ -114,7 +113,7 @@ const languageResponses = {
     please: "Please in Italian is 'Per favore' (pronounced: pehr fah-vor-eh) or simply 'Per piacere' (pehr pya-cheh-reh).",
     excuse: "Excuse me in Italian is 'Scusi' (pronounced: scusi) or 'Mi scusi' (mee scusi).",
     time: "To ask for the time in Italian, say 'Che ora è?' (pronounced: keh or-ah eh).",
-    help: "Help in Italian is 'Aiuto' (pronounced: ah-yoo-toh). To ask for help, say 'Può aiutarmi?' (pwoh ah-yoo-tar-mee) which means 'Can you help me?'.",
+    help: "Help in Italian is 'Aiuto' (pronounced: ah-yoo-toh). To ask for help, say 'Può aiutarmi?' (poh-jee mee ah-zhoo-dar-mee) which means 'Can you help me?'.",
     understand: "I understand in Italian is 'Capisco' (pronounced: kah-pee-sko). I don't understand is 'Non capisco' (non kah-pee-sko).",
     food: "Some essential food-related Italian words include: ristorante (restaurant, pronounced: ree-stor-ahn-teh), caffè (kaf-feh), menù (meh-noo), il conto (bill, pronounced: eel kon-toh)."
   },
@@ -184,7 +183,6 @@ const languageResponses = {
   }
 };
 
-// Comprehensive grammar explanations for each language
 const grammarExplanations = {
   french: [
     "In French, nouns have genders (masculine or feminine). Articles change based on the gender: 'le' (masculine) and 'la' (feminine), or 'l'' before vowels. For plural, use 'les' regardless of gender.",
@@ -231,3 +229,14 @@ const grammarExplanations = {
   ]
 };
 
+const AiAssistant = () => {
+  return (
+    <div className="fixed bottom-4 right-4 z-50">
+      <Button size="icon" variant="default" className="rounded-full shadow-lg">
+        <MessageCircle className="h-6 w-6" />
+      </Button>
+    </div>
+  );
+};
+
+export default AiAssistant;
