@@ -159,6 +159,7 @@ const Profile = () => {
                       {learningLanguages.map(language => {
                         if (!language) return null;
                         const userLang = user.languages.find(l => l.id === language.id);
+                        const xpPercentage = Math.min(((userLang?.xp || 0) % 100) / 100 * 100, 100);
                         
                         return (
                           <div key={language.id} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
@@ -176,7 +177,7 @@ const Profile = () => {
                               <div className="hidden sm:block h-1.5 w-24 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden mr-3">
                                 <div 
                                   className="h-full bg-brand-blue rounded-full"
-                                  style={{ width: `${Math.min((userLang?.xp || 0) % 100) / 100 * 100, 100)}%` }}
+                                  style={{ width: `${xpPercentage}%` }}
                                 />
                               </div>
                               <Button
