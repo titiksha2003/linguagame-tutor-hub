@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom';
 interface WizenkoLogoProps {
   size?: 'sm' | 'md' | 'lg';
   showText?: boolean;
+  className?: string;
 }
 
-const WizenkoLogo = ({ size = 'md', showText = true }: WizenkoLogoProps) => {
+const WizenkoLogo = ({ size = 'md', showText = true, className = '' }: WizenkoLogoProps) => {
   const sizes = {
     sm: {
       container: 'h-8 w-8',
@@ -34,7 +35,7 @@ const WizenkoLogo = ({ size = 'md', showText = true }: WizenkoLogoProps) => {
   };
   
   return (
-    <Link to="/" className="flex items-center space-x-2 group">
+    <Link to="/" className={`flex items-center space-x-2 group ${className}`}>
       <div className="relative">
         <motion.div
           className={`${sizes[size].container} rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center relative shadow-md overflow-visible`}

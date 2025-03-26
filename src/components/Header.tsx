@@ -23,13 +23,13 @@ import {
   Sun, 
   Settings 
 } from 'lucide-react';
-import { useMobile } from '../hooks/use-mobile';
+import { useIsMobile } from '../hooks/use-mobile';
 import LearningButton from './LearningButton';
 import LanguageSelector from './LanguageSelector';
 
 const Header = () => {
   const { user, logout } = useAuth();
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -71,7 +71,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
-              <WizenkoLogo className="h-8 w-auto" />
+              <WizenkoLogo />
               <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">LinguaGame</span>
             </Link>
           </div>
