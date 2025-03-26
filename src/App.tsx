@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -28,9 +27,9 @@ import { LanguageTutorProvider } from "./contexts/LanguageTutorContext";
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Update document title with new app name
+  // Update document title
   useEffect(() => {
-    document.title = "Wizenko - Language Learning";
+    document.title = "Wizenko";
   }, []);
 
   // Check for theme preference

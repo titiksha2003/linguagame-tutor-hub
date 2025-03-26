@@ -72,7 +72,7 @@ const Header = () => {
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
               <WizenkoLogo />
-              <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">LinguaGame</span>
+              {/* Removed LinguaGame text */}
             </Link>
           </div>
           
