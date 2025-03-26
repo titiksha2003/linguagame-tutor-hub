@@ -7,6 +7,8 @@ import { toast } from 'sonner';
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useLanguageTutor } from '../contexts/LanguageTutorContext';
 
 interface Message {
   id: string;
@@ -230,14 +232,268 @@ const grammarExplanations = {
 };
 
 const AiAssistant = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [inputMessage, setInputMessage] = useState('');
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isRecording, setIsRecording] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { getTranslations } = useLanguageTutor();
+  
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  useEffect(() => {
+    if (isOpen) {
+      inputRef.current?.focus();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      setMessages([
+        {
+          id: '1',
+          text: "Hello! I'm your language learning assistant. How can I help you today?",
+          isUser: false,
+          timestamp: new Date()
+        }
+      ]);
+    }
+  }, [isOpen, messages.length]);
+
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim()) return;
+    
+    const userMessageId = Date.now().toString();
+    const userMessage: Message = {
+      id: userMessageId,
+      text: inputMessage,
+      isUser: true,
+      timestamp: new Date()
+    };
+    
+    setMessages(prev => [...prev, userMessage]);
+    setInputMessage('');
+    setIsProcessing(true);
+    
+    setTimeout(async () => {
+      try {
+        const response = await generateResponse(inputMessage);
+        
+        setMessages(prev => [...prev, {
+          id: (Date.now() + 1).toString(),
+          text: response,
+          isUser: false,
+          timestamp: new Date()
+        }]);
+      } catch (error) {
+        console.error('Error generating response:', error);
+        toast.error('Sorry, I had trouble responding. Please try again.');
+      } finally {
+        setIsProcessing(false);
+      }
+    }, 1000);
+  };
+
+  const generateResponse = async (message: string): Promise<string> => {
+    const lowerMessage = message.toLowerCase();
+    
+    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+      return "Hello! I'm your language learning assistant. How can I help you with your language studies today?";
+    }
+    
+    for (const language of Object.keys(languageResponses)) {
+      if (lowerMessage.includes(language)) {
+        for (const [phrase, response] of Object.entries(languageResponses[language as keyof typeof languageResponses])) {
+          if (lowerMessage.includes(phrase)) {
+            return response as string;
+          }
+        }
+        
+        return `I can help you learn ${language}. What would you like to know? You can ask about common phrases, grammar, or pronunciation.`;
+      }
+    }
+    
+    if (lowerMessage.includes('translate') || lowerMessage.includes('how do you say')) {
+      let targetLanguage = 'spanish';
+      
+      for (const language of Object.keys(languageResponses)) {
+        if (lowerMessage.includes(language)) {
+          targetLanguage = language;
+          break;
+        }
+      }
+      
+      try {
+        const textToTranslate = message.replace(/translate|how do you say|in|to|french|spanish|german|italian|japanese|chinese|korean|portuguese|hindi/gi, '').trim();
+        const translation = await getTranslations(textToTranslate, targetLanguage);
+        return `"${textToTranslate}" in ${targetLanguage} is "${translation}"`;
+      } catch (err) {
+        return `I'm not sure how to translate that to ${targetLanguage}. Could you try a different phrase?`;
+      }
+    }
+    
+    if (lowerMessage.includes('grammar') || lowerMessage.includes('rule') || lowerMessage.includes('structure')) {
+      let targetLanguage = '';
+      
+      for (const language of Object.keys(grammarExplanations)) {
+        if (lowerMessage.includes(language)) {
+          targetLanguage = language;
+          break;
+        }
+      }
+      
+      if (targetLanguage && grammarExplanations[targetLanguage as keyof typeof grammarExplanations]) {
+        const explanations = grammarExplanations[targetLanguage as keyof typeof grammarExplanations];
+        const randomIndex = Math.floor(Math.random() * explanations.length);
+        return explanations[randomIndex];
+      }
+    }
+    
+    if (lowerMessage.includes('thank')) {
+      return "You're welcome! Let me know if you have any other questions about language learning.";
+    }
+    
+    if (lowerMessage.includes('help')) {
+      return "I can help you with vocabulary, translations, grammar explanations, and language learning tips. What specifically would you like to know?";
+    }
+    
+    return "I'm here to help with your language learning. You can ask me about vocabulary, grammar, phrases in different languages, or get translation help.";
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  const toggleRecording = () => {
+    setIsRecording(!isRecording);
+    
+    if (!isRecording) {
+      toast.info('Voice recognition activated');
+      setTimeout(() => {
+        setIsRecording(false);
+        setInputMessage('How do you say hello in Spanish?');
+        toast.success('Voice input received');
+      }, 2000);
+    }
+  };
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      <Button size="icon" variant="default" className="rounded-full shadow-lg">
+      <Button 
+        size="icon" 
+        variant="default" 
+        className="rounded-full shadow-lg"
+        onClick={() => setIsOpen(true)}
+      >
         <MessageCircle className="h-6 w-6" />
       </Button>
+      
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="sm:max-w-[425px] h-[600px] flex flex-col p-0 gap-0">
+          <DialogHeader className="p-4 border-b">
+            <DialogTitle className="flex items-center gap-2">
+              <BotIcon className="h-5 w-5 text-primary" />
+              Language Assistant
+            </DialogTitle>
+          </DialogHeader>
+          
+          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <AnimatePresence>
+              {messages.map((message) => (
+                <motion.div
+                  key={message.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div className={`max-w-[80%] rounded-lg p-3 ${
+                    message.isUser 
+                      ? 'bg-primary text-primary-foreground' 
+                      : 'bg-muted'
+                  }`}>
+                    {!message.isUser && (
+                      <div className="flex items-center gap-2 mb-1">
+                        <Avatar className="h-6 w-6">
+                          <AvatarImage src="/placeholder.svg" />
+                          <AvatarFallback>AI</AvatarFallback>
+                        </Avatar>
+                        <span className="text-xs font-medium">Assistant</span>
+                      </div>
+                    )}
+                    <p className="text-sm">{message.text}</p>
+                    {message.correction && (
+                      <div className="mt-2 p-2 bg-amber-100 dark:bg-amber-900 rounded text-xs">
+                        <p className="font-medium">Correction:</p>
+                        <p>{message.correction}</p>
+                      </div>
+                    )}
+                    {message.explanation && (
+                      <div className="mt-2 p-2 bg-blue-100 dark:bg-blue-900 rounded text-xs">
+                        <p className="font-medium">Explanation:</p>
+                        <p>{message.explanation}</p>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+              {isProcessing && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex justify-start"
+                >
+                  <div className="bg-muted rounded-lg p-3 flex items-center gap-2">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span className="text-sm">Thinking...</span>
+                  </div>
+                </motion.div>
+              )}
+              <div ref={messagesEndRef} />
+            </AnimatePresence>
+          </div>
+          
+          <div className="p-4 border-t">
+            <div className="flex items-center gap-2">
+              <Button 
+                size="icon" 
+                variant="outline" 
+                className={`rounded-full ${isRecording ? 'bg-red-100 text-red-500' : ''}`}
+                onClick={toggleRecording}
+              >
+                <Mic className="h-4 w-4" />
+              </Button>
+              <input
+                ref={inputRef}
+                type="text"
+                placeholder="Ask me anything about languages..."
+                className="flex-1 bg-muted rounded-md px-3 py-2 text-sm focus:outline-none"
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              <Button 
+                size="icon" 
+                variant="default" 
+                className="rounded-full"
+                onClick={handleSendMessage}
+                disabled={!inputMessage.trim() || isProcessing}
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
 
 export default AiAssistant;
-
