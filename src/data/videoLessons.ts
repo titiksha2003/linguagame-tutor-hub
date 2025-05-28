@@ -1003,7 +1003,7 @@ export const videoLessons: LanguageVideos[] = [
       {
         id: "portuguese-video-20",
         title: "Portuguese Lesson 20 - Common Expressions",
-        description: "Common idiomatic expressions in Portuguese.",
+        description: "Learn common expressions and idioms in Portuguese.",
         videoId: "rHwNPzyHVQw",
         languageId: "portuguese",
         order: 20
@@ -1026,7 +1026,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-2",
         title: "Hindi Lesson 2 - Devanagari Script Basics",
         description: "Learn the fundamentals of the Devanagari script used in Hindi.",
-        videoId: "5wdH6WxF7X4",
+        videoId: "6T0NWKiXe4Y",
         languageId: "hindi",
         order: 2
       },
@@ -1034,7 +1034,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-3",
         title: "Hindi Lesson 3 - Common Greetings",
         description: "Learn essential greetings and phrases in Hindi.",
-        videoId: "xQZQ6is7SuU",
+        videoId: "LIXZ2cuPv5c",
         languageId: "hindi",
         order: 3
       },
@@ -1042,7 +1042,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-4",
         title: "Hindi Lesson 4 - Numbers and Counting",
         description: "Learn to count and use numbers in Hindi.",
-        videoId: "-DGCrffTDp0",
+        videoId: "tv43okv6v1Y",
         languageId: "hindi",
         order: 4
       },
@@ -1050,7 +1050,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-5",
         title: "Hindi Lesson 5 - Basic Phrases",
         description: "Learn common phrases for everyday situations in Hindi.",
-        videoId: "Z18R6u97vqY",
+        videoId: "ITbbpElhGbM",
         languageId: "hindi",
         order: 5
       },
@@ -1058,7 +1058,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-6",
         title: "Hindi Lesson 6 - Family Vocabulary",
         description: "Learn words for family members in Hindi.",
-        videoId: "0cHV8D7FypU",
+        videoId: "W1FKsIMipdw",
         languageId: "hindi",
         order: 6
       },
@@ -1066,7 +1066,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-7",
         title: "Hindi Lesson 7 - Food and Dining",
         description: "Essential food vocabulary and dining phrases in Hindi.",
-        videoId: "KdmkCvG4PuU",
+        videoId: "l6tZrRx1V8Q",
         languageId: "hindi",
         order: 7
       },
@@ -1074,7 +1074,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-8",
         title: "Hindi Lesson 8 - Days and Months",
         description: "Learn days of the week and months in Hindi.",
-        videoId: "9svwAhZ_TPA",
+        videoId: "BzLob23wqv8",
         languageId: "hindi",
         order: 8
       },
@@ -1082,7 +1082,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-9",
         title: "Hindi Lesson 9 - Telling Time",
         description: "Learn how to tell time in Hindi.",
-        videoId: "e17YhTlVxKM",
+        videoId: "kp98sX96zDU",
         languageId: "hindi",
         order: 9
       },
@@ -1090,7 +1090,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-10",
         title: "Hindi Lesson 10 - Basic Conversations",
         description: "Practice simple conversations in Hindi.",
-        videoId: "N7D4aFfHsP0",
+        videoId: "sNzHmLiTrak",
         languageId: "hindi",
         order: 10
       },
@@ -1098,7 +1098,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-11",
         title: "Hindi Lesson 11 - Verbs and Actions",
         description: "Learn common verbs and action words in Hindi.",
-        videoId: "MRG3lctIhKs",
+        videoId: "SIJwvsZo6TI",
         languageId: "hindi",
         order: 11
       },
@@ -1106,7 +1106,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-12",
         title: "Hindi Lesson 12 - Weather Expressions",
         description: "Talk about weather in Hindi.",
-        videoId: "pQXpQfm1mHE",
+        videoId: "HCkCEZb_TeE",
         languageId: "hindi",
         order: 12
       },
@@ -1114,7 +1114,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-13",
         title: "Hindi Lesson 13 - Shopping Vocabulary",
         description: "Essential shopping vocabulary in Hindi.",
-        videoId: "JDaZgZVOLLs",
+        videoId: "JMNtViypSmo",
         languageId: "hindi",
         order: 13
       },
@@ -1122,7 +1122,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-14",
         title: "Hindi Lesson 14 - Travel Phrases",
         description: "Learn useful travel phrases in Hindi.",
-        videoId: "p8PqHIPJ4pA",
+        videoId: "r_tdnThGC6E",
         languageId: "hindi",
         order: 14
       },
@@ -1130,7 +1130,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-15",
         title: "Hindi Lesson 15 - Describing People",
         description: "Learn to describe people in Hindi.",
-        videoId: "uEFUnb5S4Zo",
+        videoId: "Srs-vGqgvPg",
         languageId: "hindi",
         order: 15
       },
@@ -1138,7 +1138,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-16",
         title: "Hindi Lesson 16 - Directions",
         description: "Asking for and giving directions in Hindi.",
-        videoId: "LJ4jbwxGIUg",
+        videoId: "GTOlVEugdTQ",
         languageId: "hindi",
         order: 16
       },
@@ -1146,7 +1146,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-17",
         title: "Hindi Lesson 17 - Hobbies and Interests",
         description: "Discussing hobbies and interests in Hindi.",
-        videoId: "6yIGJGMPeMM",
+        videoId: "C7A585p3ny8",
         languageId: "hindi",
         order: 17
       },
@@ -1154,7 +1154,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-18",
         title: "Hindi Lesson 18 - Simple Past Tense",
         description: "Learn about past tense in Hindi.",
-        videoId: "0PxaE_WyI_I",
+        videoId: "K_TqZ-A969g",
         languageId: "hindi",
         order: 18
       },
@@ -1162,7 +1162,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-19",
         title: "Hindi Lesson 19 - Future Tense",
         description: "Express future actions in Hindi.",
-        videoId: "qXc184AQt4k",
+        videoId: "obonh7ZNK0A",
         languageId: "hindi",
         order: 19
       },
@@ -1170,7 +1170,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "hindi-video-20",
         title: "Hindi Lesson 20 - Common Expressions",
         description: "Learn common expressions and idioms in Hindi.",
-        videoId: "Y6wZ-s1UASs",
+        videoId: "dusurutU7v4",
         languageId: "hindi",
         order: 20
       }
