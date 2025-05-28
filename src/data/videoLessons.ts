@@ -362,7 +362,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-2",
         title: "Japanese Lesson 2 - Hiragana Introduction",
         description: "Learn the basics of hiragana, the Japanese phonetic alphabet.",
-        videoId: "70j4JXRoRY4",
+        videoId: "bOUqVC4XkOY",
         languageId: "japanese",
         order: 2
       },
@@ -370,7 +370,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-3",
         title: "Japanese Lesson 3 - Basic Greetings",
         description: "Essential greetings and expressions in Japanese.",
-        videoId: "7UZTBS5Y2kI",
+        videoId: "JnoZE51WZg4",
         languageId: "japanese",
         order: 3
       },
@@ -378,7 +378,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-4",
         title: "Japanese Lesson 4 - Numbers and Counting",
         description: "Learn to count in Japanese.",
-        videoId: "CeY5YpZLHS0",
+        videoId: "k74yjmfFb_A",
         languageId: "japanese",
         order: 4
       },
@@ -386,7 +386,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-5",
         title: "Japanese Lesson 5 - Basic Phrases",
         description: "Common phrases for everyday situations.",
-        videoId: "WlacJg0Ptlk",
+        videoId: "KUIWRsVZZZA",
         languageId: "japanese",
         order: 5
       },
@@ -394,7 +394,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-6",
         title: "Japanese Lesson 6 - Katakana Basics",
         description: "Introduction to katakana, used primarily for foreign words.",
-        videoId: "s6DKnJPX6u4",
+        videoId: "ZGGufccTLso",
         languageId: "japanese",
         order: 6
       },
@@ -402,7 +402,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-7",
         title: "Japanese Lesson 7 - Self Introduction",
         description: "Learn how to introduce yourself in Japanese.",
-        videoId: "pn32Ij_8EQE",
+        videoId: "W0n-ODPwtzA",
         languageId: "japanese",
         order: 7
       },
@@ -410,7 +410,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-8",
         title: "Japanese Lesson 8 - Food and Restaurants",
         description: "Vocabulary for dining and food in Japanese.",
-        videoId: "x6iDxffO8N0",
+        videoId: "p9PEIsOzJ5E",
         languageId: "japanese",
         order: 8
       },
@@ -418,7 +418,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-9",
         title: "Japanese Lesson 9 - Basic Verbs",
         description: "Essential verbs and their usage in Japanese.",
-        videoId: "3y6pKpjAx2c",
+        videoId: "Pc86Xg2MX-U",
         languageId: "japanese",
         order: 9
       },
@@ -426,7 +426,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-10",
         title: "Japanese Lesson 10 - Time and Calendar",
         description: "Learn to talk about time and dates in Japanese.",
-        videoId: "DFj6xAaGz-4",
+        videoId: "Lo5_5k7EPIM",
         languageId: "japanese",
         order: 10
       },
@@ -434,7 +434,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-11",
         title: "Japanese Lesson 11 - Basic Particles",
         description: "Understanding particles in Japanese sentences.",
-        videoId: "5sFWlsOIDH4",
+        videoId: "hiLQLGDMOEA",
         languageId: "japanese",
         order: 11
       },
@@ -442,7 +442,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-12",
         title: "Japanese Lesson 12 - Directions",
         description: "Asking for and giving directions in Japanese.",
-        videoId: "GQRlPFWjDo4",
+        videoId: "LO9F6pSVDv0",
         languageId: "japanese",
         order: 12
       },
@@ -450,7 +450,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-13",
         title: "Japanese Lesson 13 - Shopping Phrases",
         description: "Useful phrases for shopping in Japanese.",
-        videoId: "xEcvUYuTZl8",
+        videoId: "rFRJes0ic8Y",
         languageId: "japanese",
         order: 13
       },
@@ -458,7 +458,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-14",
         title: "Japanese Lesson 14 - Travel Vocabulary",
         description: "Essential words and phrases for traveling in Japan.",
-        videoId: "ZV9Cxv_Pgq0",
+        videoId: "M9BuT65uNIA",
         languageId: "japanese",
         order: 14
       },
@@ -466,7 +466,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-15",
         title: "Japanese Lesson 15 - Describing People",
         description: "Adjectives and phrases for describing people.",
-        videoId: "2zQ3a7OykL4",
+        videoId: "2fx37sug4Oo",
         languageId: "japanese",
         order: 15
       },
@@ -474,7 +474,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-16",
         title: "Japanese Lesson 16 - Weather Expressions",
         description: "Talking about weather in Japanese.",
-        videoId: "KnXmBQBm3SI",
+        videoId: "6ABKZ8e0nGc",
         languageId: "japanese",
         order: 16
       },
@@ -482,7 +482,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-17",
         title: "Japanese Lesson 17 - Family Terms",
         description: "Vocabulary for family members in Japanese.",
-        videoId: "QSBZRg1Y6OA",
+        videoId: "T3hC03n_qWU",
         languageId: "japanese",
         order: 17
       },
@@ -490,7 +490,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-18",
         title: "Japanese Lesson 18 - Hobbies and Interests",
         description: "Talking about hobbies and interests in Japanese.",
-        videoId: "ZPEy4YGXHP0",
+        videoId: "ZUM7wPLXqWA",
         languageId: "japanese",
         order: 18
       },
@@ -498,7 +498,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-19",
         title: "Japanese Lesson 19 - Basic Kanji Introduction",
         description: "Getting started with basic kanji characters.",
-        videoId: "mQw_2KQxYs4",
+        videoId: "NBumXxwBBMo",
         languageId: "japanese",
         order: 19
       },
@@ -506,7 +506,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "japanese-video-20",
         title: "Japanese Lesson 20 - Everyday Conversations",
         description: "Practice common conversation scenarios in Japanese.",
-        videoId: "MoRe5PM5FpI",
+        videoId: "jhByyxdNaZU",
         languageId: "japanese",
         order: 20
       }
@@ -528,7 +528,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-2",
         title: "Italian Lesson 2 - Greetings",
         description: "Learn common greetings and introductions in Italian.",
-        videoId: "8ZDOdIglvUo",
+        videoId: "1zzlzmFf-UY",
         languageId: "italian",
         order: 2
       },
@@ -536,7 +536,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-3",
         title: "Italian Lesson 3 - Numbers",
         description: "Count from 1 to 100 in Italian.",
-        videoId: "jk_D7kfJ0E4",
+        videoId: "6-APugeNfxs",
         languageId: "italian",
         order: 3
       },
@@ -544,7 +544,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-4",
         title: "Italian Lesson 4 - Days and Months",
         description: "Learn the days of the week and months in Italian.",
-        videoId: "vk3VgflCcN8",
+        videoId: "cSFclSKrISQ",
         languageId: "italian",
         order: 4
       },
@@ -552,7 +552,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-5",
         title: "Italian Lesson 5 - Colors",
         description: "Learn the colors in Italian.",
-        videoId: "_j_G-Wjmvco",
+        videoId: "BhuXbBvMq4Q",
         languageId: "italian",
         order: 5
       },
@@ -560,7 +560,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-6",
         title: "Italian Lesson 6 - Family Members",
         description: "Vocabulary for family relationships in Italian.",
-        videoId: "JVnQwpnSHjE",
+        videoId: "UWrfVSJ5DbE",
         languageId: "italian",
         order: 6
       },
@@ -568,7 +568,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-7",
         title: "Italian Lesson 7 - Food and Dining",
         description: "Essential food vocabulary and restaurant phrases.",
-        videoId: "l-1Dz4T5CrQ",
+        videoId: "Mu81_-NMkag",
         languageId: "italian",
         order: 7
       },
@@ -576,7 +576,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-8",
         title: "Italian Lesson 8 - Basic Conversations",
         description: "Simple conversation scenarios in Italian.",
-        videoId: "Cm3U-NgStvs",
+        videoId: "dv0223VSF7s",
         languageId: "italian",
         order: 8
       },
@@ -584,7 +584,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-9",
         title: "Italian Lesson 9 - Telling Time",
         description: "How to tell time in Italian.",
-        videoId: "6kOQF3-hZI4",
+        videoId: "_INpk4v0RGg",
         languageId: "italian",
         order: 9
       },
@@ -592,7 +592,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-10",
         title: "Italian Lesson 10 - Weather Expressions",
         description: "Talk about the weather in Italian.",
-        videoId: "NQBjmnvkSO8",
+        videoId: "_f4Gc6Sy-Zc",
         languageId: "italian",
         order: 10
       },
@@ -600,7 +600,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-11",
         title: "Italian Lesson 11 - Present Tense Verbs",
         description: "Italian present tense verb conjugation.",
-        videoId: "vQhB3Bb6UWo",
+        videoId: "xsHPBeawdBE",
         languageId: "italian",
         order: 11
       },
@@ -608,7 +608,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-12",
         title: "Italian Lesson 12 - Travel Phrases",
         description: "Essential phrases for traveling in Italy.",
-        videoId: "S7R9l0tFDpk",
+        videoId: "xsHPBeawdBE",
         languageId: "italian",
         order: 12
       },
@@ -616,7 +616,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-13",
         title: "Italian Lesson 13 - Shopping Vocabulary",
         description: "Words and phrases for shopping in Italian.",
-        videoId: "VmrZY_vp-cU",
+        videoId: "hb-enwJL-4Q",
         languageId: "italian",
         order: 13
       },
@@ -624,7 +624,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-14",
         title: "Italian Lesson 14 - Body Parts",
         description: "Names of body parts in Italian.",
-        videoId: "YGQYoYPYnsM",
+        videoId: "0NBggiaIK78",
         languageId: "italian",
         order: 14
       },
@@ -632,7 +632,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-15",
         title: "Italian Lesson 15 - Describing People",
         description: "Adjectives and phrases for describing people in Italian.",
-        videoId: "B1sRljn6HTo",
+        videoId: "spcn9XyRQo4",
         languageId: "italian",
         order: 15
       },
@@ -640,7 +640,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-16",
         title: "Italian Lesson 16 - Directions",
         description: "Asking for and giving directions in Italian.",
-        videoId: "u1FcR4VzJ2s",
+        videoId: "Fe7ASx8WyuI",
         languageId: "italian",
         order: 16
       },
@@ -648,7 +648,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-17",
         title: "Italian Lesson 17 - Hobbies and Activities",
         description: "Talk about hobbies and leisure activities in Italian.",
-        videoId: "nNRDj0whfxU",
+        videoId: "ageVRReeSXE",
         languageId: "italian",
         order: 17
       },
@@ -656,7 +656,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-18",
         title: "Italian Lesson 18 - Past Tense Introduction",
         description: "Introduction to past tense in Italian.",
-        videoId: "0Py3aM6Oeps",
+        videoId: "Y1OvQFEDIsw",
         languageId: "italian",
         order: 18
       },
@@ -664,7 +664,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-19",
         title: "Italian Lesson 19 - Future Tense",
         description: "Expressing future actions in Italian.",
-        videoId: "eILyJUF_6N0",
+        videoId: "BiAazTbsJNg",
         languageId: "italian",
         order: 19
       },
@@ -672,7 +672,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "italian-video-20",
         title: "Italian Lesson 20 - Common Expressions",
         description: "Common idiomatic expressions in Italian.",
-        videoId: "IkX1qGHnOMY",
+        videoId: "gulwasodYSg",
         languageId: "italian",
         order: 20
       }
@@ -860,7 +860,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-2",
         title: "Portuguese Lesson 2 - Greetings and Basics",
         description: "Learn essential greetings and phrases in Portuguese.",
-        videoId: "8TUgvtp91cw",
+        videoId: "_yvQoJLKXuI",
         languageId: "portuguese",
         order: 2
       },
@@ -868,7 +868,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-3",
         title: "Portuguese Lesson 3 - Numbers",
         description: "Learn to count in Portuguese.",
-        videoId: "T4cVQBmQNHQ",
+        videoId: "7dcPeSTFIyQ",
         languageId: "portuguese",
         order: 3
       },
@@ -876,7 +876,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-4",
         title: "Portuguese Lesson 4 - Basic Phrases",
         description: "Common phrases for everyday situations.",
-        videoId: "Z2Y6V1vpFgM",
+        videoId: "7sNcuCzXU2A",
         languageId: "portuguese",
         order: 4
       },
@@ -884,7 +884,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-5",
         title: "Portuguese Lesson 5 - Days and Months",
         description: "Learn the days of the week and months in Portuguese.",
-        videoId: "pXt8oEO5mIU",
+        videoId: "3F8-J0CGVaY",
         languageId: "portuguese",
         order: 5
       },
@@ -892,7 +892,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-6",
         title: "Portuguese Lesson 6 - Colors and Adjectives",
         description: "Learn colors and basic adjectives in Portuguese.",
-        videoId: "mX1lLVCxeRc",
+        videoId: "_vVtL-Vt84Y",
         languageId: "portuguese",
         order: 6
       },
@@ -900,7 +900,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-7",
         title: "Portuguese Lesson 7 - Family Members",
         description: "Vocabulary for family relations in Portuguese.",
-        videoId: "sM3VVVpTBpE",
+        videoId: "iElhINd-4Wo",
         languageId: "portuguese",
         order: 7
       },
@@ -908,7 +908,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-8",
         title: "Portuguese Lesson 8 - Food and Dining",
         description: "Essential food vocabulary in Portuguese.",
-        videoId: "Hk_h8wGwsLg",
+        videoId: "nfQS1CbwZUs",
         languageId: "portuguese",
         order: 8
       },
@@ -916,7 +916,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-9",
         title: "Portuguese Lesson 9 - Telling Time",
         description: "Learn to tell time in Portuguese.",
-        videoId: "YqHPE-nEYxU",
+        videoId: "BcJHyXKuU1o",
         languageId: "portuguese",
         order: 9
       },
@@ -924,7 +924,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-10",
         title: "Portuguese Lesson 10 - Basic Conversations",
         description: "Simple conversations in Portuguese.",
-        videoId: "9N-E8WlWEB4",
+        videoId: "VZ9mN7W7_70",
         languageId: "portuguese",
         order: 10
       },
@@ -932,7 +932,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-11",
         title: "Portuguese Lesson 11 - Present Tense Verbs",
         description: "Learn present tense conjugation in Portuguese.",
-        videoId: "G-0LjYcbxBc",
+        videoId: "4MtuFMAKbfU",
         languageId: "portuguese",
         order: 11
       },
@@ -940,7 +940,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-12",
         title: "Portuguese Lesson 12 - Weather Expressions",
         description: "Talk about the weather in Portuguese.",
-        videoId: "tNcXZJ8y5N8",
+        videoId: "a7pTAzdsmF8",
         languageId: "portuguese",
         order: 12
       },
@@ -948,7 +948,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-13",
         title: "Portuguese Lesson 13 - Shopping Vocabulary",
         description: "Words and phrases for shopping in Portuguese.",
-        videoId: "CcqUSYOGSVQ",
+        videoId: "MigAPBPqwsg",
         languageId: "portuguese",
         order: 13
       },
@@ -956,7 +956,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-14",
         title: "Portuguese Lesson 14 - Travel Phrases",
         description: "Essential travel vocabulary in Portuguese.",
-        videoId: "LZZFtAXtTm0",
+        videoId: "yEYU0VSJayc",
         languageId: "portuguese",
         order: 14
       },
@@ -964,7 +964,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-15",
         title: "Portuguese Lesson 15 - Describing People",
         description: "Vocabulary for describing people in Portuguese.",
-        videoId: "u8d21Nrslys",
+        videoId: "PVSmGF33eVQ",
         languageId: "portuguese",
         order: 15
       },
@@ -972,7 +972,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-16",
         title: "Portuguese Lesson 16 - Directions",
         description: "Asking for and giving directions in Portuguese.",
-        videoId: "0sEXeULhxUg",
+        videoId: "9rXcAI2A9gA",
         languageId: "portuguese",
         order: 16
       },
@@ -980,7 +980,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-17",
         title: "Portuguese Lesson 17 - Hobbies",
         description: "Talk about hobbies and activities in Portuguese.",
-        videoId: "Pj2lMF5rEsA",
+        videoId: "wQbrRv0U2No",
         languageId: "portuguese",
         order: 17
       },
@@ -988,7 +988,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-18",
         title: "Portuguese Lesson 18 - Past Tense",
         description: "Introduction to past tense in Portuguese.",
-        videoId: "Zb20ypjISzA",
+        videoId: "9LwqaVIoLS8",
         languageId: "portuguese",
         order: 18
       },
@@ -996,7 +996,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-19",
         title: "Portuguese Lesson 19 - Future Tense",
         description: "Express future actions in Portuguese.",
-        videoId: "YvRUVyt1vAo",
+        videoId: "7Esp_DO4SYs",
         languageId: "portuguese",
         order: 19
       },
@@ -1004,7 +1004,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "portuguese-video-20",
         title: "Portuguese Lesson 20 - Common Expressions",
         description: "Learn common expressions and idioms in Portuguese.",
-        videoId: "rHwNPzyHVQw",
+        videoId: "qvTE8V_WqYg",
         languageId: "portuguese",
         order: 20
       }
@@ -1192,7 +1192,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-2",
         title: "English Lesson 2 - Greetings and Introductions",
         description: "Learn common greetings and how to introduce yourself in English.",
-        videoId: "xkQ3M6UjCsE",
+        videoId: "HEZfSSsz_4k",
         languageId: "english",
         order: 2
       },
@@ -1200,7 +1200,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-3",
         title: "English Lesson 3 - Basic Conversations",
         description: "Practice basic conversation patterns in English.",
-        videoId: "NMzC0-y4oXE",
+        videoId: "RCF1LqWnfvY",
         languageId: "english",
         order: 3
       },
@@ -1208,7 +1208,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-4",
         title: "English Lesson 4 - Numbers and Counting",
         description: "Learn to count and use numbers in English.",
-        videoId: "zbhK8LgH-lQ",
+        videoId: "2pN3OYcJpyw",
         languageId: "english",
         order: 4
       },
@@ -1216,7 +1216,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-5",
         title: "English Lesson 5 - Present Simple Tense",
         description: "Learn the present simple tense in English grammar.",
-        videoId: "VbA-xYptgU0",
+        videoId: "ham423ZXP0o",
         languageId: "english",
         order: 5
       },
@@ -1224,7 +1224,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-6",
         title: "English Lesson 6 - Family Vocabulary",
         description: "Learn vocabulary for family relationships in English.",
-        videoId: "FSwfN-Fo2Fc",
+        videoId: "QmDHDNgVYXs",
         languageId: "english",
         order: 6
       },
@@ -1232,7 +1232,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-7",
         title: "English Lesson 7 - Food and Dining",
         description: "Essential food vocabulary and restaurant phrases in English.",
-        videoId: "ZA64QaiE9Hk",
+        videoId: "n5f77qS9dZw",
         languageId: "english",
         order: 7
       },
@@ -1240,7 +1240,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-8",
         title: "English Lesson 8 - Days, Months, and Seasons",
         description: "Learn days, months, and seasons in English.",
-        videoId: "nnLR5hcBMQY",
+        videoId: "PViFNsaIOCI",
         languageId: "english",
         order: 8
       },
@@ -1248,7 +1248,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-9",
         title: "English Lesson 9 - Telling Time",
         description: "Learn how to tell time in English.",
-        videoId: "h8Q7MAKdc3A",
+        videoId: "e7wX3VO-KbI",
         languageId: "english",
         order: 9
       },
@@ -1256,7 +1256,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-10",
         title: "English Lesson 10 - Present Continuous Tense",
         description: "Learn the present continuous tense in English.",
-        videoId: "D1LcnUv6NbM",
+        videoId: "v7UvI90YbPY",
         languageId: "english",
         order: 10
       },
@@ -1264,7 +1264,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-11",
         title: "English Lesson 11 - Common Verbs",
         description: "Learn common verbs and their usage in English.",
-        videoId: "vJQb-jNRsnY",
+        videoId: "7hB09FAuMoE",
         languageId: "english",
         order: 11
       },
@@ -1272,7 +1272,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-12",
         title: "English Lesson 12 - Weather Expressions",
         description: "Talk about the weather in English.",
-        videoId: "KazVQfP4MK0",
+        videoId: "DM2lLmll9eE",
         languageId: "english",
         order: 12
       },
@@ -1280,7 +1280,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-13",
         title: "English Lesson 13 - Shopping Vocabulary",
         description: "Essential shopping vocabulary in English.",
-        videoId: "qKJl11EZT8g",
+        videoId: "9MSoaepr0qw",
         languageId: "english",
         order: 13
       },
@@ -1288,7 +1288,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-14",
         title: "English Lesson 14 - Past Simple Tense",
         description: "Learn the past simple tense in English.",
-        videoId: "gdnSsimcJNE",
+        videoId: "KYWFHsD4fC0",
         languageId: "english",
         order: 14
       },
@@ -1296,7 +1296,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-15",
         title: "English Lesson 15 - Describing People",
         description: "Learn to describe people's appearance and personality in English.",
-        videoId: "gVaW4KEZgDU",
+        videoId: "usbV41QtLjQ",
         languageId: "english",
         order: 15
       },
@@ -1304,7 +1304,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-16",
         title: "English Lesson 16 - Asking for Directions",
         description: "Learn to ask for and give directions in English.",
-        videoId: "PWSx0NUBYpw",
+        videoId: "ZbJj0u62OzY",
         languageId: "english",
         order: 16
       },
@@ -1312,7 +1312,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-17",
         title: "English Lesson 17 - Hobbies and Free Time",
         description: "Discuss hobbies and leisure activities in English.",
-        videoId: "NF5EcHtPqdU",
+        videoId: "78vv7nLwWjk",
         languageId: "english",
         order: 17
       },
@@ -1320,7 +1320,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-18",
         title: "English Lesson 18 - Future Tense",
         description: "Learn to talk about future plans in English.",
-        videoId: "9sWKK6diJH4",
+        videoId: "DDV5PPEzYgE",
         languageId: "english",
         order: 18
       },
@@ -1328,7 +1328,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-19",
         title: "English Lesson 19 - Modal Verbs",
         description: "Learn modal verbs like can, could, must in English.",
-        videoId: "ko6CktOUOXI",
+        videoId: "pkIowOhBi4o",
         languageId: "english",
         order: 19
       },
@@ -1336,7 +1336,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "english-video-20",
         title: "English Lesson 20 - Common Phrases and Idioms",
         description: "Learn everyday expressions and idioms in English.",
-        videoId: "8H-lRgE2NVY",
+        videoId: "6rXycOzrpY4",
         languageId: "english",
         order: 20
       }
@@ -1350,7 +1350,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-1",
         title: "Korean Lesson 1 - Introduction to Korean",
         description: "Begin your journey learning Korean with this introductory lesson.",
-        videoId: "N8mXasK3Yww",
+        videoId: "sx0yyQqkpqo",
         languageId: "korean",
         order: 1
       },
@@ -1358,7 +1358,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-2",
         title: "Korean Lesson 2 - Hangul Alphabet Basics",
         description: "Learn the Korean alphabet (Hangul) fundamentals.",
-        videoId: "PukQI54JWoI",
+        videoId: "U49SJ-evntU",
         languageId: "korean",
         order: 2
       },
@@ -1366,7 +1366,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-3",
         title: "Korean Lesson 3 - Basic Greetings",
         description: "Learn essential greetings in Korean.",
-        videoId: "YzXKZd5r5zs",
+        videoId: "YzpwHrA_iQQ",
         languageId: "korean",
         order: 3
       },
@@ -1374,7 +1374,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-4",
         title: "Korean Lesson 4 - Self Introduction",
         description: "Learn how to introduce yourself in Korean.",
-        videoId: "g7xz5wgiwAQ",
+        videoId: "VZLo2lSjCsM",
         languageId: "korean",
         order: 4
       },
@@ -1382,7 +1382,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-5",
         title: "Korean Lesson 5 - Numbers in Korean",
         description: "Learn how to count in Korean (both native and Sino-Korean numbers).",
-        videoId: "uFMV_iZKvso",
+        videoId: "ntyAHtIIw1A",
         languageId: "korean",
         order: 5
       },
@@ -1390,7 +1390,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-6",
         title: "Korean Lesson 6 - Basic Phrases",
         description: "Learn useful everyday expressions in Korean.",
-        videoId: "ZEFgsNr5hfA",
+        videoId: "ID4gPRoN5OE",
         languageId: "korean",
         order: 6
       },
@@ -1398,7 +1398,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-7",
         title: "Korean Lesson 7 - Food and Restaurants",
         description: "Learn vocabulary for food and dining in Korean.",
-        videoId: "oKW7TlxLM8I",
+        videoId: "J36m4cSl2W4",
         languageId: "korean",
         order: 7
       },
@@ -1406,7 +1406,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-8",
         title: "Korean Lesson 8 - Time and Calendar",
         description: "Learn to express time, days, and dates in Korean.",
-        videoId: "vBjVuwgn9ZQ",
+        videoId: "fDj5MBHdEIA",
         languageId: "korean",
         order: 8
       },
@@ -1414,7 +1414,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-9",
         title: "Korean Lesson 9 - Basic Verbs",
         description: "Learn essential verbs in Korean.",
-        videoId: "A3h-yk8DxJw",
+        videoId: "VbOWbrPoW00",
         languageId: "korean",
         order: 9
       },
@@ -1422,7 +1422,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-10",
         title: "Korean Lesson 10 - Particles in Korean",
         description: "Learn about particles (markers) in Korean grammar.",
-        videoId: "iJtF9OLsAws",
+        videoId: "uXZTSNNCBBU",
         languageId: "korean",
         order: 10
       },
@@ -1430,7 +1430,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-11",
         title: "Korean Lesson 11 - Family Terms",
         description: "Learn vocabulary for family members in Korean.",
-        videoId: "pV4gcGQ6dO0",
+        videoId: "f83UKBquKz0",
         languageId: "korean",
         order: 11
       },
@@ -1438,7 +1438,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-12",
         title: "Korean Lesson 12 - Weather Expressions",
         description: "Talk about weather in Korean.",
-        videoId: "qxAymS_BvFY",
+        videoId: "nDmUBOg0aMQ",
         languageId: "korean",
         order: 12
       },
@@ -1446,7 +1446,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-13",
         title: "Korean Lesson 13 - Shopping Vocabulary",
         description: "Essential shopping vocabulary in Korean.",
-        videoId: "Q-AWZZOb4Vw",
+        videoId: "KqDtir24yls",
         languageId: "korean",
         order: 13
       },
@@ -1454,7 +1454,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-14",
         title: "Korean Lesson 14 - Travel Phrases",
         description: "Learn useful travel phrases in Korean.",
-        videoId: "k6sHSDxKc8I",
+        videoId: "R8_uri5EZzs",
         languageId: "korean",
         order: 14
       },
@@ -1462,7 +1462,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-15",
         title: "Korean Lesson 15 - Past Tense",
         description: "Learn to express past actions in Korean.",
-        videoId: "5h4CqXZKCpI",
+        videoId: "k90-ZnbDyDc",
         languageId: "korean",
         order: 15
       },
@@ -1470,7 +1470,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-16",
         title: "Korean Lesson 16 - Future Tense",
         description: "Express future actions in Korean.",
-        videoId: "PwrW9V-aG8M",
+        videoId: "KX9AA1f5c4U",
         languageId: "korean",
         order: 16
       },
@@ -1478,7 +1478,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-17",
         title: "Korean Lesson 17 - Hobbies and Interests",
         description: "Talk about hobbies and interests in Korean.",
-        videoId: "OlOG9i_BP_o",
+        videoId: "EtaH52lTHaM",
         languageId: "korean",
         order: 17
       },
@@ -1486,7 +1486,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-18",
         title: "Korean Lesson 18 - Describing People",
         description: "Learn to describe people in Korean.",
-        videoId: "8H5UiUZq5X0",
+        videoId: "QVbTHskzcig",
         languageId: "korean",
         order: 18
       },
@@ -1494,7 +1494,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-19",
         title: "Korean Lesson 19 - Honorifics in Korean",
         description: "Understanding the honorific system in Korean.",
-        videoId: "wTVfbl1jKmA",
+        videoId: "UjH7FZHf4B4",
         languageId: "korean",
         order: 19
       },
@@ -1502,7 +1502,7 @@ export const videoLessons: LanguageVideos[] = [
         id: "korean-video-20",
         title: "Korean Lesson 20 - Common Expressions",
         description: "Learn common idiomatic expressions in Korean.",
-        videoId: "8XnvAa9Ooec",
+        videoId: "k3j8rzA9rA4",
         languageId: "korean",
         order: 20
       }
