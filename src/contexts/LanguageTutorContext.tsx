@@ -1,5 +1,4 @@
-
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { languages } from '../data/languages';
 
 interface TranslationExample {
@@ -29,6 +28,8 @@ interface CulturalTip {
 }
 
 interface LanguageTutorContextType {
+  selectedLanguage: string | null;
+  setSelectedLanguage: (language: string | null) => void;
   translations: TranslationExample[];
   grammarRules: GrammarRule[];
   pronunciationTips: PronunciationTip[];
@@ -193,18 +194,10 @@ const defaultCulturalTips: CulturalTip[] = [
 ];
 
 // Create context with default values
-const LanguageTutorContext = createContext<LanguageTutorContextType>({
-  translations: defaultTranslations,
-  grammarRules: defaultGrammarRules,
-  pronunciationTips: defaultPronunciationTips,
-  culturalTips: defaultCulturalTips,
-  getTranslations: async () => "",
-  getGrammarExplanation: async () => null,
-  getPronunciationHelp: async () => null,
-  getCulturalTips: async () => [],
-});
+const LanguageTutorContext = createContext<LanguageTutorContextType | undefined>(undefined);
 
-export const LanguageTutorProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
+export const LanguageTutorProvider = ({ children }: { children: ReactNode }) => {
+  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [translations] = useState<TranslationExample[]>(defaultTranslations);
   const [grammarRules] = useState<GrammarRule[]>(defaultGrammarRules);
   const [pronunciationTips] = useState<PronunciationTip[]>(defaultPronunciationTips);
@@ -240,6 +233,8 @@ export const LanguageTutorProvider: React.FC<{children: React.ReactNode}> = ({ c
   return (
     <LanguageTutorContext.Provider 
       value={{ 
+        selectedLanguage,
+        setSelectedLanguage,
         translations, 
         grammarRules, 
         pronunciationTips, 
@@ -255,4 +250,12 @@ export const LanguageTutorProvider: React.FC<{children: React.ReactNode}> = ({ c
   );
 };
 
-export const useLanguageTutor = () => useContext(LanguageTutorContext);
+export const useLanguageTutor = () => {
+  const context = useContext(LanguageTutorContext);
+  if (context === undefined) {
+    throw new Error('useLanguageTutor must be used within a LanguageTutorProvider');
+  }
+  return context;
+};
+
+export default LanguageTutorContext;
